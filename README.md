@@ -1,4 +1,6 @@
-bitnet-io staging tree 24.x
+![s1](https://github.com/c4pt000/Waifu-Core/releases/download/picture/first-attempt.png)
+
+Waifu staging tree 24.x
 ===========================
 
 
@@ -10,8 +12,8 @@ The most troublefree and reproducable method of building the repository is via t
 
     LINUX
 
-    git clone https://github.com/bitnet-io/bitnet-core
-    cd bitnet-core
+    git clone https://github.com/c4pt000/Waifu-Core
+    cd Waifu-Core
     cd depends
     make -j12 HOST=x86_64-pc-linux-gnu  # -j12 for 12 cores adjust here
     cd ..
@@ -23,8 +25,8 @@ The most troublefree and reproducable method of building the repository is via t
 
     WINDOWS 64-bit
 
-    git clone https://github.com/bitnet-io/bitnet-core
-    cd bitnet-core
+    git clone https://github.com/c4pt000/Waifu-Core
+    cd Waifu-Core
     cd depends
     make -j12 HOST=x86_64-w64-mingw32	# -j12 for 12 cores adjust here
     cd ..
