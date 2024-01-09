@@ -1,4 +1,4 @@
-waifu-io staging tree 24.x
+Waifu-Core staging tree 24.x
 ===========================
 
 
