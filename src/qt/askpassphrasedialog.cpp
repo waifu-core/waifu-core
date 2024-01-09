@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/askpassphrasedialog.h>
@@ -113,7 +113,7 @@ void AskPassphraseDialog::accept()
             if(newpass1 == newpass2)
             {
                 QString encryption_reminder = tr("Remember that encrypting your wallet cannot fully protect "
-                "your bitnets from being stolen by malware infecting your computer.");
+                "your waifus from being stolen by malware infecting your computer.");
                 if (m_passphrase_out) {
                     m_passphrase_out->assign(newpass1);
                     QMessageBox::warning(this, tr("Wallet to be encrypted"),

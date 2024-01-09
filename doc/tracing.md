@@ -11,7 +11,7 @@ eBPF and USDT Overview
 ======================
 
                 ┌──────────────────┐            ┌──────────────┐
-                │ tracing script   │            │ bitnetd     │
+                │ tracing script   │            │ waifud     │
                 │==================│      2.    │==============│
                 │  eBPF  │ tracing │      hooks │              │
                 │  code  │ logic   │      into┌─┤►tracepoint 1─┼───┐ 3.
@@ -306,7 +306,7 @@ maximum expected string size if known.
 
 ## Listing available tracepoints
 
-Multiple tools can list the available tracepoints in a `bitnetd` binary with
+Multiple tools can list the available tracepoints in a `waifud` binary with
 USDT support.
 
 ### GDB - GNU Project Debugger
@@ -314,13 +314,13 @@ USDT support.
 To list probes in Waifu Core, use `info probes` in `gdb`:
 
 ```
-$ gdb ./src/bitnetd
+$ gdb ./src/waifud
 …
 (gdb) info probes
 Type Provider   Name             Where              Semaphore Object
-stap net        inbound_message  0x000000000014419e /src/bitnetd
-stap net        outbound_message 0x0000000000107c05 /src/bitnetd
-stap validation block_connected  0x00000000002fb10c /src/bitnetd
+stap net        inbound_message  0x000000000014419e /src/waifud
+stap net        outbound_message 0x0000000000107c05 /src/waifud
+stap validation block_connected  0x00000000002fb10c /src/waifud
 …
 ```
 
@@ -330,7 +330,7 @@ The `readelf` tool can be used to display the USDT tracepoints in Waifu Core.
 Look for the notes with the description `NT_STAPSDT`.
 
 ```
-$ readelf -n ./src/bitnetd | grep NT_STAPSDT -A 4 -B 2
+$ readelf -n ./src/waifud | grep NT_STAPSDT -A 4 -B 2
 Displaying notes found in: .note.stapsdt
   Owner                 Data size	Description
   stapsdt              0x0000005d	NT_STAPSDT (SystemTap probe descriptors)
@@ -354,7 +354,7 @@ between distributions. For example, on
 [ubuntu binary]: https://github.com/iovisor/bcc/blob/master/INSTALL.md#ubuntu---binary
 
 ```
-$ tplist -l ./src/bitnetd -v
+$ tplist -l ./src/waifud -v
 b'net':b'outbound_message' [sema 0x0]
   1 location(s)
   6 argument(s)

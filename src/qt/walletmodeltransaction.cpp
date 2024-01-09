@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifdef HAVE_CONFIG_H
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/walletmodeltransaction.h>

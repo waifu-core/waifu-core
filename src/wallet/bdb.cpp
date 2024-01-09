@@ -28,7 +28,7 @@ namespace {
 //!
 //! BerkeleyDB generates unique fileids by default
 //! (https://docs.oracle.com/cd/E17275_01/html/programmer_reference/program_copy.html),
-//! so bitnet should never create different databases with the same fileid, but
+//! so waifu should never create different databases with the same fileid, but
 //! this error can be triggered if users manually copy database files.
 void CheckUniqueFileid(const BerkeleyEnvironment& env, const std::string& filename, Db& db, WalletDatabaseFileId& fileid)
 {
@@ -280,7 +280,7 @@ bool BerkeleyDatabase::Verify(bilingual_str& errorStr)
         const std::string strFile = fs::PathToString(m_filename);
         int result = db.verify(strFile.c_str(), nullptr, nullptr, 0);
         if (result != 0) {
-            errorStr = strprintf(_("%s corrupt. Try using the wallet tool bitnet-wallet to salvage or restoring a backup."), fs::quoted(fs::PathToString(file_path)));
+            errorStr = strprintf(_("%s corrupt. Try using the wallet tool waifu-wallet to salvage or restoring a backup."), fs::quoted(fs::PathToString(file_path)));
             return false;
         }
     }

@@ -1,6 +1,6 @@
 Waifu Core version 0.11.2 is now available from:
 
-  <https://bitnet.org/bin/bitnet-core-0.11.2/>
+  <https://waifu.org/bin/waifu-core-0.11.2/>
 
 This is a new minor version release, bringing bug fixes, the BIP65
 (CLTV) consensus change, and relay policy preparation for BIP113. It is
@@ -8,7 +8,7 @@ recommended to upgrade to this version as soon as possible.
 
 Please report bugs using the issue tracker at github:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 Upgrading and downgrading
 =========================
@@ -19,7 +19,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Waifu-Qt (on Mac) or
-bitnetd/bitnet-qt (on Linux).
+waifud/waifu-qt (on Linux).
 
 Downgrade warning
 ------------------
@@ -68,16 +68,16 @@ specified point in the future.
    blocks if they comply with the BIP65 rules for CLTV.
 
 For more information about the soft-forking change, please see
-<https://github.com/bitnet/bitnet/pull/6351>
+<https://github.com/waifu/waifu/pull/6351>
 
 Graphs showing the progress towards block version 4 adoption may be
 found at the URLs below:
 
 - Block versions over the last 50,000 blocks as progress towards BIP65
-  consensus enforcement: <http://bitnet.sipa.be/ver-50k.png>
+  consensus enforcement: <http://waifu.sipa.be/ver-50k.png>
 
 - Block versions over the last 2,000 blocks showing the days to the
-  earliest possible BIP65 consensus-enforced block: <http://bitnet.sipa.be/ver-2k.png>
+  earliest possible BIP65 consensus-enforced block: <http://waifu.sipa.be/ver-2k.png>
 
 **Notice to miners:** Waifu Core’s block templates are now for
 version 4 blocks only, and any mining software relying on its
@@ -95,7 +95,7 @@ version 0.4.3 or any version from 0.5.2 onward.
   will affect you at the pool operator’s discretion, which must be no
   later than BIP65 achieving its 951/1001 status.
 
-[BIP65]: https://github.com/bitnet/bips/blob/master/bip-0065.mediawiki
+[BIP65]: https://github.com/waifu/bips/blob/master/bip-0065.mediawiki
 
 BIP113 mempool-only locktime enforcement using GetMedianTimePast()
 ----------------------------------------------------------------
@@ -143,7 +143,7 @@ forward. To compensate, subtract one hour (3,600 seconds) from your
 locktimes to allow those transactions to be included in mempools at
 approximately the expected time.
 
-[BIP113]: https://github.com/bitnet/bips/blob/master/bip-0113.mediawiki
+[BIP113]: https://github.com/waifu/bips/blob/master/bip-0113.mediawiki
 
 Windows bug fix for corrupted UTXO database on unclean shutdowns
 ----------------------------------------------------------------
@@ -155,7 +155,7 @@ remain unsafe, this release no longer relies on memory-mapped files for
 the UTXO database, which significantly reduced the frequency of unclean
 shutdowns leading to required reindexes during testing.
 
-For more information, see: <https://github.com/bitnet/bitnet/pull/6917>
+For more information, see: <https://github.com/waifu/waifu/pull/6917>
 
 Other fixes for database corruption on Windows are expected in the
 next major release.
@@ -176,8 +176,8 @@ git merge commit are mentioned.
 - #6351 `6af25b0` Add BIP65 to getblockchaininfo softforks list
 - #6688 `01878c9` Fix locking in GetTransaction
 - #6653 `b3eaa30` [Qt] Raise debug window when requested
-- #6600 `1e672ae` Debian/Ubuntu: Include bitnet-tx binary
-- #6600 `2394f4d` Debian/Ubuntu: Split bitnet-tx into its own package
+- #6600 `1e672ae` Debian/Ubuntu: Include waifu-tx binary
+- #6600 `2394f4d` Debian/Ubuntu: Split waifu-tx into its own package
 - #5987 `33d6825` Bugfix: Allow mining on top of old tip blocks for testnet
 - #6852 `21e58b8` build: make sure OpenSSL heeds noexecstack
 - #6846 `af6edac` alias `-h` for `--help`
@@ -214,4 +214,4 @@ Thanks to everyone who directly contributed to this release:
 
 And those who contributed additional code review and/or security research.
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitnet/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/waifu/).

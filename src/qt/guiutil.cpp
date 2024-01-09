@@ -4,8 +4,8 @@
 
 #include <qt/guiutil.h>
 
-#include <qt/bitnetaddressvalidator.h>
-#include <qt/bitnetunits.h>
+#include <qt/waifuaddressvalidator.h>
+#include <qt/waifuunits.h>
 #include <qt/platformstyle.h>
 #include <qt/qvalidatedlineedit.h>
 #include <qt/sendcoinsrecipient.h>
@@ -139,7 +139,7 @@ void AddButtonShortcut(QAbstractButton* button, const QKeySequence& shortcut)
 
 bool parseWaifuURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // return if URI is not valid or is no bitnet: URI
+    // return if URI is not valid or is no waifu: URI
     if(!uri.isValid() || uri.scheme() != QString(""))
         return false;
 
@@ -203,7 +203,7 @@ QString formatWaifuURI(const SendCoinsRecipient &info)
 {
     bool bech_32 = info.address.startsWith(QString::fromStdString(Params().Bech32HRP() + "1"));
 
-//    QString ret = QString("bitnet:%1").arg(bech_32 ? info.address.toUpper() : info.address);
+//    QString ret = QString("waifu:%1").arg(bech_32 ? info.address.toUpper() : info.address);
     QString ret = QString("%1").arg(bech_32 ? info.address.toUpper() : info.address);
     int paramCount = 0;
 
@@ -439,7 +439,7 @@ bool openWaifuConf()
 
     configFile.close();
 
-    /* Open bitnet.conf with the associated application */
+    /* Open waifu.conf with the associated application */
     bool res = QDesktopServices::openUrl(QUrl::fromLocalFile(PathToQString(pathConfig)));
 #ifdef Q_OS_MACOS
     // Workaround for macOS-specific behavior; see #15409.
@@ -586,8 +586,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "bitnet.desktop";
-    return GetAutostartDir() / fs::u8path(strprintf("bitnet-%s.desktop", chain));
+        return GetAutostartDir() / "waifu.desktop";
+    return GetAutostartDir() / fs::u8path(strprintf("waifu-%s.desktop", chain));
 }
 
 bool GetStartOnSystemStartup()
@@ -628,7 +628,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         if (!optionFile.good())
             return false;
         std::string chain = gArgs.GetChainName();
-        // Write a bitnet.desktop file to the autostart directory:
+        // Write a waifu.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
         if (chain == CBaseChainParams::MAIN)

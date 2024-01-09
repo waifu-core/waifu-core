@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/walletmodel.h>
@@ -175,7 +175,7 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
     {
         if (rcp.fSubtractFeeFromAmount)
             fSubtractFeeFromAmount = true;
-        {   // User-entered bitnet address / amount:
+        {   // User-entered waifu address / amount:
             if(!validateAddress(rcp.address))
             {
                 return InvalidAddress;
@@ -254,7 +254,7 @@ void WalletModel::sendCoins(WalletModelTransaction& transaction)
         std::vector<std::pair<std::string, std::string>> vOrderForm;
         for (const SendCoinsRecipient &rcp : transaction.getRecipients())
         {
-            if (!rcp.message.isEmpty()) // Message from normal bitnet:URI (bitnet:123...?message=example)
+            if (!rcp.message.isEmpty()) // Message from normal waifu:URI (waifu:123...?message=example)
                 vOrderForm.emplace_back("Message", rcp.message.toStdString());
         }
 

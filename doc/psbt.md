@@ -2,7 +2,7 @@
 
 Since Waifu Core 0.17, an RPC interface exists for Partially Signed Waifu
 Transactions (PSBTs, as specified in
-[BIP 174](https://github.com/bitnet/bips/blob/master/bip-0174.mediawiki)).
+[BIP 174](https://github.com/waifu/bips/blob/master/bip-0174.mediawiki)).
 
 This document describes the overall workflow for producing signed transactions
 through the use of PSBT, and the specific RPC commands used in typical
@@ -14,7 +14,7 @@ PSBT is an interchange format for Waifu transactions that are not fully signed
 yet, together with relevant metadata to help entities work towards signing it.
 It is intended to simplify workflows where multiple parties need to cooperate to
 produce a transaction. Examples include hardware wallets, multisig setups, and
-[CoinJoin](https://bitnettalk.org/?topic=279249) transactions.
+[CoinJoin](https://waifutalk.org/?topic=279249) transactions.
 
 ### Overall workflow
 
@@ -99,7 +99,7 @@ Alice, Bob, and Carol want to create a 2-of-3 multisig address. They're all usin
 Waifu Core. We assume their wallets only contain the multisig funds. In case
 they also have a personal wallet, this can be accomplished through the
 multiwallet feature - possibly resulting in a need to add `-rpcwallet=name` to
-the command line in case `bitnet-cli` is used.
+the command line in case `waifu-cli` is used.
 
 Setup:
 - All three call `getnewaddress` to create a new address; call these addresses

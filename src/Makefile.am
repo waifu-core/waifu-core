@@ -26,44 +26,44 @@ BENCHMARKS =
 
 BITCOIN_INCLUDES=-I$(builddir) -I$(srcdir)/$(MINISKETCH_INCLUDE_DIR_INT) -I$(srcdir)/secp256k1/include -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT) $(LEVELDB_CPPFLAGS)
 
-LIBBITCOIN_NODE=libbitnet_node.a
-LIBBITCOIN_COMMON=libbitnet_common.a
-LIBBITCOIN_CONSENSUS=libbitnet_consensus.a
-LIBBITCOIN_CLI=libbitnet_cli.a
-LIBBITCOIN_UTIL=libbitnet_util.a
-LIBBITCOIN_CRYPTO_BASE=crypto/libbitnet_crypto_base.la
-LIBBITCOINQT=qt/libbitnetqt.a
+LIBBITCOIN_NODE=libwaifu_node.a
+LIBBITCOIN_COMMON=libwaifu_common.a
+LIBBITCOIN_CONSENSUS=libwaifu_consensus.a
+LIBBITCOIN_CLI=libwaifu_cli.a
+LIBBITCOIN_UTIL=libwaifu_util.a
+LIBBITCOIN_CRYPTO_BASE=crypto/libwaifu_crypto_base.la
+LIBBITCOINQT=qt/libwaifuqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libbitnet_zmq.a
+LIBBITCOIN_ZMQ=libwaifu_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libbitnetconsensus.la
+LIBBITCOINCONSENSUS=libwaifuconsensus.la
 endif
 if BUILD_BITCOIN_KERNEL_LIB
-LIBBITCOINKERNEL=libbitnetkernel.la
+LIBBITCOINKERNEL=libwaifukernel.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libbitnet_wallet.a
-LIBBITCOIN_WALLET_TOOL=libbitnet_wallet_tool.a
+LIBBITCOIN_WALLET=libwaifu_wallet.a
+LIBBITCOIN_WALLET_TOOL=libwaifu_wallet_tool.a
 endif
 
 LIBBITCOIN_CRYPTO = $(LIBBITCOIN_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBBITCOIN_CRYPTO_SSE41 = crypto/libbitnet_crypto_sse41.la
+LIBBITCOIN_CRYPTO_SSE41 = crypto/libwaifu_crypto_sse41.la
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBBITCOIN_CRYPTO_AVX2 = crypto/libbitnet_crypto_avx2.la
+LIBBITCOIN_CRYPTO_AVX2 = crypto/libwaifu_crypto_avx2.la
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_AVX2)
 endif
 if ENABLE_X86_SHANI
-LIBBITCOIN_CRYPTO_X86_SHANI = crypto/libbitnet_crypto_x86_shani.la
+LIBBITCOIN_CRYPTO_X86_SHANI = crypto/libwaifu_crypto_x86_shani.la
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_X86_SHANI)
 endif
 if ENABLE_ARM_SHANI
-LIBBITCOIN_CRYPTO_ARM_SHANI = crypto/libbitnet_crypto_arm_shani.la
+LIBBITCOIN_CRYPTO_ARM_SHANI = crypto/libwaifu_crypto_arm_shani.la
 LIBBITCOIN_CRYPTO += $(LIBBITCOIN_CRYPTO_ARM_SHANI)
 endif
 noinst_LTLIBRARIES += $(LIBBITCOIN_CRYPTO)
@@ -85,37 +85,37 @@ EXTRA_LIBRARIES += \
   $(LIBBITCOIN_ZMQ)
 
 if BUILD_BITCOIND
-  bin_PROGRAMS += bitnetd
+  bin_PROGRAMS += waifud
 endif
 
 if BUILD_BITCOIN_NODE
-  bin_PROGRAMS += bitnet-node
+  bin_PROGRAMS += waifu-node
 endif
 
 if BUILD_BITCOIN_CLI
-  bin_PROGRAMS += bitnet-cli
+  bin_PROGRAMS += waifu-cli
 endif
 
 if BUILD_BITCOIN_TX
-  bin_PROGRAMS += bitnet-tx
+  bin_PROGRAMS += waifu-tx
 endif
 
 if ENABLE_WALLET
 if BUILD_BITCOIN_WALLET
-  bin_PROGRAMS += bitnet-wallet
+  bin_PROGRAMS += waifu-wallet
 endif
 endif
 
 if BUILD_BITCOIN_UTIL
-  bin_PROGRAMS += bitnet-util
+  bin_PROGRAMS += waifu-util
 endif
 
 if BUILD_BITCOIN_CHAINSTATE
-  bin_PROGRAMS += bitnet-chainstate
+  bin_PROGRAMS += waifu-chainstate
 endif
 
 .PHONY: FORCE check-symbols check-security
-# bitnet core #
+# waifu core #
 BITCOIN_CORE_H = \
   addrdb.h \
   addrman.h \
@@ -350,12 +350,12 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libbitnet_util_a-clientversion.$(OBJEXT): obj/build.h
+libwaifu_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # node #
-libbitnet_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbitnet_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_node_a_SOURCES = \
+libwaifu_node_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(MINIUPNPC_CPPFLAGS) $(NATPMP_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libwaifu_node_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_node_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   banman.cpp \
@@ -441,19 +441,19 @@ libbitnet_node_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if ENABLE_WALLET
-libbitnet_node_a_SOURCES += wallet/init.cpp
-libbitnet_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
+libwaifu_node_a_SOURCES += wallet/init.cpp
+libwaifu_node_a_CPPFLAGS += $(BDB_CPPFLAGS)
 endif
 if !ENABLE_WALLET
-libbitnet_node_a_SOURCES += dummywallet.cpp
+libwaifu_node_a_SOURCES += dummywallet.cpp
 endif
 #
 
 # zmq #
 if ENABLE_ZMQ
-libbitnet_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libbitnet_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_zmq_a_SOURCES = \
+libwaifu_zmq_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libwaifu_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp \
@@ -463,9 +463,9 @@ endif
 #
 
 # wallet #
-libbitnet_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
-libbitnet_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_wallet_a_SOURCES = \
+libwaifu_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(BDB_CPPFLAGS) $(SQLITE_CFLAGS)
+libwaifu_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_wallet_a_SOURCES = \
   wallet/coincontrol.cpp \
   wallet/context.cpp \
   wallet/crypter.cpp \
@@ -496,32 +496,32 @@ libbitnet_wallet_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if USE_SQLITE
-libbitnet_wallet_a_SOURCES += wallet/sqlite.cpp
+libwaifu_wallet_a_SOURCES += wallet/sqlite.cpp
 endif
 if USE_BDB
-libbitnet_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
+libwaifu_wallet_a_SOURCES += wallet/bdb.cpp wallet/salvage.cpp
 endif
 #
 
 # wallet tool #
-libbitnet_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-libbitnet_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_wallet_tool_a_SOURCES = \
+libwaifu_wallet_tool_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
+libwaifu_wallet_tool_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_wallet_tool_a_SOURCES = \
   wallet/wallettool.cpp \
   $(BITCOIN_CORE_H)
 #
 
 # crypto #
-crypto_libbitnet_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libwaifu_crypto_base_la_CPPFLAGS = $(AM_CPPFLAGS)
 
 # Specify -static in both CXXFLAGS and LDFLAGS so libtool will only build a
 # static version of this library. We don't need a dynamic version, and a dynamic
 # version can't be used on windows anyway because the library doesn't currently
 # export DLL symbols.
-crypto_libbitnet_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitnet_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libwaifu_crypto_base_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libwaifu_crypto_base_la_LDFLAGS = $(AM_LDFLAGS) -static
 
-crypto_libbitnet_crypto_base_la_SOURCES = \
+crypto_libwaifu_crypto_base_la_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/aurum.c \
@@ -554,50 +554,50 @@ crypto_libbitnet_crypto_base_la_SOURCES = \
   crypto/siphash.h
 
 if USE_ASM
-crypto_libbitnet_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
+crypto_libwaifu_crypto_base_la_SOURCES += crypto/sha256_sse4.cpp
 endif
 
-# See explanation for -static in crypto_libbitnet_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libwaifu_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitnet_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitnet_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitnet_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitnet_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
-crypto_libbitnet_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
-crypto_libbitnet_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
+crypto_libwaifu_crypto_sse41_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libwaifu_crypto_sse41_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libwaifu_crypto_sse41_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libwaifu_crypto_sse41_la_CXXFLAGS += $(SSE41_CXXFLAGS)
+crypto_libwaifu_crypto_sse41_la_CPPFLAGS += -DENABLE_SSE41
+crypto_libwaifu_crypto_sse41_la_SOURCES = crypto/sha256_sse41.cpp
 
-# See explanation for -static in crypto_libbitnet_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libwaifu_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitnet_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitnet_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitnet_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitnet_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
-crypto_libbitnet_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
-crypto_libbitnet_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
+crypto_libwaifu_crypto_avx2_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libwaifu_crypto_avx2_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libwaifu_crypto_avx2_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libwaifu_crypto_avx2_la_CXXFLAGS += $(AVX2_CXXFLAGS)
+crypto_libwaifu_crypto_avx2_la_CPPFLAGS += -DENABLE_AVX2
+crypto_libwaifu_crypto_avx2_la_SOURCES = crypto/sha256_avx2.cpp
 
-# See explanation for -static in crypto_libbitnet_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libwaifu_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitnet_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitnet_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitnet_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitnet_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
-crypto_libbitnet_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
-crypto_libbitnet_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
+crypto_libwaifu_crypto_x86_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libwaifu_crypto_x86_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libwaifu_crypto_x86_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libwaifu_crypto_x86_shani_la_CXXFLAGS += $(X86_SHANI_CXXFLAGS)
+crypto_libwaifu_crypto_x86_shani_la_CPPFLAGS += -DENABLE_X86_SHANI
+crypto_libwaifu_crypto_x86_shani_la_SOURCES = crypto/sha256_x86_shani.cpp
 
-# See explanation for -static in crypto_libbitnet_crypto_base_la's LDFLAGS and
+# See explanation for -static in crypto_libwaifu_crypto_base_la's LDFLAGS and
 # CXXFLAGS above
-crypto_libbitnet_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
-crypto_libbitnet_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
-crypto_libbitnet_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitnet_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
-crypto_libbitnet_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
-crypto_libbitnet_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
+crypto_libwaifu_crypto_arm_shani_la_LDFLAGS = $(AM_LDFLAGS) -static
+crypto_libwaifu_crypto_arm_shani_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -static
+crypto_libwaifu_crypto_arm_shani_la_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libwaifu_crypto_arm_shani_la_CXXFLAGS += $(ARM_SHANI_CXXFLAGS)
+crypto_libwaifu_crypto_arm_shani_la_CPPFLAGS += -DENABLE_ARM_SHANI
+crypto_libwaifu_crypto_arm_shani_la_SOURCES = crypto/sha256_arm_shani.cpp
 #
 
 # consensus #
-libbitnet_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitnet_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_consensus_a_SOURCES = \
+libwaifu_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libwaifu_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_consensus_a_SOURCES = \
   arith_uint256.cpp \
   arith_uint256.h \
   consensus/amount.h \
@@ -615,7 +615,7 @@ libbitnet_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/bitnetconsensus.cpp \
+  script/waifuconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -633,9 +633,9 @@ libbitnet_consensus_a_SOURCES = \
 #
 
 # common #
-libbitnet_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-libbitnet_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_common_a_SOURCES = \
+libwaifu_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
+libwaifu_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
@@ -675,15 +675,15 @@ libbitnet_common_a_SOURCES = \
   $(BITCOIN_CORE_H)
 
 if USE_LIBEVENT
-libbitnet_common_a_CPPFLAGS += $(EVENT_CFLAGS)
-libbitnet_common_a_SOURCES += common/url.cpp
+libwaifu_common_a_CPPFLAGS += $(EVENT_CFLAGS)
+libwaifu_common_a_SOURCES += common/url.cpp
 endif
 #
 
 # util #
-libbitnet_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitnet_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_util_a_SOURCES = \
+libwaifu_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libwaifu_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -723,28 +723,28 @@ libbitnet_util_a_SOURCES = \
 #
 
 # cli #
-libbitnet_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitnet_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitnet_cli_a_SOURCES = \
+libwaifu_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libwaifu_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifu_cli_a_SOURCES = \
   compat/stdin.h \
   compat/stdin.cpp \
   rpc/client.cpp \
   $(BITCOIN_CORE_H)
 
-nodist_libbitnet_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libwaifu_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitnetd & bitnet-node binaries #
-bitnet_daemon_sources = bitnetd.cpp
-bitnet_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitnet_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitnet_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# waifud & waifu-node binaries #
+waifu_daemon_sources = waifud.cpp
+waifu_bin_cppflags = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+waifu_bin_cxxflags = $(AM_CXXFLAGS) $(PIE_FLAGS)
+waifu_bin_ldflags = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitnet_daemon_sources += bitnetd-res.rc
+waifu_daemon_sources += waifud-res.rc
 endif
 
-bitnet_bin_ldadd = \
+waifu_bin_ldadd = \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -756,51 +756,51 @@ bitnet_bin_ldadd = \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitnet_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
+waifu_bin_ldadd += $(BDB_LIBS) $(MINIUPNPC_LIBS) $(NATPMP_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(SQLITE_LIBS)
 
-bitnetd_SOURCES = $(bitnet_daemon_sources) init/bitnetd.cpp
-bitnetd_CPPFLAGS = $(bitnet_bin_cppflags)
-bitnetd_CXXFLAGS = $(bitnet_bin_cxxflags)
-bitnetd_LDFLAGS = $(bitnet_bin_ldflags)
-bitnetd_LDADD = $(LIBBITCOIN_NODE) $(bitnet_bin_ldadd)
+waifud_SOURCES = $(waifu_daemon_sources) init/waifud.cpp
+waifud_CPPFLAGS = $(waifu_bin_cppflags)
+waifud_CXXFLAGS = $(waifu_bin_cxxflags)
+waifud_LDFLAGS = $(waifu_bin_ldflags)
+waifud_LDADD = $(LIBBITCOIN_NODE) $(waifu_bin_ldadd)
 
-bitnet_node_SOURCES = $(bitnet_daemon_sources) init/bitnet-node.cpp
-bitnet_node_CPPFLAGS = $(bitnet_bin_cppflags)
-bitnet_node_CXXFLAGS = $(bitnet_bin_cxxflags)
-bitnet_node_LDFLAGS = $(bitnet_bin_ldflags)
-bitnet_node_LDADD = $(LIBBITCOIN_NODE) $(bitnet_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
+waifu_node_SOURCES = $(waifu_daemon_sources) init/waifu-node.cpp
+waifu_node_CPPFLAGS = $(waifu_bin_cppflags)
+waifu_node_CXXFLAGS = $(waifu_bin_cxxflags)
+waifu_node_LDFLAGS = $(waifu_bin_ldflags)
+waifu_node_LDADD = $(LIBBITCOIN_NODE) $(waifu_bin_ldadd) $(LIBBITCOIN_IPC) $(LIBMULTIPROCESS_LIBS)
 
-# bitnet-cli binary #
-bitnet_cli_SOURCES = bitnet-cli.cpp
-bitnet_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-bitnet_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitnet_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# waifu-cli binary #
+waifu_cli_SOURCES = waifu-cli.cpp
+waifu_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
+waifu_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+waifu_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitnet_cli_SOURCES += bitnet-cli-res.rc
+waifu_cli_SOURCES += waifu-cli-res.rc
 endif
 
-bitnet_cli_LDADD = \
+waifu_cli_LDADD = \
   $(LIBBITCOIN_CLI) \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO)
 
-bitnet_cli_LDADD += $(EVENT_LIBS)
+waifu_cli_LDADD += $(EVENT_LIBS)
 #
 
-# bitnet-tx binary #
-bitnet_tx_SOURCES = bitnet-tx.cpp
-bitnet_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitnet_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitnet_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# waifu-tx binary #
+waifu_tx_SOURCES = waifu-tx.cpp
+waifu_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+waifu_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+waifu_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitnet_tx_SOURCES += bitnet-tx-res.rc
+waifu_tx_SOURCES += waifu-tx-res.rc
 endif
 
-bitnet_tx_LDADD = \
+waifu_tx_LDADD = \
   $(LIBUNIVALUE) \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
@@ -809,13 +809,13 @@ bitnet_tx_LDADD = \
   $(LIBSECP256K1)
 #
 
-# bitnet-wallet binary #
-bitnet_wallet_SOURCES = bitnet-wallet.cpp
-bitnet_wallet_SOURCES += init/bitnet-wallet.cpp
-bitnet_wallet_CPPFLAGS = $(bitnet_bin_cppflags)
-bitnet_wallet_CXXFLAGS = $(bitnet_bin_cxxflags)
-bitnet_wallet_LDFLAGS = $(bitnet_bin_ldflags)
-bitnet_wallet_LDADD = \
+# waifu-wallet binary #
+waifu_wallet_SOURCES = waifu-wallet.cpp
+waifu_wallet_SOURCES += init/waifu-wallet.cpp
+waifu_wallet_CPPFLAGS = $(waifu_bin_cppflags)
+waifu_wallet_CXXFLAGS = $(waifu_bin_cxxflags)
+waifu_wallet_LDFLAGS = $(waifu_bin_ldflags)
+waifu_wallet_LDADD = \
   $(LIBBITCOIN_WALLET_TOOL) \
   $(LIBBITCOIN_WALLET) \
   $(LIBBITCOIN_COMMON) \
@@ -828,21 +828,21 @@ bitnet_wallet_LDADD = \
   $(SQLITE_LIBS)
 
 if TARGET_WINDOWS
-bitnet_wallet_SOURCES += bitnet-wallet-res.rc
+waifu_wallet_SOURCES += waifu-wallet-res.rc
 endif
 #
 
-# bitnet-util binary #
-bitnet_util_SOURCES = bitnet-util.cpp
-bitnet_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitnet_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitnet_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+# waifu-util binary #
+waifu_util_SOURCES = waifu-util.cpp
+waifu_util_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+waifu_util_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+waifu_util_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
 
 if TARGET_WINDOWS
-bitnet_util_SOURCES += bitnet-util-res.rc
+waifu_util_SOURCES += waifu-util-res.rc
 endif
 
-bitnet_util_LDADD = \
+waifu_util_LDADD = \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
   $(LIBUNIVALUE) \
@@ -851,40 +851,40 @@ bitnet_util_LDADD = \
   $(LIBSECP256K1)
 #
 
-# bitnet-chainstate binary #
-bitnet_chainstate_SOURCES = bitnet-chainstate.cpp
-bitnet_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
-bitnet_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+# waifu-chainstate binary #
+waifu_chainstate_SOURCES = waifu-chainstate.cpp
+waifu_chainstate_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS)
+waifu_chainstate_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
-bitnet_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
-bitnet_chainstate_LDADD = $(LIBBITCOINKERNEL)
+waifu_chainstate_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(PTHREAD_FLAGS) $(LIBTOOL_APP_LDFLAGS) -static
+waifu_chainstate_LDADD = $(LIBBITCOINKERNEL)
 
 # libtool is unable to calculate this indirect dependency, presumably because it's a subproject.
-# libsecp256k1 only needs to be linked in when libbitnetkernel is static.
-bitnet_chainstate_LDADD += $(LIBSECP256K1)
+# libsecp256k1 only needs to be linked in when libwaifukernel is static.
+waifu_chainstate_LDADD += $(LIBSECP256K1)
 #
 
-# bitnetkernel library #
+# waifukernel library #
 if BUILD_BITCOIN_KERNEL_LIB
 lib_LTLIBRARIES += $(LIBBITCOINKERNEL)
 
-libbitnetkernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
-libbitnetkernel_la_LIBADD = $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
-libbitnetkernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
+libwaifukernel_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS) $(PTHREAD_FLAGS)
+libwaifukernel_la_LIBADD = $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) $(LIBSECP256K1)
+libwaifukernel_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) -I$(srcdir)/$(UNIVALUE_INCLUDE_DIR_INT)
 
-# libbitnetkernel requires default symbol visibility, explicitly specify that
+# libwaifukernel requires default symbol visibility, explicitly specify that
 # here so that things still work even when user configures with
 #   --enable-reduce-exports
 #
 # Note this is a quick hack that will be removed as we incrementally define what
 # to export from the library.
-libbitnetkernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
+libwaifukernel_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) -fvisibility=default
 
-# TODO: libbitnetkernel is a work in progress consensus engine library, as more
+# TODO: libwaifukernel is a work in progress consensus engine library, as more
 #       and more modules are decoupled from the consensus engine, this list will
 #       shrink to only those which are absolutely necessary.
-libbitnetkernel_la_SOURCES = \
-  kernel/bitnetkernel.cpp \
+libwaifukernel_la_SOURCES = \
+  kernel/waifukernel.cpp \
   arith_uint256.cpp \
   chain.cpp \
   chainparamsbase.cpp \
@@ -963,21 +963,21 @@ libbitnetkernel_la_SOURCES = \
 
 # Required for obj/build.h to be generated first.
 # More details: https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html
-libbitnetkernel_la-clientversion.l$(OBJEXT): obj/build.h
+libwaifukernel_la-clientversion.l$(OBJEXT): obj/build.h
 endif # BUILD_BITCOIN_KERNEL_LIB
 #
 
-# bitnetconsensus library #
+# waifuconsensus library #
 if BUILD_BITCOIN_LIBS
 lib_LTLIBRARIES += $(LIBBITCOINCONSENSUS)
 
-include_HEADERS = script/bitnetconsensus.h
-libbitnetconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libbitnet_crypto_base_la_SOURCES) $(libbitnet_consensus_a_SOURCES)
+include_HEADERS = script/waifuconsensus.h
+libwaifuconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libwaifu_crypto_base_la_SOURCES) $(libwaifu_consensus_a_SOURCES)
 
-libbitnetconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
-libbitnetconsensus_la_LIBADD = $(LIBSECP256K1)
-libbitnetconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libbitnetconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libwaifuconsensus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined $(RELDFLAGS)
+libwaifuconsensus_la_LIBADD = $(LIBSECP256K1)
+libwaifuconsensus_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
+libwaifuconsensus_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 endif
 #
@@ -1013,12 +1013,12 @@ CLEANFILES += obj/build.h
 EXTRA_DIST = $(CTAES_DIST)
 
 
-config/bitnet-config.h: config/stamp-h1
+config/waifu-config.h: config/stamp-h1
 	@$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-config/stamp-h1: $(top_srcdir)/$(subdir)/config/bitnet-config.h.in $(top_builddir)/config.status
+config/stamp-h1: $(top_srcdir)/$(subdir)/config/waifu-config.h.in $(top_builddir)/config.status
 	$(AM_V_at)$(MAKE) -C $(top_builddir) $(subdir)/$(@)
-$(top_srcdir)/$(subdir)/config/bitnet-config.h.in:  $(am__configure_deps)
-	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/bitnet-config.h.in
+$(top_srcdir)/$(subdir)/config/waifu-config.h.in:  $(am__configure_deps)
+	$(AM_V_at)$(MAKE) -C $(top_srcdir) $(subdir)/config/waifu-config.h.in
 
 clean-local:
 	-$(MAKE) -C secp256k1 clean
@@ -1041,19 +1041,19 @@ if HARDEN
 	$(AM_V_at) $(PYTHON) $(top_srcdir)/contrib/devtools/security-check.py $(bin_PROGRAMS)
 endif
 
-libbitnet_ipc_mpgen_input = \
+libwaifu_ipc_mpgen_input = \
   ipc/capnp/echo.capnp \
   ipc/capnp/init.capnp
-EXTRA_DIST += $(libbitnet_ipc_mpgen_input)
+EXTRA_DIST += $(libwaifu_ipc_mpgen_input)
 %.capnp:
 
 # Explicitly list dependencies on generated headers as described in
 # https://www.gnu.org/software/automake/manual/html_node/Built-Sources-Example.html#Recording-Dependencies-manually
-ipc/capnp/libbitnet_ipc_a-protocol.$(OBJEXT): $(libbitnet_ipc_mpgen_input:=.h)
+ipc/capnp/libwaifu_ipc_a-protocol.$(OBJEXT): $(libwaifu_ipc_mpgen_input:=.h)
 
 if BUILD_MULTIPROCESS
-LIBBITCOIN_IPC=libbitnet_ipc.a
-libbitnet_ipc_a_SOURCES = \
+LIBBITCOIN_IPC=libwaifu_ipc.a
+libwaifu_ipc_a_SOURCES = \
   ipc/capnp/context.h \
   ipc/capnp/init-types.h \
   ipc/capnp/protocol.cpp \
@@ -1064,20 +1064,20 @@ libbitnet_ipc_a_SOURCES = \
   ipc/process.cpp \
   ipc/process.h \
   ipc/protocol.h
-libbitnet_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitnet_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
+libwaifu_ipc_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libwaifu_ipc_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) $(LIBMULTIPROCESS_CFLAGS)
 
 include $(MPGEN_PREFIX)/include/mpgen.mk
-libbitnet_ipc_mpgen_output = \
-  $(libbitnet_ipc_mpgen_input:=.c++) \
-  $(libbitnet_ipc_mpgen_input:=.h) \
-  $(libbitnet_ipc_mpgen_input:=.proxy-client.c++) \
-  $(libbitnet_ipc_mpgen_input:=.proxy-server.c++) \
-  $(libbitnet_ipc_mpgen_input:=.proxy-types.c++) \
-  $(libbitnet_ipc_mpgen_input:=.proxy-types.h) \
-  $(libbitnet_ipc_mpgen_input:=.proxy.h)
-nodist_libbitnet_ipc_a_SOURCES = $(libbitnet_ipc_mpgen_output)
-CLEANFILES += $(libbitnet_ipc_mpgen_output)
+libwaifu_ipc_mpgen_output = \
+  $(libwaifu_ipc_mpgen_input:=.c++) \
+  $(libwaifu_ipc_mpgen_input:=.h) \
+  $(libwaifu_ipc_mpgen_input:=.proxy-client.c++) \
+  $(libwaifu_ipc_mpgen_input:=.proxy-server.c++) \
+  $(libwaifu_ipc_mpgen_input:=.proxy-types.c++) \
+  $(libwaifu_ipc_mpgen_input:=.proxy-types.h) \
+  $(libwaifu_ipc_mpgen_input:=.proxy.h)
+nodist_libwaifu_ipc_a_SOURCES = $(libwaifu_ipc_mpgen_output)
+CLEANFILES += $(libwaifu_ipc_mpgen_output)
 endif
 
 %.raw.h: %.raw

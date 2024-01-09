@@ -2,22 +2,22 @@
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-bin_PROGRAMS += bench/bench_bitnet
+bin_PROGRAMS += bench/bench_waifu
 BENCH_SRCDIR = bench
-BENCH_BINARY = bench/bench_bitnet$(EXEEXT)
+BENCH_BINARY = bench/bench_waifu$(EXEEXT)
 
 RAW_BENCH_FILES = \
   bench/data/block413567.raw
 GENERATED_BENCH_FILES = $(RAW_BENCH_FILES:.raw=.raw.h)
 
-bench_bench_bitnet_SOURCES = \
+bench_bench_waifu_SOURCES = \
   $(RAW_BENCH_FILES) \
   bench/addrman.cpp \
   bench/base58.cpp \
   bench/bech32.cpp \
   bench/bench.cpp \
   bench/bench.h \
-  bench/bench_bitnet.cpp \
+  bench/bench_waifu.cpp \
   bench/block_assemble.cpp \
   bench/ccoins_caching.cpp \
   bench/chacha20.cpp \
@@ -50,12 +50,12 @@ bench_bench_bitnet_SOURCES = \
   bench/util_time.cpp \
   bench/verify_script.cpp
 
-nodist_bench_bench_bitnet_SOURCES = $(GENERATED_BENCH_FILES)
+nodist_bench_bench_waifu_SOURCES = $(GENERATED_BENCH_FILES)
 
-bench_bench_bitnet_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
-bench_bench_bitnet_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bench_bench_bitnet_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
-bench_bench_bitnet_LDADD = \
+bench_bench_waifu_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BOOST_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_waifu_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_waifu_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) $(PTHREAD_FLAGS)
+bench_bench_waifu_LDADD = \
   $(LIBTEST_UTIL) \
   $(LIBBITCOIN_NODE) \
   $(LIBBITCOIN_WALLET) \
@@ -73,15 +73,15 @@ bench_bench_bitnet_LDADD = \
   $(NATPMP_LIBS)
 
 if ENABLE_ZMQ
-bench_bench_bitnet_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+bench_bench_waifu_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
 
 if ENABLE_WALLET
-bench_bench_bitnet_SOURCES += bench/coin_selection.cpp
-bench_bench_bitnet_SOURCES += bench/wallet_balance.cpp
-bench_bench_bitnet_SOURCES += bench/wallet_loading.cpp
-bench_bench_bitnet_SOURCES += bench/wallet_create_tx.cpp
-bench_bench_bitnet_LDADD += $(BDB_LIBS) $(SQLITE_LIBS)
+bench_bench_waifu_SOURCES += bench/coin_selection.cpp
+bench_bench_waifu_SOURCES += bench/wallet_balance.cpp
+bench_bench_waifu_SOURCES += bench/wallet_loading.cpp
+bench_bench_waifu_SOURCES += bench/wallet_create_tx.cpp
+bench_bench_waifu_LDADD += $(BDB_LIBS) $(SQLITE_LIBS)
 endif
 
 CLEAN_BITCOIN_BENCH = bench/*.gcda bench/*.gcno $(GENERATED_BENCH_FILES)
@@ -90,10 +90,10 @@ CLEANFILES += $(CLEAN_BITCOIN_BENCH)
 
 bench/data.cpp: bench/data/block413567.raw.h
 
-bitnet_bench: $(BENCH_BINARY)
+waifu_bench: $(BENCH_BINARY)
 
 bench: $(BENCH_BINARY) FORCE
 	$(BENCH_BINARY)
 
-bitnet_bench_clean : FORCE
-	rm -f $(CLEAN_BITCOIN_BENCH) $(bench_bench_bitnet_OBJECTS) $(BENCH_BINARY)
+waifu_bench_clean : FORCE
+	rm -f $(CLEAN_BITCOIN_BENCH) $(bench_bench_waifu_OBJECTS) $(BENCH_BINARY)

@@ -644,7 +644,7 @@ RPCHelpMan dumpprivkey()
                 "\nReveals the private key corresponding to 'address'.\n"
                 "Then the importprivkey can be used with this output\n",
                 {
-                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The bitnet address for the private key"},
+                    {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The waifu address for the private key"},
                 },
                 RPCResult{
                     RPCResult::Type::STR, "key", "The private key"
@@ -725,7 +725,7 @@ RPCHelpMan dumpwallet()
 
     /* Prevent arbitrary files from being overwritten. There have been reports
      * that users have overwritten wallet files this way:
-     * https://github.com/bitnet/bitnet/issues/9934
+     * https://github.com/waifu/waifu/issues/9934
      * It may also avoid other security issues.
      */
     if (fs::exists(filepath)) {
@@ -1426,7 +1426,7 @@ RPCHelpMan importmulti()
                                       "block from time %d, which is after or within %d seconds of key creation, and "
                                       "could contain transactions pertaining to the key. As a result, transactions "
                                       "and coins using this key may not appear in the wallet. This error could be "
-                                      "caused by pruning or data corruption (see bitnetd log for details) and could "
+                                      "caused by pruning or data corruption (see waifud log for details) and could "
                                       "be dealt with by downloading and rescanning the relevant blocks (see -reindex "
                                       "option and rescanblockchain RPC).",
                                 GetImportTimestamp(request, now), scannedTime - TIMESTAMP_WINDOW - 1, TIMESTAMP_WINDOW)));
@@ -1724,7 +1724,7 @@ RPCHelpMan importdescriptors()
                                       "block from time %d, which is after or within %d seconds of key creation, and "
                                       "could contain transactions pertaining to the desc. As a result, transactions "
                                       "and coins using this desc may not appear in the wallet. This error could be "
-                                      "caused by pruning or data corruption (see bitnetd log for details) and could "
+                                      "caused by pruning or data corruption (see waifud log for details) and could "
                                       "be dealt with by downloading and rescanning the relevant blocks (see -reindex "
                                       "option and rescanblockchain RPC).",
                                 GetImportTimestamp(request, now), scanned_time - TIMESTAMP_WINDOW - 1, TIMESTAMP_WINDOW)));

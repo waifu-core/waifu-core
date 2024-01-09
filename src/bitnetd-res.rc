@@ -15,13 +15,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "Waifu"
-            VALUE "FileDescription",    "bitnetd (Waifu node with a JSON-RPC server)"
+            VALUE "FileDescription",    "waifud (Waifu node with a JSON-RPC server)"
             VALUE "FileVersion",        PACKAGE_VERSION
-            VALUE "InternalName",       "bitnetd"
+            VALUE "InternalName",       "waifud"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "bitnetd.exe"
-            VALUE "ProductName",        "bitnetd"
+            VALUE "OriginalFilename",   "waifud.exe"
+            VALUE "ProductName",        "waifud"
             VALUE "ProductVersion",     PACKAGE_VERSION
         END
     END

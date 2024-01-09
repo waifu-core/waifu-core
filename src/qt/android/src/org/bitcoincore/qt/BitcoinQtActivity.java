@@ -1,4 +1,4 @@
-package org.bitnetcore.qt;
+package org.waifucore.qt;
 
 import android.os.Bundle;
 import android.system.ErrnoException;
@@ -13,9 +13,9 @@ public class WaifuQtActivity extends QtActivity
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
-        final File bitnetDir = new File(getFilesDir().getAbsolutePath() + "/.bitnet");
-        if (!bitnetDir.exists()) {
-            bitnetDir.mkdir();
+        final File waifuDir = new File(getFilesDir().getAbsolutePath() + "/.waifu");
+        if (!waifuDir.exists()) {
+            waifuDir.mkdir();
         }
 
         super.onCreate(savedInstanceState);

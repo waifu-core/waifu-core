@@ -6,7 +6,7 @@
 #define BITCOIN_CRYPTO_MUHASH_H
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <serialize.h>
@@ -89,7 +89,7 @@ public:
  * is intended to represent a set of elements.
  *
  * See also https://cseweb.ucsd.edu/~mihir/papers/inchash.pdf and
- * https://lists.linuxfoundation.org/pipermail/bitnet-dev/2017-May/014337.html.
+ * https://lists.linuxfoundation.org/pipermail/waifu-dev/2017-May/014337.html.
  */
 class MuHash3072
 {

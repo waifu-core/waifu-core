@@ -3,11 +3,11 @@
 ## Supported Versions
 
 See our website for versions of Waifu Core that are currently supported with
-security updates: https://bitnetcore.org/en/lifecycle/#schedule
+security updates: https://waifucore.org/en/lifecycle/#schedule
 
 ## Reporting a Vulnerability
 
-To report security issues send an email to security@bitnetcore.org (not for support).
+To report security issues send an email to security@waifucore.org (not for support).
 
 The following keys may be used to communicate sensitive information to developers:
 

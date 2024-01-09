@@ -15,13 +15,13 @@ BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
             VALUE "CompanyName",        "Waifu"
-            VALUE "FileDescription",    "bitnet-tx (CLI Waifu transaction editor utility)"
+            VALUE "FileDescription",    "waifu-tx (CLI Waifu transaction editor utility)"
             VALUE "FileVersion",        PACKAGE_VERSION
-            VALUE "InternalName",       "bitnet-tx"
+            VALUE "InternalName",       "waifu-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "bitnet-tx.exe"
-            VALUE "ProductName",        "bitnet-tx"
+            VALUE "OriginalFilename",   "waifu-tx.exe"
+            VALUE "ProductName",        "waifu-tx"
             VALUE "ProductVersion",     PACKAGE_VERSION
         END
     END

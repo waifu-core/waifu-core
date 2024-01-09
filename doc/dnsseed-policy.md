@@ -44,11 +44,11 @@ related to the DNS seed operation.
 If these expectations cannot be satisfied the operator should
 discontinue providing services and contact the active Waifu
 Core development team as well as posting on
-[bitnet-dev](https://lists.linuxfoundation.org/mailman/listinfo/bitnet-dev).
+[waifu-dev](https://lists.linuxfoundation.org/mailman/listinfo/waifu-dev).
 
 Behavior outside of these expectations may be reasonable in some
 situations but should be discussed in public in advance.
 
 See also
 ----------
-- [bitnet-seeder](https://github.com/sipa/bitnet-seeder) is a reference implementation of a DNS seed.
+- [waifu-seeder](https://github.com/sipa/waifu-seeder) is a reference implementation of a DNS seed.

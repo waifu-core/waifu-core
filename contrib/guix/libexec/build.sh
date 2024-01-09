@@ -353,9 +353,9 @@ mkdir -p "$DISTSRC"
                 ;;
         esac
 
-        # copy over the example bitnet.conf file. if contrib/devtools/gen-bitnet-conf.sh
+        # copy over the example waifu.conf file. if contrib/devtools/gen-waifu-conf.sh
         # has not been run before buildling, this file will be a stub
-        cp "${DISTSRC}/share/examples/bitnet.conf" "${DISTNAME}/"
+        cp "${DISTSRC}/share/examples/waifu.conf" "${DISTNAME}/"
 
         cp -r "${DISTSRC}/share/rpcauth" "${DISTNAME}/share/"
 

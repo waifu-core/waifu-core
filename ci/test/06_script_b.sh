@@ -29,7 +29,7 @@ if [ "$RUN_UNIT_TESTS" = "true" ]; then
 fi
 
 if [ "$RUN_UNIT_TESTS_SEQUENTIAL" = "true" ]; then
-  CI_EXEC "${TEST_RUNNER_ENV}" DIR_UNIT_TEST_DATA="${DIR_UNIT_TEST_DATA}" LD_LIBRARY_PATH="${DEPENDS_DIR}/${HOST}/lib" "${BASE_OUTDIR}/bin/test_bitnet" --catch_system_errors=no -l test_suite
+  CI_EXEC "${TEST_RUNNER_ENV}" DIR_UNIT_TEST_DATA="${DIR_UNIT_TEST_DATA}" LD_LIBRARY_PATH="${DEPENDS_DIR}/${HOST}/lib" "${BASE_OUTDIR}/bin/test_waifu" --catch_system_errors=no -l test_suite
 fi
 
 if [ "$RUN_FUNCTIONAL_TESTS" = "true" ]; then
@@ -38,9 +38,9 @@ fi
 
 if [ "${RUN_TIDY}" = "true" ]; then
   set -eo pipefail
-  export P_CI_DIR="${BASE_BUILD_DIR}/bitnet-$HOST/src/"
+  export P_CI_DIR="${BASE_BUILD_DIR}/waifu-$HOST/src/"
   ( CI_EXEC run-clang-tidy -quiet "${MAKEJOBS}" ) | grep -C5 "error"
-  export P_CI_DIR="${BASE_BUILD_DIR}/bitnet-$HOST/"
+  export P_CI_DIR="${BASE_BUILD_DIR}/waifu-$HOST/"
   CI_EXEC "python3 ${DIR_IWYU}/include-what-you-use/iwyu_tool.py"\
           " src/common/url.cpp"\
           " src/compat"\
@@ -78,7 +78,7 @@ if [ "${RUN_TIDY}" = "true" ]; then
           " src/util/threadinterrupt.cpp"\
           " src/zmq"\
           " -p . ${MAKEJOBS}"\
-          " -- -Xiwyu --cxx17ns -Xiwyu --mapping_file=${BASE_BUILD_DIR}/bitnet-$HOST/contrib/devtools/iwyu/bitnet.core.imp"\
+          " -- -Xiwyu --cxx17ns -Xiwyu --mapping_file=${BASE_BUILD_DIR}/waifu-$HOST/contrib/devtools/iwyu/waifu.core.imp"\
           " |& tee /tmp/iwyu_ci.out"
   export P_CI_DIR="${BASE_ROOT_DIR}/src"
   CI_EXEC "python3 ${DIR_IWYU}/include-what-you-use/fix_includes.py --nosafe_headers < /tmp/iwyu_ci.out"

@@ -36,9 +36,9 @@ enum class SyscallSandboxPolicy {
 //!
 //! This function is a no-op unless SetupSyscallSandbox(...) has been called.
 //!
-//! SetupSyscallSandbox(...) is called during bitnetd initialization if Waifu Core was compiled
+//! SetupSyscallSandbox(...) is called during waifud initialization if Waifu Core was compiled
 //! with seccomp-bpf support (--with-seccomp) *and* the parameter -sandbox=<mode> was passed to
-//! bitnetd.
+//! waifud.
 //!
 //! This experimental feature is available under Linux x86_64 only.
 void SetSyscallSandboxPolicy(SyscallSandboxPolicy syscall_policy);

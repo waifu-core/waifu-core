@@ -44,10 +44,10 @@ class DeriveaddressesTest(WaifuTestFramework):
         combo_descriptor = descsum_create("combo(tprv8ZgxMBicQKsPd7Uf69XL1XwhmjHopUGep8GuEiJDZmbQz6o58LninorQAfcKZWARbtRtfnLcJ5MQ2AtHcQJCCRUcMRvmDUjyEmNUWwx8UbK/1/1/0)")
         assert_equal(self.nodes[0].deriveaddresses(combo_descriptor), ["mtfUoUax9L4tzXARpw1oTGxWyoogp52KhJ", "mtfUoUax9L4tzXARpw1oTGxWyoogp52KhJ", address, "2NDvEwGfpEqJWfybzpKPHF2XH3jwoQV3D7x"])
 
-        # Before #26275, bitnetd would crash when deriveaddresses was
+        # Before #26275, waifud would crash when deriveaddresses was
         # called with derivation index 2147483647, which is the maximum
         # positive value of a signed int32, and - currently - the
-        # maximum value that the deriveaddresses bitnet RPC call
+        # maximum value that the deriveaddresses waifu RPC call
         # accepts as derivation index.
         assert_equal(self.nodes[0].deriveaddresses(descsum_create("wpkh(tprv8ZgxMBicQKsPd7Uf69XL1XwhmjHopUGep8GuEiJDZmbQz6o58LninorQAfcKZWARbtRtfnLcJ5MQ2AtHcQJCCRUcMRvmDUjyEmNUWwx8UbK/1/1/*)"), [2147483647, 2147483647]), ["bcrt1qtzs23vgzpreks5gtygwxf8tv5rldxvvsyfpdkg"])
 

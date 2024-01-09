@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <chainparams.h>
@@ -226,7 +226,7 @@ bool Intro::showIfNeeded(bool& did_show_intro, int64_t& prune_MiB)
         /* If current default data directory does not exist, let the user choose one */
         Intro intro(nullptr, Params().AssumedBlockchainSize(), Params().AssumedChainStateSize());
         intro.setDataDirectory(dataDir);
-        intro.setWindowIcon(QIcon(":icons/bitnet"));
+        intro.setWindowIcon(QIcon(":icons/waifu"));
         did_show_intro = true;
 
         while(true)
@@ -257,8 +257,8 @@ bool Intro::showIfNeeded(bool& did_show_intro, int64_t& prune_MiB)
         settings.setValue("fReset", false);
     }
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the bitnet.conf file in the default data directory
-     * (to be consistent with bitnetd behavior)
+     * override -datadir in the waifu.conf file in the default data directory
+     * (to be consistent with waifud behavior)
      */
     if(dataDir != GUIUtil::getDefaultDataDirectory()) {
         gArgs.SoftSetArg("-datadir", fs::PathToString(GUIUtil::QStringToPath(dataDir))); // use OS locale for path setting

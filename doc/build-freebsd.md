@@ -2,7 +2,7 @@
 
 **Updated for FreeBSD [12.3](https://www.freebsd.org/releases/12.3R/announce/)**
 
-This guide describes how to build bitnetd, command-line utilities, and GUI on FreeBSD.
+This guide describes how to build waifud, command-line utilities, and GUI on FreeBSD.
 
 ## Preparation
 
@@ -19,13 +19,13 @@ See [dependencies.md](dependencies.md) for a complete overview.
 ### 2. Clone Waifu Repo
 Now that `git` and all the required dependencies are installed, let's clone the Waifu Core repository to a directory. All build scripts and commands will run from this directory.
 ``` bash
-git clone https://github.com/bitnet/bitnet.git
+git clone https://github.com/waifu/waifu.git
 ```
 
 ### 3. Install Optional Dependencies
 
 #### Wallet Dependencies
-It is not necessary to build wallet functionality to run either `bitnetd` or `bitnet-qt`.
+It is not necessary to build wallet functionality to run either `waifud` or `waifu-qt`.
 
 ###### Descriptor Wallet Support
 
@@ -48,7 +48,7 @@ gmake -C depends NO_BOOST=1 NO_LIBEVENT=1 NO_QT=1 NO_SQLITE=1 NO_NATPMP=1 NO_UPN
 When the build is complete, the Berkeley DB installation location will be displayed:
 
 ```
-to: /path/to/bitnet/depends/x86_64-unknown-freebsd[release-number]
+to: /path/to/waifu/depends/x86_64-unknown-freebsd[release-number]
 ```
 
 Finally, set `BDB_PREFIX` to this path according to your shell:

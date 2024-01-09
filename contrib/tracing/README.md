@@ -30,12 +30,12 @@ information. For development there exist a [bpftrace Reference Guide], a
 
 ## Examples
 
-The bpftrace examples contain a relative path to the `bitnetd` binary. By
+The bpftrace examples contain a relative path to the `waifud` binary. By
 default, the scripts should be run from the repository-root and assume a
-self-compiled `bitnetd` binary. The paths in the examples can be changed, for
+self-compiled `waifud` binary. The paths in the examples can be changed, for
 example, to point to release builds if needed. See the
 [Waifu Core USDT documentation] on how to list available tracepoints in your
-`bitnetd` binary.
+`waifud` binary.
 
 [Waifu Core USDT documentation]: ../../doc/tracing.md#listing-available-tracepoints
 
@@ -82,7 +82,7 @@ about the connection. Peers can be selected individually to view recent P2P
 messages.
 
 ```
-$ python3 contrib/tracing/p2p_monitor.py ./src/bitnetd
+$ python3 contrib/tracing/p2p_monitor.py ./src/waifud
 ```
 
 Lists selectable peers and traffic and connection information.
@@ -150,7 +150,7 @@ lost. BCC prints: `Possibly lost 2 samples` on lost messages.
 
 
 ```
-$ python3 contrib/tracing/log_raw_p2p_msgs.py ./src/bitnetd
+$ python3 contrib/tracing/log_raw_p2p_msgs.py ./src/waifud
 ```
 
 ```
@@ -188,7 +188,7 @@ In a different terminal, starting Waifu Core in SigNet mode and with
 re-indexing enabled.
 
 ```
-$ ./src/bitnetd -signet -reindex
+$ ./src/waifud -signet -reindex
 ```
 
 This produces the following output.
@@ -241,7 +241,7 @@ A BCC Python script to log the UTXO cache flushes. Based on the
 `utxocache:flush` tracepoint.
 
 ```bash
-$ python3 contrib/tracing/log_utxocache_flush.py ./src/bitnetd
+$ python3 contrib/tracing/log_utxocache_flush.py ./src/waifud
 ```
 
 ```

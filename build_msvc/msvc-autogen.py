@@ -12,15 +12,15 @@ SOURCE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src'
 DEFAULT_PLATFORM_TOOLSET = R'v143'
 
 libs = [
-    'libbitnet_cli',
-    'libbitnet_common',
-    'libbitnet_crypto',
-    'libbitnet_node',
-    'libbitnet_util',
-    'libbitnet_wallet_tool',
-    'libbitnet_wallet',
-    'libbitnet_zmq',
-    'bench_bitnet',
+    'libwaifu_cli',
+    'libwaifu_common',
+    'libwaifu_crypto',
+    'libwaifu_node',
+    'libwaifu_util',
+    'libwaifu_wallet_tool',
+    'libwaifu_wallet',
+    'libwaifu_zmq',
+    'bench_waifu',
     'libtest_util',
 ]
 
@@ -72,7 +72,7 @@ def parse_config_into_btc_config():
     version = config_dict["PACKAGE_VERSION"].strip('"')
     config_dict["PACKAGE_STRING"] = f"\"Waifu Core {version}\""
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitnet_config.h.in'), "r", encoding="utf8") as template_file:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/waifu_config.h.in'), "r", encoding="utf8") as template_file:
         template = template_file.readlines()
 
     for index, line in enumerate(template):
@@ -82,7 +82,7 @@ def parse_config_into_btc_config():
         if header in config_dict:
             template[index] = line.replace("$", f"{config_dict[header]}")
 
-    with open(os.path.join(SOURCE_DIR,'../build_msvc/bitnet_config.h'), "w", encoding="utf8") as btc_config:
+    with open(os.path.join(SOURCE_DIR,'../build_msvc/waifu_config.h'), "w", encoding="utf8") as btc_config:
         btc_config.writelines(template)
 
 def set_properties(vcxproj_filename, placeholder, content):
@@ -110,7 +110,7 @@ def main():
             content += '    </ClCompile>\n'
         set_properties(vcxproj_filename, '@SOURCE_FILES@\n', content)
     parse_config_into_btc_config()
-    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/bitnet_config.h'), os.path.join(SOURCE_DIR, 'config/bitnet-config.h'))
+    copyfile(os.path.join(SOURCE_DIR,'../build_msvc/waifu_config.h'), os.path.join(SOURCE_DIR, 'config/waifu-config.h'))
     copyfile(os.path.join(SOURCE_DIR,'../build_msvc/libsecp256k1_config.h'), os.path.join(SOURCE_DIR, 'secp256k1/src/libsecp256k1-config.h'))
 
 if __name__ == '__main__':

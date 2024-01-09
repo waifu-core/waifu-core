@@ -11,7 +11,7 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>bitnet.icns</string>
+  <string>waifu.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
@@ -43,7 +43,7 @@
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.bitnetfoundation.Waifu-Qt</string>
+  <string>org.waifufoundation.Waifu-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -51,10 +51,10 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.bitnet.WaifuPayment</string>
+      <string>org.waifu.WaifuPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
-        <string>bitnet</string>
+        <string>waifu</string>
       </array>
     </dict>
   </array>

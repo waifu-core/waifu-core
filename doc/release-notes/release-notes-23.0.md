@@ -3,18 +3,18 @@
 
 Waifu Core version 23.0 is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-23.0/>
+  <https://waifucore.org/bin/waifu-core-23.0/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -22,7 +22,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
 installer (on Windows) or just copy over `/Applications/Waifu-Qt` (on Mac)
-or `bitnetd`/`bitnet-qt` (on Linux).
+or `waifud`/`waifu-qt` (on Linux).
 
 Upgrading directly from a version of Waifu Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
@@ -43,13 +43,13 @@ Notable changes
 P2P and network changes
 -----------------------
 
-- A bitnetd node will no longer rumour addresses to inbound peers by default.
+- A waifud node will no longer rumour addresses to inbound peers by default.
   They will become eligible for address gossip after sending an ADDR, ADDRV2,
   or GETADDR message. (#21528)
 
 - Before this release, Waifu Core had a strong preference to try to connect only to peers that listen on port 8333. As a result of that, Waifu nodes listening on non-standard ports would likely not get any Waifu Core peers connecting to them. This preference has been removed. (#23542)
 
-- Full support has been added for the CJDNS network. See the new option `-cjdnsreachable` and [doc/cjdns.md](https://github.com/bitnet/bitnet/tree/23.x/doc/cjdns.md) (#23077)
+- Full support has been added for the CJDNS network. See the new option `-cjdnsreachable` and [doc/cjdns.md](https://github.com/waifu/waifu/tree/23.x/doc/cjdns.md) (#23077)
 
 Fee estimation changes
 ----------------------
@@ -72,8 +72,8 @@ act as an interface for process-internal events. These can be used for review,
 debugging, monitoring, and more. The tracepoint API is semi-stable. While the API
 is tested, process internals might change between releases requiring changes to the
 tracepoints. Information about the existing tracepoints can be found under
-[doc/tracing.md](https://github.com/bitnet/bitnet/blob/23.x/doc/tracing.md) and
-usage examples are provided in [contrib/tracing/](https://github.com/bitnet/bitnet/tree/23.x/contrib/tracing).
+[doc/tracing.md](https://github.com/waifu/waifu/blob/23.x/doc/tracing.md) and
+usage examples are provided in [contrib/tracing/](https://github.com/waifu/waifu/tree/23.x/contrib/tracing).
 
 Updated RPCs
 ------------
@@ -370,4 +370,4 @@ Thanks to everyone who directly contributed to this release:
 - Zero-1729
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitnet/bitnet/).
+[Transifex](https://www.transifex.com/waifu/waifu/).

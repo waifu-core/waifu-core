@@ -6,7 +6,7 @@
 #define BITCOIN_QT_PAYMENTSERVER_H
 
 // This class handles payment requests from clicking on
-// bitnet: URIs
+// waifu: URIs
 //
 // This is somewhat tricky, because we have to deal with
 // the situation where the user clicks on a link during
@@ -33,7 +33,7 @@
 //
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/sendcoinsrecipient.h>

@@ -16,7 +16,7 @@
 
 namespace init {
 namespace {
-const char* EXE_NAME = "bitnet-gui";
+const char* EXE_NAME = "waifu-gui";
 
 class WaifuGuiInit : public interfaces::Init
 {

@@ -1,13 +1,13 @@
 Waifu version 0.5.2 is now available for download at:
-http://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.5.2/
+http://sourceforge.net/projects/waifu/files/Waifu/waifu-0.5.2/
 
 This is a bugfix-only release based on 0.5.1.
 
 Please report bugs using the issue tracker at github:
-https://github.com/bitnet/bitnet/issues
+https://github.com/waifu/waifu/issues
 
 Stable source code is hosted at Gitorious:
-http://gitorious.org/bitnet/bitnetd-stable/archive-tarball/v0.5.2#.tar.gz
+http://gitorious.org/waifu/waifud-stable/archive-tarball/v0.5.2#.tar.gz
 
 BUG FIXES
 

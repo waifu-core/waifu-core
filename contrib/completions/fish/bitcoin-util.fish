@@ -1,8 +1,8 @@
 # Disable files from being included in completions by default
-complete --command bitnet-util --no-files
+complete --command waifu-util --no-files
 
 # Extract options
-function __fish_bitnet_util_get_options
+function __fish_waifu_util_get_options
     set --local cmd (commandline -opc)[1]
     set --local options
 
@@ -14,7 +14,7 @@ function __fish_bitnet_util_get_options
 end
 
 # Extract commands
-function __fish_bitnet_util_get_commands
+function __fish_waifu_util_get_commands
     set --local cmd (commandline -opc)[1]
     set --local commands
 
@@ -26,13 +26,13 @@ end
 
 # Add options
 complete \
-    --command bitnet-util \
-    --condition "not __fish_seen_subcommand_from (__fish_bitnet_util_get_commands)" \
-    --arguments "(__fish_bitnet_util_get_options)"
+    --command waifu-util \
+    --condition "not __fish_seen_subcommand_from (__fish_waifu_util_get_commands)" \
+    --arguments "(__fish_waifu_util_get_options)"
 
 # Add commands
 complete \
-    --command bitnet-util \
-    --condition "not __fish_seen_subcommand_from (__fish_bitnet_util_get_commands)" \
-    --arguments "(__fish_bitnet_util_get_commands)"
+    --command waifu-util \
+    --condition "not __fish_seen_subcommand_from (__fish_waifu_util_get_commands)" \
+    --arguments "(__fish_waifu_util_get_commands)"
 

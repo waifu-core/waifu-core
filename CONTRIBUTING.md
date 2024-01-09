@@ -30,14 +30,14 @@ Waifu Core and how to run the unit tests, functional tests, and fuzz tests.
 
 There are many open issues of varying difficulty waiting to be fixed.
 If you're looking for somewhere to start contributing, check out the
-[good first issue](https://github.com/bitnet/bitnet/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
+[good first issue](https://github.com/waifu/waifu/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
 list or changes that are
-[up for grabs](https://github.com/bitnet/bitnet/issues?utf8=%E2%9C%93&q=label%3A%22Up+for+grabs%22).
+[up for grabs](https://github.com/waifu/waifu/issues?utf8=%E2%9C%93&q=label%3A%22Up+for+grabs%22).
 Some of them might no longer be applicable. So if you are interested, but
 unsure, you might want to leave a comment on the issue first.
 
 You may also participate in the weekly
-[Waifu Core PR Review Club](https://bitnetcore.reviews/) meeting.
+[Waifu Core PR Review Club](https://waifucore.reviews/) meeting.
 
 ### Good First Issue Label
 
@@ -56,17 +56,17 @@ Communication Channels
 ----------------------
 
 Most communication about Waifu Core development happens on IRC, in the
-`#bitnet-core-dev` channel on Libera Chat. The easiest way to participate on IRC is
-with the web client, [web.libera.chat](https://web.libera.chat/#bitnet-core-dev). Chat
+`#waifu-core-dev` channel on Libera Chat. The easiest way to participate on IRC is
+with the web client, [web.libera.chat](https://web.libera.chat/#waifu-core-dev). Chat
 history logs can be found
-on [https://www.erisian.com.au/bitnet-core-dev/](https://www.erisian.com.au/bitnet-core-dev/)
-and [https://gnusha.org/bitnet-core-dev/](https://gnusha.org/bitnet-core-dev/).
+on [https://www.erisian.com.au/waifu-core-dev/](https://www.erisian.com.au/waifu-core-dev/)
+and [https://gnusha.org/waifu-core-dev/](https://gnusha.org/waifu-core-dev/).
 
 Discussion about codebase improvements happens in GitHub issues and pull
 requests.
 
 The developer
-[mailing list](https://lists.linuxfoundation.org/mailman/listinfo/bitnet-dev)
+[mailing list](https://lists.linuxfoundation.org/mailman/listinfo/waifu-dev)
 should be used to discuss complicated or controversial consensus or P2P protocol changes before working on
 a patch set.
 
@@ -84,8 +84,8 @@ To contribute a patch, the workflow is as follows:
   1. Create topic branch
   1. Commit patches
 
-For GUI-related issues or pull requests, the https://github.com/bitnet-core/gui repository should be used.
-For all other issues and pull requests, the https://github.com/bitnet/bitnet node repository should be used.
+For GUI-related issues or pull requests, the https://github.com/waifu-core/gui repository should be used.
+For all other issues and pull requests, the https://github.com/waifu/waifu node repository should be used.
 
 The master branch for all monotree repositories is identical.
 
@@ -142,7 +142,7 @@ the pull request affects. Valid areas as:
 
   - `consensus` for changes to consensus critical code
   - `doc` for changes to the documentation
-  - `qt` or `gui` for changes to bitnet-qt
+  - `qt` or `gui` for changes to waifu-qt
   - `log` for changes to log messages
   - `mining` for changes to the mining code
   - `net` or `p2p` for changes to the peer-to-peer network code
@@ -176,7 +176,7 @@ subsequent comment to the PR.
 ### Translation changes
 
 Note that translations should not be submitted as pull requests. Please see
-[Translation Process](https://github.com/bitnet/bitnet/blob/master/doc/translation_process.md)
+[Translation Process](https://github.com/waifu/waifu/blob/master/doc/translation_process.md)
 for more information on helping with translations.
 
 ### Work in Progress Changes and Requests for Comments
@@ -232,7 +232,7 @@ pull request to pull request.
 
 When a pull request conflicts with the target branch, you may be asked to rebase it on top of the current target branch.
 
-    git fetch https://github.com/bitnet/bitnet  # Fetch the latest upstream commit
+    git fetch https://github.com/waifu/waifu  # Fetch the latest upstream commit
     git rebase FETCH_HEAD  # Rebuild commits on top of the new base
 
 This project aims to have a clean git history, where code changes are only made in non-merge commits. This simplifies
@@ -432,10 +432,10 @@ Rebased-From: <commit hash of the original commit>
 ```
 
 Have a look at [an example backport PR](
-https://github.com/bitnet/bitnet/pull/16189).
+https://github.com/waifu/waifu/pull/16189).
 
 Also see the [backport.py script](
-https://github.com/bitnet-core/bitnet-maintainer-tools#backport).
+https://github.com/waifu-core/waifu-maintainer-tools#backport).
 
 Copyright
 ---------

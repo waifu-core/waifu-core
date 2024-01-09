@@ -7,9 +7,9 @@ define(_CLIENT_VERSION_IS_RELEASE, false)
 define(_COPYRIGHT_YEAR, 2023)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
 define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Waifu Core]])
-AC_INIT([Waifu Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/bitnet/bitnet/issues],[bitnet],[https://bitnet-io.org/])
+AC_INIT([Waifu Core],m4_join([.], _CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MINOR, _CLIENT_VERSION_BUILD)m4_if(_CLIENT_VERSION_RC, [0], [], [rc]_CLIENT_VERSION_RC),[https://github.com/waifu/waifu/issues],[waifu],[https://waifu-io.org/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
-AC_CONFIG_HEADERS([src/config/bitnet-config.h])
+AC_CONFIG_HEADERS([src/config/waifu-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
@@ -289,7 +289,7 @@ AC_ARG_WITH([mpgen],
 
 AC_ARG_ENABLE([multiprocess],
   [AS_HELP_STRING([--enable-multiprocess],
-  [build multiprocess bitnet-node, bitnet-wallet, and bitnet-gui executables in addition to monolithic bitnetd and bitnet-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
+  [build multiprocess waifu-node, waifu-wallet, and waifu-gui executables in addition to monolithic waifud and waifu-qt executables. Requires libmultiprocess library. Experimental (default is no)])],
   [enable_multiprocess=$enableval],
   [enable_multiprocess=no])
 
@@ -628,57 +628,57 @@ CORE_CPPFLAGS="$CORE_CPPFLAGS -DHAVE_BUILD_INFO"
 
 AC_ARG_WITH([utils],
   [AS_HELP_STRING([--with-utils],
-  [build bitnet-cli bitnet-tx bitnet-util bitnet-wallet (default=yes)])],
-  [build_bitnet_utils=$withval],
-  [build_bitnet_utils=yes])
+  [build waifu-cli waifu-tx waifu-util waifu-wallet (default=yes)])],
+  [build_waifu_utils=$withval],
+  [build_waifu_utils=yes])
 
 AC_ARG_ENABLE([util-cli],
   [AS_HELP_STRING([--enable-util-cli],
-  [build bitnet-cli])],
-  [build_bitnet_cli=$enableval],
-  [build_bitnet_cli=$build_bitnet_utils])
+  [build waifu-cli])],
+  [build_waifu_cli=$enableval],
+  [build_waifu_cli=$build_waifu_utils])
 
 AC_ARG_ENABLE([util-tx],
   [AS_HELP_STRING([--enable-util-tx],
-  [build bitnet-tx])],
-  [build_bitnet_tx=$enableval],
-  [build_bitnet_tx=$build_bitnet_utils])
+  [build waifu-tx])],
+  [build_waifu_tx=$enableval],
+  [build_waifu_tx=$build_waifu_utils])
 
 AC_ARG_ENABLE([util-wallet],
   [AS_HELP_STRING([--enable-util-wallet],
-  [build bitnet-wallet])],
-  [build_bitnet_wallet=$enableval],
-  [build_bitnet_wallet=$build_bitnet_utils])
+  [build waifu-wallet])],
+  [build_waifu_wallet=$enableval],
+  [build_waifu_wallet=$build_waifu_utils])
 
 AC_ARG_ENABLE([util-util],
   [AS_HELP_STRING([--enable-util-util],
-  [build bitnet-util])],
-  [build_bitnet_util=$enableval],
-  [build_bitnet_util=$build_bitnet_utils])
+  [build waifu-util])],
+  [build_waifu_util=$enableval],
+  [build_waifu_util=$build_waifu_utils])
 
 AC_ARG_ENABLE([experimental-util-chainstate],
   [AS_HELP_STRING([--enable-experimental-util-chainstate],
-  [build experimental bitnet-chainstate executable (default=no)])],
-  [build_bitnet_chainstate=$enableval],
-  [build_bitnet_chainstate=no])
+  [build experimental waifu-chainstate executable (default=no)])],
+  [build_waifu_chainstate=$enableval],
+  [build_waifu_chainstate=no])
 
 AC_ARG_WITH([libs],
   [AS_HELP_STRING([--with-libs],
   [build libraries (default=yes)])],
-  [build_bitnet_libs=$withval],
-  [build_bitnet_libs=yes])
+  [build_waifu_libs=$withval],
+  [build_waifu_libs=yes])
 
 AC_ARG_WITH([experimental-kernel-lib],
   [AS_HELP_STRING([--with-experimental-kernel-lib],
-  [build experimental bitnetkernel library (default is to build if we're building libraries and the experimental build-chainstate executable)])],
+  [build experimental waifukernel library (default is to build if we're building libraries and the experimental build-chainstate executable)])],
   [build_experimental_kernel_lib=$withval],
   [build_experimental_kernel_lib=auto])
 
 AC_ARG_WITH([daemon],
   [AS_HELP_STRING([--with-daemon],
-  [build bitnetd daemon (default=yes)])],
-  [build_bitnetd=$withval],
-  [build_bitnetd=yes])
+  [build waifud daemon (default=yes)])],
+  [build_waifud=$withval],
+  [build_waifud=yes])
 
 case $host in
   *mingw*)
@@ -898,7 +898,7 @@ AX_PTHREAD
 dnl Check if -latomic is required for <std::atomic>
 CHECK_ATOMIC
 
-dnl The following macro will add the necessary defines to bitnet-config.h, but
+dnl The following macro will add the necessary defines to waifu-config.h, but
 dnl they also need to be passed down to any subprojects. Pull the results out of
 dnl the cache and add them to CPPFLAGS.
 AC_SYS_LARGEFILE
@@ -1009,7 +1009,7 @@ AC_CHECK_DECLS([getifaddrs, freeifaddrs],[CHECK_SOCKET],,
     #include <ifaddrs.h>]
 )
 
-dnl These are used for daemonization in bitnetd
+dnl These are used for daemonization in waifud
 AC_CHECK_DECLS([fork])
 AC_CHECK_DECLS([setsid])
 
@@ -1304,17 +1304,17 @@ AC_DEFUN([SUPPRESS_WARNINGS],
 dnl enable-fuzz should disable all other targets
 if test "$enable_fuzz" = "yes"; then
   AC_MSG_WARN([enable-fuzz will disable all other targets and force --enable-fuzz-binary=yes])
-  build_bitnet_utils=no
-  build_bitnet_cli=no
-  build_bitnet_tx=no
-  build_bitnet_util=no
-  build_bitnet_chainstate=no
-  build_bitnet_wallet=no
-  build_bitnetd=no
-  build_bitnet_libs=no
-  bitnet_enable_qt=no
-  bitnet_enable_qt_test=no
-  bitnet_enable_qt_dbus=no
+  build_waifu_utils=no
+  build_waifu_cli=no
+  build_waifu_tx=no
+  build_waifu_util=no
+  build_waifu_chainstate=no
+  build_waifu_wallet=no
+  build_waifud=no
+  build_waifu_libs=no
+  waifu_enable_qt=no
+  waifu_enable_qt_test=no
+  waifu_enable_qt_dbus=no
   use_bench=no
   use_tests=no
   use_external_signer=no
@@ -1327,7 +1327,7 @@ if test "$enable_fuzz" = "yes"; then
 else
   BITCOIN_QT_INIT
 
-  dnl sets $bitnet_enable_qt, $bitnet_enable_qt_test, $bitnet_enable_qt_dbus
+  dnl sets $waifu_enable_qt, $waifu_enable_qt_test, $waifu_enable_qt_dbus
   BITCOIN_QT_CONFIGURE([5.11.3])
 
   dnl Keep a copy of the original $QT_INCLUDES and use it when invoking qt's moc
@@ -1409,7 +1409,7 @@ if test "$use_usdt" != "no"; then
 fi
 AM_CONDITIONAL([ENABLE_USDT_TRACEPOINTS], [test "$use_usdt" = "yes"])
 
-if test "$build_bitnetd$bitnet_enable_qt$use_bench$use_tests" = "nononono"; then
+if test "$build_waifud$waifu_enable_qt$use_bench$use_tests" = "nononono"; then
   use_upnp=no
   use_natpmp=no
   use_zmq=no
@@ -1458,7 +1458,7 @@ if test "$use_natpmp" != "no"; then
   CPPFLAGS="$TEMP_CPPFLAGS"
 fi
 
-if test "$build_bitnet_wallet$build_bitnet_cli$build_bitnet_tx$build_bitnet_util$build_bitnetd$bitnet_enable_qt$use_tests$use_bench$enable_fuzz_binary" = "nonononononononono"; then
+if test "$build_waifu_wallet$build_waifu_cli$build_waifu_tx$build_waifu_util$build_waifud$waifu_enable_qt$use_tests$use_bench$enable_fuzz_binary" = "nonononononononono"; then
   use_boost=no
 else
   use_boost=yes
@@ -1469,7 +1469,7 @@ if test "$use_boost" = "yes"; then
   dnl Check for Boost headers
   AX_BOOST_BASE([1.64.0],[],[AC_MSG_ERROR([Boost is not available!])])
   if test "$want_boost" = "no"; then
-    AC_MSG_ERROR([only libbitnetconsensus can be built without Boost])
+    AC_MSG_ERROR([only libwaifuconsensus can be built without Boost])
   fi
 
   dnl we don't use multi_index serialization
@@ -1535,10 +1535,10 @@ fi
 AM_CONDITIONAL([ENABLE_EXTERNAL_SIGNER], [test "$use_external_signer" = "yes"])
 
 dnl Do not compile with syscall sandbox support when compiling under the sanitizers.
-dnl The sanitizers introduce use of syscalls that are not typically used in bitnetd
+dnl The sanitizers introduce use of syscalls that are not typically used in waifud
 dnl (such as execve when the sanitizers execute llvm-symbolizer).
 if test "$use_sanitizers" != ""; then
-  AC_MSG_WARN([Specifying --with-sanitizers forces --without-seccomp since the sanitizers introduce use of syscalls not allowed by the bitnetd syscall sandbox (-sandbox=<mode>).])
+  AC_MSG_WARN([Specifying --with-sanitizers forces --without-seccomp since the sanitizers introduce use of syscalls not allowed by the waifud syscall sandbox (-sandbox=<mode>).])
   seccomp_found=no
 fi
 if test "$seccomp_found" != "no"; then
@@ -1581,7 +1581,7 @@ fi
 dnl libevent check
 
 use_libevent=no
-if test "$build_bitnet_cli$build_bitnetd$bitnet_enable_qt$enable_fuzz_binary$use_tests$use_bench" != "nononononono"; then
+if test "$build_waifu_cli$build_waifud$waifu_enable_qt$enable_fuzz_binary$use_tests$use_bench" != "nononononono"; then
   PKG_CHECK_MODULES([EVENT], [libevent >= 2.1.8], [use_libevent=yes], [AC_MSG_ERROR([libevent version 2.1.8 or greater not found.])])
   if test "$TARGET_OS" != "windows"; then
     PKG_CHECK_MODULES([EVENT_PTHREADS], [libevent_pthreads >= 2.1.8], [], [AC_MSG_ERROR([libevent_pthreads version 2.1.8 or greater not found.])])
@@ -1679,46 +1679,46 @@ if test "$build_multiprocess" != "no"; then
   AC_SUBST(MPGEN_PREFIX)
 fi
 
-AC_MSG_CHECKING([whether to build bitnetd])
-AM_CONDITIONAL([BUILD_BITCOIND], [test $build_bitnetd = "yes"])
-AC_MSG_RESULT($build_bitnetd)
+AC_MSG_CHECKING([whether to build waifud])
+AM_CONDITIONAL([BUILD_BITCOIND], [test $build_waifud = "yes"])
+AC_MSG_RESULT($build_waifud)
 
-AC_MSG_CHECKING([whether to build bitnet-cli])
-AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test $build_bitnet_cli = "yes"])
-AC_MSG_RESULT($build_bitnet_cli)
+AC_MSG_CHECKING([whether to build waifu-cli])
+AM_CONDITIONAL([BUILD_BITCOIN_CLI], [test $build_waifu_cli = "yes"])
+AC_MSG_RESULT($build_waifu_cli)
 
-AC_MSG_CHECKING([whether to build bitnet-tx])
-AM_CONDITIONAL([BUILD_BITCOIN_TX], [test $build_bitnet_tx = "yes"])
-AC_MSG_RESULT($build_bitnet_tx)
+AC_MSG_CHECKING([whether to build waifu-tx])
+AM_CONDITIONAL([BUILD_BITCOIN_TX], [test $build_waifu_tx = "yes"])
+AC_MSG_RESULT($build_waifu_tx)
 
-AC_MSG_CHECKING([whether to build bitnet-wallet])
-AM_CONDITIONAL([BUILD_BITCOIN_WALLET], [test $build_bitnet_wallet = "yes"])
-AC_MSG_RESULT($build_bitnet_wallet)
+AC_MSG_CHECKING([whether to build waifu-wallet])
+AM_CONDITIONAL([BUILD_BITCOIN_WALLET], [test $build_waifu_wallet = "yes"])
+AC_MSG_RESULT($build_waifu_wallet)
 
-AC_MSG_CHECKING([whether to build bitnet-util])
-AM_CONDITIONAL([BUILD_BITCOIN_UTIL], [test $build_bitnet_util = "yes"])
-AC_MSG_RESULT($build_bitnet_util)
+AC_MSG_CHECKING([whether to build waifu-util])
+AM_CONDITIONAL([BUILD_BITCOIN_UTIL], [test $build_waifu_util = "yes"])
+AC_MSG_RESULT($build_waifu_util)
 
-AC_MSG_CHECKING([whether to build experimental bitnet-chainstate])
-if test "$build_bitnet_chainstate" = "yes"; then
+AC_MSG_CHECKING([whether to build experimental waifu-chainstate])
+if test "$build_waifu_chainstate" = "yes"; then
   if test "$build_experimental_kernel_lib" = "no"; then
-    AC_MSG_ERROR([experimental bitnet-chainstate cannot be built without the experimental bitnetkernel library. Use --with-experimental-kernel-lib]);
+    AC_MSG_ERROR([experimental waifu-chainstate cannot be built without the experimental waifukernel library. Use --with-experimental-kernel-lib]);
   fi
 fi
-AM_CONDITIONAL([BUILD_BITCOIN_CHAINSTATE], [test $build_bitnet_chainstate = "yes"])
-AC_MSG_RESULT($build_bitnet_chainstate)
+AM_CONDITIONAL([BUILD_BITCOIN_CHAINSTATE], [test $build_waifu_chainstate = "yes"])
+AC_MSG_RESULT($build_waifu_chainstate)
 
 AC_MSG_CHECKING([whether to build libraries])
-AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test $build_bitnet_libs = "yes"])
+AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test $build_waifu_libs = "yes"])
 
-if test "$build_bitnet_libs" = "yes"; then
+if test "$build_waifu_libs" = "yes"; then
   AC_DEFINE([HAVE_CONSENSUS_LIB], [1], [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libbitnetconsensus.pc:libbitnetconsensus.pc.in])
+  AC_CONFIG_FILES([libwaifuconsensus.pc:libwaifuconsensus.pc.in])
 fi
 
-AM_CONDITIONAL([BUILD_BITCOIN_KERNEL_LIB], [test "$build_experimental_kernel_lib" != "no" && ( test "$build_experimental_kernel_lib" = "yes" || test "$build_bitnet_chainstate" = "yes" )])
+AM_CONDITIONAL([BUILD_BITCOIN_KERNEL_LIB], [test "$build_experimental_kernel_lib" != "no" && ( test "$build_experimental_kernel_lib" = "yes" || test "$build_waifu_chainstate" = "yes" )])
 
-AC_MSG_RESULT($build_bitnet_libs)
+AC_MSG_RESULT($build_waifu_libs)
 
 AC_LANG_POP
 
@@ -1824,7 +1824,7 @@ if test "$bitcoin_enable_qt" != "no"; then
     AC_MSG_WARN([xgettext is required to update qt translations])
   fi
 
-  AC_MSG_CHECKING([whether to build test_bitnet-qt])
+  AC_MSG_CHECKING([whether to build test_waifu-qt])
   if test "$use_gui_tests$bitcoin_enable_qt_test" = "yesyes"; then
     AC_MSG_RESULT([yes])
     BUILD_TEST_QT="yes"
@@ -1835,7 +1835,7 @@ fi
 
 AM_CONDITIONAL([ENABLE_ZMQ], [test "$use_zmq" = "yes"])
 
-AC_MSG_CHECKING([whether to build test_bitnet])
+AC_MSG_CHECKING([whether to build test_waifu])
 if test "$use_tests" = "yes"; then
   if test "$enable_fuzz" = "yes"; then
     AC_MSG_RESULT([no, because fuzzing is enabled])
@@ -1855,7 +1855,7 @@ else
   AC_MSG_RESULT([no])
 fi
 
-if test "$build_bitnet_wallet$build_bitnet_cli$build_bitnet_tx$build_bitnet_util$build_bitnet_libs$build_bitnetd$bitnet_enable_qt$enable_fuzz_binary$use_bench$use_tests" = "nononononononononono"; then
+if test "$build_waifu_wallet$build_waifu_cli$build_waifu_tx$build_waifu_util$build_waifu_libs$build_waifud$waifu_enable_qt$enable_fuzz_binary$use_bench$use_tests" = "nononononononononono"; then
   AC_MSG_ERROR([No targets! Please specify at least one of: --with-utils --with-libs --with-daemon --with-gui --enable-fuzz(-binary) --enable-bench or --enable-tests])
 fi
 
@@ -1969,7 +1969,7 @@ AC_SUBST(HAVE_EVHTTP_CONNECTION_GET_PEER_CONST_CHAR)
 AC_CONFIG_FILES([Makefile src/Makefile doc/man/Makefile share/setup.nsi share/qt/Info.plist test/config.ini])
 AC_CONFIG_FILES([contrib/devtools/split-debug.sh],[chmod +x contrib/devtools/split-debug.sh])
 AM_COND_IF([HAVE_DOXYGEN], [AC_CONFIG_FILES([doc/Doxyfile])])
-AC_CONFIG_LINKS([contrib/devtools/iwyu/bitnet.core.imp:contrib/devtools/iwyu/bitnet.core.imp])
+AC_CONFIG_LINKS([contrib/devtools/iwyu/waifu.core.imp:contrib/devtools/iwyu/waifu.core.imp])
 AC_CONFIG_LINKS([contrib/filter-lcov.py:contrib/filter-lcov.py])
 AC_CONFIG_LINKS([contrib/macdeploy/background.tiff:contrib/macdeploy/background.tiff])
 AC_CONFIG_LINKS([src/.bear-tidy-config:src/.bear-tidy-config])
@@ -2007,7 +2007,7 @@ echo "Options used to compile and link:"
 echo "  external signer = $use_external_signer"
 echo "  multiprocess    = $build_multiprocess"
 echo "  with experimental syscall sandbox support = $use_syscall_sandbox"
-echo "  with libs       = $build_bitnet_libs"
+echo "  with libs       = $build_waifu_libs"
 echo "  with wallet     = $enable_wallet"
 if test "$enable_wallet" != "no"; then
     echo "    with sqlite   = $use_sqlite"
@@ -2021,7 +2021,7 @@ echo "  with zmq        = $use_zmq"
 if test $enable_fuzz = "no"; then
     echo "  with test       = $use_tests"
 else
-    echo "  with test       = not building test_bitnet because fuzzing is enabled"
+    echo "  with test       = not building test_waifu because fuzzing is enabled"
 fi
 echo "  with fuzz binary = $enable_fuzz_binary"
 echo "  with bench      = $use_bench"

@@ -4,7 +4,7 @@
 #include <util/tokenpipe.h>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #ifndef WIN32

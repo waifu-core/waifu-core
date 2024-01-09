@@ -1,7 +1,7 @@
 # JSON-RPC Interface
 
-The headless daemon `bitnetd` has the JSON-RPC API enabled by default, the GUI
-`bitnet-qt` has it disabled by default. This can be changed with the `-server`
+The headless daemon `waifud` has the JSON-RPC API enabled by default, the GUI
+`waifu-qt` has it disabled by default. This can be changed with the `-server`
 option. In the GUI it is possible to execute RPC methods in the Debug Console
 Dialog.
 
@@ -18,13 +18,13 @@ Examples:
 
 ```sh
 # "params": ["mywallet", false, false, "", false, false, true]
-bitnet-cli createwallet mywallet false false "" false false true
+waifu-cli createwallet mywallet false false "" false false true
 
 # "params": {"wallet_name": "mywallet", "load_on_startup": true}
-bitnet-cli -named createwallet wallet_name=mywallet load_on_startup=true
+waifu-cli -named createwallet wallet_name=mywallet load_on_startup=true
 
 # "params": {"args": ["mywallet"], "load_on_startup": true}
-bitnet-cli -named createwallet mywallet load_on_startup=true
+waifu-cli -named createwallet mywallet load_on_startup=true
 ```
 
 ## Versioning
@@ -84,7 +84,7 @@ RPC interface will be abused.
   withstand arbitrary Internet traffic, so changing the above settings
   to expose it to the Internet (even using something like a Tor onion
   service) could expose you to unconsidered vulnerabilities.  See
-  `bitnetd -help` for more information about these settings and other
+  `waifud -help` for more information about these settings and other
   settings described in this document.
 
     Related, if you use Waifu Core inside a Docker container, you may

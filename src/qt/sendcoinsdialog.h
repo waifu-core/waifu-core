@@ -29,7 +29,7 @@ QT_BEGIN_NAMESPACE
 class QUrl;
 QT_END_NAMESPACE
 
-/** Dialog for sending bitnets */
+/** Dialog for sending waifus */
 class SendCoinsDialog : public QDialog
 {
     Q_OBJECT

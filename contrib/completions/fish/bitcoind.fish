@@ -1,8 +1,8 @@
 # Disable files from being included in completions by default
-complete --command bitnetd --no-files
+complete --command waifud --no-files
 
 # Extract options
-function __fish_bitnetd_get_options
+function __fish_waifud_get_options
     argparse 'nofiles' -- $argv
     set --local cmd (commandline -opc)[1]
     set --local options
@@ -21,15 +21,15 @@ end
 
 # Add options with file completion
 complete \
-    --command bitnetd \
-    --arguments "(__fish_bitnetd_get_options)"
+    --command waifud \
+    --arguments "(__fish_waifud_get_options)"
 # Enable file completions only if the commandline now contains a `*.=` style option
-complete --command bitnetd \
+complete --command waifud \
     --condition 'string match --regex -- ".*=" (commandline -pt)' \
     --force-files
 
 # Add options without file completion
 complete \
-    --command bitnetd \
-    --arguments "(__fish_bitnetd_get_options --nofiles)"
+    --command waifud \
+    --arguments "(__fish_waifud_get_options --nofiles)"
 

@@ -1,11 +1,11 @@
 Waifu-Qt version 0.8.3 is now available from:
-  http://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.8.3/
+  http://sourceforge.net/projects/waifu/files/Waifu/waifu-0.8.3/
 
 This is a maintenance release to fix a denial-of-service attack that
 can cause nodes to crash.
 
 Please report bugs using the issue tracker at github:
-  https://github.com/bitnet/bitnet/issues
+  https://github.com/waifu/waifu/issues
 
 0.8.3 Release notes
 

@@ -2,7 +2,7 @@
 # Copyright (c) 2018-2022 The Waifu Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
-"""Test bitnet-wallet."""
+"""Test waifu-wallet."""
 
 import hashlib
 import os
@@ -31,8 +31,8 @@ class ToolWalletTest(WaifuTestFramework):
         self.skip_if_no_wallet()
         self.skip_if_no_wallet_tool()
 
-    def bitnet_wallet_process(self, *args):
-        binary = self.config["environment"]["BUILDDIR"] + '/src/bitnet-wallet' + self.config["environment"]["EXEEXT"]
+    def waifu_wallet_process(self, *args):
+        binary = self.config["environment"]["BUILDDIR"] + '/src/waifu-wallet' + self.config["environment"]["EXEEXT"]
         default_args = ['-datadir={}'.format(self.nodes[0].datadir), '-chain=%s' % self.chain]
         if not self.options.descriptors and 'create' in args:
             default_args.append('-legacy')
@@ -40,14 +40,14 @@ class ToolWalletTest(WaifuTestFramework):
         return subprocess.Popen([binary] + default_args + list(args), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
     def assert_raises_tool_error(self, error, *args):
-        p = self.bitnet_wallet_process(*args)
+        p = self.waifu_wallet_process(*args)
         stdout, stderr = p.communicate()
         assert_equal(p.poll(), 1)
         assert_equal(stdout, '')
         assert_equal(stderr.strip(), error)
 
     def assert_tool_output(self, output, *args):
-        p = self.bitnet_wallet_process(*args)
+        p = self.waifu_wallet_process(*args)
         stdout, stderr = p.communicate()
         assert_equal(stderr, '')
         assert_equal(stdout, output)
@@ -188,11 +188,11 @@ class ToolWalletTest(WaifuTestFramework):
     def test_invalid_tool_commands_and_args(self):
         self.log.info('Testing that various invalid commands raise with specific error messages')
         self.assert_raises_tool_error("Error parsing command line arguments: Invalid command 'foo'", 'foo')
-        # `bitnet-wallet help` raises an error. Use `bitnet-wallet -help`.
+        # `waifu-wallet help` raises an error. Use `waifu-wallet -help`.
         self.assert_raises_tool_error("Error parsing command line arguments: Invalid command 'help'", 'help')
         self.assert_raises_tool_error('Error: Additional arguments provided (create). Methods do not take arguments. Please refer to `-help`.', 'info', 'create')
         self.assert_raises_tool_error('Error parsing command line arguments: Invalid parameter -foo', '-foo')
-        self.assert_raises_tool_error('No method provided. Run `bitnet-wallet -help` for valid methods.')
+        self.assert_raises_tool_error('No method provided. Run `waifu-wallet -help` for valid methods.')
         self.assert_raises_tool_error('Wallet name must be provided when creating a new wallet.', 'create')
         locked_dir = os.path.join(self.options.tmpdir, "node0", "regtest", "wallets")
         error = 'Error initializing wallet database environment "{}"!'.format(locked_dir)
@@ -311,7 +311,7 @@ class ToolWalletTest(WaifuTestFramework):
         self.log.debug('Wallet file shasum unchanged\n')
 
     def test_salvage(self):
-        # TODO: Check salvage actually salvages and doesn't break things. https://github.com/bitnet/bitnet/issues/7463
+        # TODO: Check salvage actually salvages and doesn't break things. https://github.com/waifu/waifu/issues/7463
         self.log.info('Check salvage')
         self.start_node(0)
         self.nodes[0].createwallet("salvage")
@@ -363,12 +363,12 @@ class ToolWalletTest(WaifuTestFramework):
         bad_ver_wallet_dump = os.path.join(self.nodes[0].datadir, "wallet-bad_ver1.dump")
         dump_data["BITCOIN_CORE_WALLET_DUMP"] = "0"
         self.write_dump(dump_data, bad_ver_wallet_dump)
-        self.assert_raises_tool_error('Error: Dumpfile version is not supported. This version of bitnet-wallet only supports version 1 dumpfiles. Got dumpfile with version 0', '-wallet=badload', '-dumpfile={}'.format(bad_ver_wallet_dump), 'createfromdump')
+        self.assert_raises_tool_error('Error: Dumpfile version is not supported. This version of waifu-wallet only supports version 1 dumpfiles. Got dumpfile with version 0', '-wallet=badload', '-dumpfile={}'.format(bad_ver_wallet_dump), 'createfromdump')
         assert not os.path.isdir(os.path.join(self.nodes[0].datadir, "regtest/wallets", "badload"))
         bad_ver_wallet_dump = os.path.join(self.nodes[0].datadir, "wallet-bad_ver2.dump")
         dump_data["BITCOIN_CORE_WALLET_DUMP"] = "2"
         self.write_dump(dump_data, bad_ver_wallet_dump)
-        self.assert_raises_tool_error('Error: Dumpfile version is not supported. This version of bitnet-wallet only supports version 1 dumpfiles. Got dumpfile with version 2', '-wallet=badload', '-dumpfile={}'.format(bad_ver_wallet_dump), 'createfromdump')
+        self.assert_raises_tool_error('Error: Dumpfile version is not supported. This version of waifu-wallet only supports version 1 dumpfiles. Got dumpfile with version 2', '-wallet=badload', '-dumpfile={}'.format(bad_ver_wallet_dump), 'createfromdump')
         assert not os.path.isdir(os.path.join(self.nodes[0].datadir, "regtest/wallets", "badload"))
         bad_magic_wallet_dump = os.path.join(self.nodes[0].datadir, "wallet-bad_magic.dump")
         del dump_data["BITCOIN_CORE_WALLET_DUMP"]

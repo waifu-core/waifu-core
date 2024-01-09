@@ -111,7 +111,7 @@ class ZMQTest (WaifuTestFramework):
 
     def skip_test_if_missing_module(self):
         self.skip_if_no_py3_zmq()
-        self.skip_if_no_bitnetd_zmq()
+        self.skip_if_no_waifud_zmq()
 
     def run_test(self):
         self.wallet = MiniWallet(self.nodes[0])

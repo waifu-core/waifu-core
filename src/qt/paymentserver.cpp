@@ -3,12 +3,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/paymentserver.h>
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
 
@@ -37,7 +37,7 @@
 #include <QUrlQuery>
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-//const QString BITCOIN_IPC_PREFIX("bitnet:");
+//const QString BITCOIN_IPC_PREFIX("waifu:");
 const QString BITCOIN_IPC_PREFIX("");
 
 //
@@ -81,7 +81,7 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         QString arg(argv[i]);
         if (arg.startsWith("-")) continue;
 
-        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitnet: URI
+        if (arg.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // waifu: URI
         {
             savedPaymentRequests.insert(arg);
         }
@@ -131,7 +131,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer)
     : QObject(parent)
 {
     // Install global event filter to catch QFileOpenEvents
-    // on Mac: sent when you click bitnet: links
+    // on Mac: sent when you click waifu: links
     // other OSes: helpful when dealing with payment request files
     if (parent)
         parent->installEventFilter(this);
@@ -148,7 +148,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer)
         if (!uriServer->listen(name)) {
             // constructor is called early in init, so don't use "Q_EMIT message()" here
             QMessageBox::critical(nullptr, tr("Payment request error"),
-                tr("Cannot start bitnet: click-to-pay handler"));
+                tr("Cannot start waifu: click-to-pay handler"));
         }
         else {
             connect(uriServer, &QLocalServer::newConnection, this, &PaymentServer::handleURIConnection);
@@ -159,7 +159,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer)
 PaymentServer::~PaymentServer() = default;
 
 //
-// OSX-specific way of handling bitnet: URIs
+// OSX-specific way of handling waifu: URIs
 //
 bool PaymentServer::eventFilter(QObject *object, QEvent *event)
 {
@@ -194,12 +194,12 @@ void PaymentServer::handleURIOrFile(const QString& s)
         return;
     }
 
-    if (s.startsWith("bitnet://", Qt::CaseInsensitive))
+    if (s.startsWith("waifu://", Qt::CaseInsensitive))
     {
-        Q_EMIT message(tr("URI handling"), tr("'bitnet://' is not a valid URI. Use 'bitnet:' instead."),
+        Q_EMIT message(tr("URI handling"), tr("'waifu://' is not a valid URI. Use 'waifu:' instead."),
             CClientUIInterface::MSG_ERROR);
     }
-    else if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // bitnet: URI
+    else if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // waifu: URI
     {
         QUrlQuery uri((QUrl(s)));
         // normal URI

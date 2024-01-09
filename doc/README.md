@@ -5,7 +5,7 @@ Setup
 ---------------------
 Waifu Core is the original Waifu client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Waifu transactions, which requires a few hundred gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Waifu Core, visit [bitnetcore.org](https://bitnetcore.org/en/download/).
+To download Waifu Core, visit [waifucore.org](https://waifucore.org/en/download/).
 
 Running
 ---------------------
@@ -15,12 +15,12 @@ The following are some helpful notes on how to run Waifu Core on your native pla
 
 Unpack the files into a directory and run:
 
-- `bin/bitnet-qt` (GUI) or
-- `bin/bitnetd` (headless)
+- `bin/waifu-qt` (GUI) or
+- `bin/waifud` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run bitnet-qt.exe.
+Unpack the files into a directory, and then run waifu-qt.exe.
 
 ### macOS
 
@@ -28,11 +28,11 @@ Drag Waifu Core to your applications folder, and then run Waifu Core.
 
 ### Need Help?
 
-* See the documentation at the [Waifu Wiki](https://en.bitnet.it/wiki/Main_Page)
+* See the documentation at the [Waifu Wiki](https://en.waifu.it/wiki/Main_Page)
 for help and more information.
-* Ask for help on [Waifu StackExchange](https://bitnet.stackexchange.com).
-* Ask for help on #bitnet on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitnet).
-* Ask for help on the [WaifuTalk](https://bitnettalk.org/) forums, in the [Technical Support board](https://bitnettalk.org/index.php?board=4.0).
+* Ask for help on [Waifu StackExchange](https://waifu.stackexchange.com).
+* Ask for help on #waifu on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#waifu).
+* Ask for help on the [WaifuTalk](https://waifutalk.org/) forums, in the [Technical Support board](https://waifutalk.org/index.php?board=4.0).
 
 Building
 ---------------------
@@ -54,7 +54,7 @@ The Waifu repo's [root README](/README.md) contains relevant information on the 
 - [Developer Notes](developer-notes.md)
 - [Productivity Notes](productivity.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation (External Link)](https://doxygen.bitnetcore.org/)
+- [Source Code Documentation (External Link)](https://doxygen.waifucore.org/)
 - [Translation Process](translation_process.md)
 - [Translation Strings Policy](translation_strings_policy.md)
 - [JSON-RPC Interface](JSON-RPC-interface.md)
@@ -66,12 +66,12 @@ The Waifu repo's [root README](/README.md) contains relevant information on the 
 - [Internal Design Docs](design/)
 
 ### Resources
-* Discuss on the [WaifuTalk](https://bitnettalk.org/) forums, in the [Development & Technical Discussion board](https://bitnettalk.org/index.php?board=6.0).
-* Discuss project-specific development on #bitnet-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#bitnet-core-dev).
+* Discuss on the [WaifuTalk](https://waifutalk.org/) forums, in the [Development & Technical Discussion board](https://waifutalk.org/index.php?board=6.0).
+* Discuss project-specific development on #waifu-core-dev on Libera Chat. If you don't have an IRC client, you can use [web.libera.chat](https://web.libera.chat/#waifu-core-dev).
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
-- [bitnet.conf Configuration File](bitnet-conf.md)
+- [waifu.conf Configuration File](waifu-conf.md)
 - [CJDNS Support](cjdns.md)
 - [Files](files.md)
 - [Fuzz-testing](fuzzing.md)

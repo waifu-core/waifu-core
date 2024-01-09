@@ -41,7 +41,7 @@ CI_EXEC "${BASE_ROOT_DIR}/configure" --cache-file=config.cache "$BITCOIN_CONFIG_
 
 CI_EXEC make distdir VERSION="$HOST"
 
-export P_CI_DIR="${BASE_BUILD_DIR}/bitnet-$HOST"
+export P_CI_DIR="${BASE_BUILD_DIR}/waifu-$HOST"
 
 CI_EXEC ./configure --cache-file=../config.cache "$BITCOIN_CONFIG_ALL" "$BITCOIN_CONFIG" || ( (CI_EXEC cat config.log) && false)
 
@@ -53,7 +53,7 @@ if [[ ${USE_MEMORY_SANITIZER} == "true" ]]; then
   # using the Linux getrandom syscall. Avoid using getrandom by undefining
   # HAVE_SYS_GETRANDOM. See https://github.com/google/sanitizers/issues/852 for
   # details.
-  CI_EXEC 'grep -v HAVE_SYS_GETRANDOM src/config/bitnet-config.h > src/config/bitnet-config.h.tmp && mv src/config/bitnet-config.h.tmp src/config/bitnet-config.h'
+  CI_EXEC 'grep -v HAVE_SYS_GETRANDOM src/config/waifu-config.h > src/config/waifu-config.h.tmp && mv src/config/waifu-config.h.tmp src/config/waifu-config.h'
 fi
 
 if [[ "${RUN_TIDY}" == "true" ]]; then

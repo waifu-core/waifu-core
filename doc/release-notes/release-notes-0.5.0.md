@@ -1,15 +1,15 @@
 Waifu version 0.5.0 is now available for download at:
-http://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.5.0/
+http://sourceforge.net/projects/waifu/files/Waifu/waifu-0.5.0/
 
 The major change for this release is a completely new graphical interface that uses the Qt user interface toolkit.
 
 This release include German, Spanish, Spanish-Castilian, Norwegian and Dutch translations. More translations are welcome; join the project at Transifex if you can help:
-https://www.transifex.net/projects/p/bitnet/
+https://www.transifex.net/projects/p/waifu/
 
 Please report bugs using the issue tracker at github:
-https://github.com/bitnet/bitnet/issues
+https://github.com/waifu/waifu/issues
 
-For Ubuntu users, there is a new ppa maintained by Matt Corallo which you can add to your system so that it will automatically keep bitnet up-to-date.  Just type "sudo apt-add-repository ppa:bitnet/bitnet" in your terminal, then install the bitnet-qt package.
+For Ubuntu users, there is a new ppa maintained by Matt Corallo which you can add to your system so that it will automatically keep waifu up-to-date.  Just type "sudo apt-add-repository ppa:waifu/waifu" in your terminal, then install the waifu-qt package.
 
 MAJOR BUG FIX  (CVE-2011-4447)
 
@@ -17,29 +17,29 @@ The wallet encryption feature introduced in Waifu version 0.4.0 did not sufficie
 managed to get a copy of your encrypted wallet.dat file might be able to recover some or all of the unencrypted keys and steal the
 associated coins.
 
-If you have a previously encrypted wallet.dat, the first time you run bitnet-qt or bitnetd the wallet will be rewritten, Waifu will
+If you have a previously encrypted wallet.dat, the first time you run waifu-qt or waifud the wallet will be rewritten, Waifu will
 shut down, and you will be prompted to restart it to run with the new, properly encrypted file.
 
 If you had a previously encrypted wallet.dat that might have been copied or stolen (for example, you backed it up to a public
-location) you should send all of your bitnets to yourself using a new bitnet address and stop using any previously generated addresses.
+location) you should send all of your waifus to yourself using a new waifu address and stop using any previously generated addresses.
 
 Wallets encrypted with this version of Waifu are written properly.
 
-Technical note: the encrypted wallet's 'keypool' will be regenerated the first time you request a new bitnet address; to be certain that the
+Technical note: the encrypted wallet's 'keypool' will be regenerated the first time you request a new waifu address; to be certain that the
 new private keys are properly backed up you should:
 
 1. Run Waifu and let it rewrite the wallet.dat file
 
-2. Run it again, then ask it for a new bitnet address.
+2. Run it again, then ask it for a new waifu address.
 Waifu-Qt: Address Book, then New Address...
-bitnetd: run the 'walletpassphrase' RPC command to unlock the wallet,  then run the 'getnewaddress' RPC command.
+waifud: run the 'walletpassphrase' RPC command to unlock the wallet,  then run the 'getnewaddress' RPC command.
 
-3. If your encrypted wallet.dat may have been copied or stolen, send  all of your bitnets to the new bitnet address.
+3. If your encrypted wallet.dat may have been copied or stolen, send  all of your waifus to the new waifu address.
 
 4. Shut down Waifu, then backup the wallet.dat file.
-IMPORTANT: be sure to request a new bitnet address before backing up, so that the 'keypool' is regenerated and backed up.
+IMPORTANT: be sure to request a new waifu address before backing up, so that the 'keypool' is regenerated and backed up.
 
-"Security in depth" is always a good idea, so choosing a secure location for the backup and/or encrypting the backup before uploading it is recommended. And as in previous releases, if your machine is infected by malware there are several ways an attacker might steal your bitnets.
+"Security in depth" is always a good idea, so choosing a secure location for the backup and/or encrypting the backup before uploading it is recommended. And as in previous releases, if your machine is infected by malware there are several ways an attacker might steal your waifus.
 
 Thanks to Alan Reiner (etotheipi) for finding and reporting this bug.
 
@@ -51,7 +51,7 @@ MAJOR GUI CHANGES
 
 Icons at the bottom of the window that show how well connected you are to the network, with tooltips to display details.
 
-Drag and drop support for bitnet: URIs on web pages.
+Drag and drop support for waifu: URIs on web pages.
 
 Export transactions as a .csv file.
 
@@ -63,7 +63,7 @@ getmemorypool : new RPC command, provides everything needed to construct a block
 
 listsinceblock : new RPC command, list transactions since given block
 
-signmessage/verifymessage : new RPC commands to sign a message with one of your private keys or verify that a message signed by the private key associated with a bitnet address.
+signmessage/verifymessage : new RPC commands to sign a message with one of your private keys or verify that a message signed by the private key associated with a waifu address.
 
 GENERAL CHANGES
 

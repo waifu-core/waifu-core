@@ -3,18 +3,18 @@
 
 Waifu Core version 0.20.0 is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-0.20.0/>
+  <https://waifucore.org/bin/waifu-core-0.20.0/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -22,7 +22,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
 installer (on Windows) or just copy over `/Applications/Waifu-Qt` (on Mac)
-or `bitnetd`/`bitnet-qt` (on Linux).
+or `waifud`/`waifu-qt` (on Linux).
 
 Upgrading directly from a version of Waifu Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
@@ -163,9 +163,9 @@ New settings
 - A new `-asmap` configuration option has been added to diversify the
   node's network connections by mapping IP addresses Autonomous System
   Numbers (ASNs) and then limiting the number of connections made to any
-  single ASN.  See [issue #16599](https://github.com/bitnet/bitnet/issues/16599),
-  [PR #16702](https://github.com/bitnet/bitnet/pull/16702), and the
-  `bitnetd help` for more information.  This option is experimental and
+  single ASN.  See [issue #16599](https://github.com/waifu/waifu/issues/16599),
+  [PR #16702](https://github.com/waifu/waifu/pull/16702), and the
+  `waifud help` for more information.  This option is experimental and
   subject to removal or breaking changes in future releases, so the
   legacy /16 prefix mapping of IP addresses remains the default.  (#16702)
 
@@ -206,7 +206,7 @@ GUI changes
   peer selection. See the `-asmap` configuration option in _New
   Settings_, above.  (#18402)
 
-- A "known bug" [announced](https://bitnetcore.org/en/releases/0.18.0/#wallet-gui)
+- A "known bug" [announced](https://waifucore.org/en/releases/0.18.0/#wallet-gui)
   in the release notes of version 0.18 has been fixed.  The issue
   affected anyone who simultaneously used multiple Waifu Core wallets
   and the GUI coin control feature. (#18894)
@@ -215,7 +215,7 @@ GUI changes
   or fee bumping an existing transaction in the Transactions screen will
   automatically copy a Partially-Signed Waifu Transaction (PSBT) to
   the system clipboard.  This can then be pasted into an external
-  program such as [HWI](https://github.com/bitnet-core/HWI) for
+  program such as [HWI](https://github.com/waifu-core/HWI) for
   signing.  Future versions of Waifu Core should support a GUI option
   for finalizing and broadcasting PSBTs, but for now the debug console
   may be used with the `finalizepsbt` and `sendrawtransaction` RPCs.
@@ -247,7 +247,7 @@ Documentation changes
 ---------------------
 
 - Waifu Core's automatically-generated source code documentation is
-  now available at https://doxygen.bitnetcore.org.  (#17596)
+  now available at https://doxygen.waifucore.org.  (#17596)
 
 Low-level changes
 =================
@@ -255,7 +255,7 @@ Low-level changes
 Utilities
 ---------
 
-- The `bitnet-cli` utility used with the `-getinfo` parameter now
+- The `waifu-cli` utility used with the `-getinfo` parameter now
   returns a `headers` field with the number of downloaded block headers
   on the best headers chain (similar to the `blocks` field that is also
   returned) and a `verificationprogress` field that estimates how much
@@ -263,7 +263,7 @@ Utilities
   information returned no longer includes the `protocolversion`,
   `walletversion`, and `keypoololdest` fields.  (#17302, #17650)
 
-- The `bitnet-cli` utility now accepts a `-stdinwalletpassphrase`
+- The `waifu-cli` utility now accepts a `-stdinwalletpassphrase`
   parameter that can be used when calling the `walletpassphrase` and
   `walletpassphrasechange` RPCs to read the passphrase from standard
   input without echoing it to the terminal, improving security against
@@ -450,7 +450,7 @@ Build system
 - #15756 Add shortcuts for tab tools (promag)
 - #16944 create PSBT with watch-only wallet (Sjors)
 - #16964 Change sendcoins dialogue Yes to Send (instagibbs)
-- #17068 Always generate `bitnetstrings.cpp` on `make translate` (D4nte)
+- #17068 Always generate `waifustrings.cpp` on `make translate` (D4nte)
 - #17096 Rename debug window (Zero-1729)
 - #17105 Make RPCConsole::TabTypes an enum class (promag)
 - #17125 Add toolTip and placeholderText to sign message fields (dannmat)
@@ -524,7 +524,7 @@ Build system
 - #17730 Remove Qt networking features (fanquake)
 - #17738 Remove linking librt for backwards compatibility (fanquake)
 - #17740 Remove configure checks for win libraries we don't link against (fanquake)
-- #17741 Included `test_bitnet-qt` in msvc build (sipsorcery)
+- #17741 Included `test_waifu-qt` in msvc build (sipsorcery)
 - #17756 Remove `WINDOWS_BITS` from build system (fanquake)
 - #17769 Set `AC_PREREQ` to 2.69 (fanquake)
 - #17880 Add -Wdate-time to Werror flags (fanquake)
@@ -544,7 +544,7 @@ Build system
 - #18290 Set minimum Automake version to 1.13 (hebasto)
 - #18320 guix: Remove now-unnecessary gcc make flag (dongcarl)
 - #18331 Use git archive as source tarball (hebasto)
-- #18397 Fix libevent linking for `bench_bitnet` binary (hebasto)
+- #18397 Fix libevent linking for `bench_waifu` binary (hebasto)
 - #18426 scripts: `Previous_release`: improve behaviour on failed download (theStack)
 - #18429 Remove double `LIBBITCOIN_SERVER` from bench-Makefile (brakmic)
 - #18528 Create `test_fuzz` library from src/test/fuzz/fuzz.cpp (brakmic)
@@ -580,7 +580,7 @@ Build system
 - #18395 scripts: Add pe dylib checking to symbol-check.py (fanquake)
 - #18415 scripts: Add macho tests to test-security-check.py (fanquake)
 - #18425 releases: Update with new Windows code signing certificate (achow101)
-- #18702 Fix ASLR for bitnet-cli on Windows (fanquake)
+- #18702 Fix ASLR for waifu-cli on Windows (fanquake)
 
 ### Tests and QA
 - #12134 Build previous releases and run functional tests (Sjors)
@@ -608,7 +608,7 @@ Build system
 - #17140 Fix bug in `blockfilter_index_tests` (jimpo)
 - #17199 use default address type (bech32) for `wallet_bumpfee` tests (theStack)
 - #17205 ci: Enable address sanitizer (asan) stack-use-after-return checking (practicalswift)
-- #17206 Add testcase to simulate bitnet schema in leveldb (adamjonas)
+- #17206 Add testcase to simulate waifu schema in leveldb (adamjonas)
 - #17209 Remove no longer needed UBSan suppressions (issues fixed). Add documentation (practicalswift)
 - #17220 Add unit testing for the CompressScript function (adamjonas)
 - #17225 Test serialisation as part of deserialisation fuzzing. Test round-trip equality where possible (practicalswift)
@@ -624,7 +624,7 @@ Build system
 - #17299 add reason checks for non-standard txs in `test_IsStandard` (theStack)
 - #17322 Fix input size assertion in `wallet_bumpfee.py` (instagibbs)
 - #17327 Add `rpc_fundrawtransaction` logging (jonatack)
-- #17330 Add `shrinkdebugfile=0` to regtest bitnet.conf (sdaftuar)
+- #17330 Add `shrinkdebugfile=0` to regtest waifu.conf (sdaftuar)
 - #17340 Speed up fundrawtransaction test (jnewbery)
 - #17345 Do not instantiate CAddrDB for static call CAddrDB::Read() (hebasto)
 - #17362 Speed up `wallet_avoidreuse`, add logging (jonatack)
@@ -679,7 +679,7 @@ Build system
 - #18008 fix fuzzing using libFuzzer on macOS (fanquake)
 - #18013 bench: Fix benchmarks filters (elichai)
 - #18018 reset fIsBareMultisigStd after bare-multisig tests (fanquake)
-- #18022 Fix appveyor `test_bitnet` build of `*.raw` (MarcoFalke)
+- #18022 Fix appveyor `test_waifu` build of `*.raw` (MarcoFalke)
 - #18037 util: Allow scheduler to be mocked (amitiuttarwar)
 - #18056 ci: Check for submodules (emilengler)
 - #18069 Replace 'regtest' leftovers by self.chain (theStack)
@@ -687,7 +687,7 @@ Build system
 - #18109 Avoid hitting some known minor tinyformat issues when fuzzing strprintf(…) (practicalswift)
 - #18155 Add harness which fuzzes EvalScript and VerifyScript using a fuzzed signature checker (practicalswift)
 - #18159 Add --valgrind option to `test/fuzz/test_runner.py` for running fuzzing test cases under valgrind (practicalswift)
-- #18166 ci: Run fuzz testing test cases (bitnet-core/qa-assets) under valgrind to catch memory errors (practicalswift)
+- #18166 ci: Run fuzz testing test cases (waifu-core/qa-assets) under valgrind to catch memory errors (practicalswift)
 - #18172 Transaction expiry from mempool (0xB10C)
 - #18181 Remove incorrect assumptions in `validation_flush_tests` (MarcoFalke)
 - #18183 Set `catch_system_errors=no` on boost unit tests (MarcoFalke)
@@ -717,7 +717,7 @@ Build system
 - #18393 Don't assume presence of `__builtin_mul_overflow(…)` in `MultiplicationOverflow(…)` fuzzing harness (practicalswift)
 - #18406 add executable flag for `rpc_estimatefee.py` (theStack)
 - #18420 listsinceblock block height checks (jonatack)
-- #18430 ci: Only clone bitnet-core/qa-assets when fuzzing (MarcoFalke)
+- #18430 ci: Only clone waifu-core/qa-assets when fuzzing (MarcoFalke)
 - #18438 ci: Use homebrew addon on native macos (hebasto)
 - #18447 Add coverage for script parse error in ParseScript (pierreN)
 - #18472 Remove unsafe `BOOST_TEST_MESSAGE` (MarcoFalke)
@@ -753,7 +753,7 @@ Build system
 - #17026 Update bips.md for default bech32 addresses in 0.20.0 (MarcoFalke)
 - #17081 Fix Makefile target in benchmarking.md (theStack)
 - #17102 Add missing indexes/blockfilter/basic to doc/files.md (MarcoFalke)
-- #17119 Fix broken bitnet-cli examples (andrewtoth)
+- #17119 Fix broken waifu-cli examples (andrewtoth)
 - #17134 Add switch on enum example to developer notes (hebasto)
 - #17142 Update macdeploy README to include all files produced by `make deploy` (za-kk)
 - #17146 github: Add warning for bug reports (laanwj)
@@ -772,14 +772,14 @@ Build system
 - #17370 Update doc/bips.md with recent changes in master (MarcoFalke)
 - #17393 Added regtest config for linearize script (gr0kchain)
 - #17411 Add some better examples for scripted diff (laanwj)
-- #17503 Remove bitness from bitnet-qt help message and manpage (laanwj)
+- #17503 Remove bitness from waifu-qt help message and manpage (laanwj)
 - #17539 Update and improve Developer Notes (hebasto)
 - #17561 Changed MiniUPnPc link to https in dependencies.md (sandakersmann)
-- #17596 Change doxygen URL to doxygen.bitnetcore.org (laanwj)
+- #17596 Change doxygen URL to doxygen.waifucore.org (laanwj)
 - #17598 Update release process with latest changes (MarcoFalke)
 - #17617 Unify unix epoch time descriptions (jonatack)
 - #17637 script: Add keyserver to verify-commits readme (emilengler)
-- #17648 Rename wallet-tool references to bitnet-wallet (hel-o)
+- #17648 Rename wallet-tool references to waifu-wallet (hel-o)
 - #17688 Add "ci" prefix to CONTRIBUTING.md (hebasto)
 - #17751 Use recommended shebang approach in documentation code block (hackerrdave)
 - #17752 Fix directory path for secp256k1 subtree in developer-notes (hackerrdave)
@@ -817,7 +817,7 @@ Build system
 ### Miscellaneous
 - #15600 lockedpool: When possible, use madvise to avoid including sensitive information in core dumps (luke-jr)
 - #15934 Merge settings one place instead of five places (ryanofsky)
-- #16115 On bitnetd startup, write config args to debug.log (LarryRuane)
+- #16115 On waifud startup, write config args to debug.log (LarryRuane)
 - #16117 util: Replace boost sleep with std sleep (MarcoFalke)
 - #16161 util: Fix compilation errors in support/lockedpool.cpp (jkczyz)
 - #16802 scripts: In linearize, search for next position of magic bytes rather than fail (takinbo)
@@ -840,7 +840,7 @@ Build system
 - #17507 random: mark RandAddPeriodic and SeedPeriodic as noexcept (fanquake)
 - #17527 Fix CPUID subleaf iteration (sipa)
 - #17604 util: Make schedulebatchpriority advisory only (fanquake)
-- #17650 util: Remove unwanted fields from bitnet-cli -getinfo (malevolent)
+- #17650 util: Remove unwanted fields from waifu-cli -getinfo (malevolent)
 - #17671 script: Fixed wget call in gitian-build.py (willyko)
 - #17699 Make env data logging optional (sipa)
 - #17721 util: Don't allow base58 decoding of non-base58 strings. add base58 tests (practicalswift)
@@ -984,4 +984,4 @@ Thanks to everyone who directly contributed to this release:
 - Zero
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitnet/bitnet/).
+[Transifex](https://www.transifex.com/waifu/waifu/).

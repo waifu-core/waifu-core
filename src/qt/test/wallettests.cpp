@@ -8,8 +8,8 @@
 #include <interfaces/chain.h>
 #include <interfaces/node.h>
 #include <key_io.h>
-#include <qt/bitnetamountfield.h>
-#include <qt/bitnetunits.h>
+#include <qt/waifuamountfield.h>
+#include <qt/waifuunits.h>
 #include <qt/clientmodel.h>
 #include <qt/optionsmodel.h>
 #include <qt/overviewpage.h>
@@ -146,9 +146,9 @@ void CompareBalance(WalletModel& walletModel, CAmount expected_balance, QLabel* 
 //
 // This also requires overriding the default minimal Qt platform:
 //
-//     QT_QPA_PLATFORM=xcb     src/qt/test/test_bitnet-qt  # Linux
-//     QT_QPA_PLATFORM=windows src/qt/test/test_bitnet-qt  # Windows
-//     QT_QPA_PLATFORM=cocoa   src/qt/test/test_bitnet-qt  # macOS
+//     QT_QPA_PLATFORM=xcb     src/qt/test/test_waifu-qt  # Linux
+//     QT_QPA_PLATFORM=windows src/qt/test/test_waifu-qt  # Windows
+//     QT_QPA_PLATFORM=cocoa   src/qt/test/test_waifu-qt  # macOS
 void TestGUI(interfaces::Node& node)
 {
     // Set up wallet and chain with 105 blocks (5 mature blocks for spending).
@@ -254,7 +254,7 @@ void TestGUI(interfaces::Node& node)
             QCOMPARE(receiveRequestDialog->QObject::findChild<QLabel*>("payment_header")->text(), QString("Payment information"));
             QCOMPARE(receiveRequestDialog->QObject::findChild<QLabel*>("uri_tag")->text(), QString("URI:"));
             QString uri = receiveRequestDialog->QObject::findChild<QLabel*>("uri_content")->text();
-            QCOMPARE(uri.count("bitnet:"), 2);
+            QCOMPARE(uri.count("waifu:"), 2);
             QCOMPARE(receiveRequestDialog->QObject::findChild<QLabel*>("address_tag")->text(), QString("Address:"));
             QVERIFY(address.isEmpty());
             address = receiveRequestDialog->QObject::findChild<QLabel*>("address_content")->text();
@@ -322,7 +322,7 @@ void WalletTests::walletTests()
         // and fails to handle returned nulls
         // (https://bugreports.qt.io/browse/QTBUG-49686).
         QWARN("Skipping WalletTests on mac build with 'minimal' platform set due to Qt bugs. To run AppTests, invoke "
-              "with 'QT_QPA_PLATFORM=cocoa test_bitnet-qt' on mac, or else use a linux or windows build.");
+              "with 'QT_QPA_PLATFORM=cocoa test_waifu-qt' on mac, or else use a linux or windows build.");
         return;
     }
 #endif

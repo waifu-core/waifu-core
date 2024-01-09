@@ -6,7 +6,7 @@
 
 export LC_ALL=C.UTF-8
 
-export CONTAINER_NAME=ci_native_nowallet_libbitnetkernel
+export CONTAINER_NAME=ci_native_nowallet_libwaifukernel
 export CI_IMAGE_NAME_TAG=debian:buster
 # Use minimum supported python3.7 and clang-8, see doc/dependencies.md
 export PACKAGES="-t buster-backports python3-zmq clang-8 llvm-8 libc++abi-8-dev libc++-8-dev"

@@ -5,7 +5,7 @@
 #include <qt/transactiontablemodel.h>
 
 #include <qt/addresstablemodel.h>
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>

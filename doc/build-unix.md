@@ -120,7 +120,7 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a bitnet-qt executable will be
+Once these are installed, they will be found by configure and a waifu-qt executable will be
 built by default.
 
 Dependency Build Instructions: Fedora
@@ -143,7 +143,7 @@ libqrencode (optional) can be installed with:
 
 Notes
 -----
-The release is built with GCC and then "strip bitnetd" to strip the debug
+The release is built with GCC and then "strip waifud" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -166,7 +166,7 @@ It is recommended to use Berkeley DB 5.1. If you have to build it yourself:
 ```bash
 BITCOIN_ROOT=$(pwd)
 
-# Pick some path to install BDB to, here we create a directory within the bitnet directory
+# Pick some path to install BDB to, here we create a directory within the waifu directory
 BDB_PREFIX="${BITCOIN_ROOT}/db5"
 mkdir -p $BDB_PREFIX
 
@@ -225,7 +225,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-	scanelf -e ./bitnet
+	scanelf -e ./waifu
 
     The output should contain:
 
@@ -240,7 +240,7 @@ Hardening enables the following features:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling, use:
-    `scanelf -e ./bitnet`
+    `scanelf -e ./waifu`
 
     the output should contain:
 	STK/REL/PTL

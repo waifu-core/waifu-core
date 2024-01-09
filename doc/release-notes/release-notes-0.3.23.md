@@ -1,7 +1,7 @@
-Win32, Linux, MacOSX and source releases for bitnet v0.3.23 have been uploaded to
-https://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.3.23/
+Win32, Linux, MacOSX and source releases for waifu v0.3.23 have been uploaded to
+https://sourceforge.net/projects/waifu/files/Waifu/waifu-0.3.23/
 
-This is another quick bugfix release, trying to deal with the influx of new bitnet users.
+This is another quick bugfix release, trying to deal with the influx of new waifu users.
 
 Main items of note:
 

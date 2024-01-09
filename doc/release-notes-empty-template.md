@@ -7,18 +7,18 @@ for the process.*
 
 Waifu Core version *version* is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-*version*/>
+  <https://waifucore.org/bin/waifu-core-*version*/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -26,7 +26,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
 installer (on Windows) or just copy over `/Applications/Waifu-Qt` (on macOS)
-or `bitnetd`/`bitnet-qt` (on Linux).
+or `waifud`/`waifu-qt` (on Linux).
 
 Upgrading directly from a version of Waifu Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
@@ -96,4 +96,4 @@ Thanks to everyone who directly contributed to this release:
 
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitnet/bitnet/).
+[Transifex](https://www.transifex.com/waifu/waifu/).

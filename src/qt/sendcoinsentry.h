@@ -21,7 +21,7 @@ namespace Ui {
 }
 
 /**
- * A single entry in the dialog for sending bitnets.
+ * A single entry in the dialog for sending waifus.
  */
 class SendCoinsEntry : public QWidget
 {

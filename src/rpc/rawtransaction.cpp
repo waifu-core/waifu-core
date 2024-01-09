@@ -59,10 +59,10 @@ static void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& 
                      TxVerbosity verbosity = TxVerbosity::SHOW_DETAILS)
 {
     CHECK_NONFATAL(verbosity >= TxVerbosity::SHOW_DETAILS);
-    // Call into TxToUniv() in bitnet-common to decode the transaction hex.
+    // Call into TxToUniv() in waifu-common to decode the transaction hex.
     //
     // Blockchain contextual information (confirmations and blocktime) is not
-    // available to code in bitnet-common, so we query them here and push the
+    // available to code in waifu-common, so we query them here and push the
     // data into the returned UniValue.
     TxToUniv(tx, /*block_hash=*/uint256(), entry, /*include_hex=*/true, RPCSerializationFlags(), txundo, verbosity);
 
@@ -156,7 +156,7 @@ static std::vector<RPCArg> CreateTxDoc()
             {
                 {"", RPCArg::Type::OBJ_USER_KEYS, RPCArg::Optional::OMITTED, "",
                     {
-                        {"address", RPCArg::Type::AMOUNT, RPCArg::Optional::NO, "A key-value pair. The key (string) is the bitnet address, the value (float or string) is the amount in " + CURRENCY_UNIT},
+                        {"address", RPCArg::Type::AMOUNT, RPCArg::Optional::NO, "A key-value pair. The key (string) is the waifu address, the value (float or string) is the amount in " + CURRENCY_UNIT},
                     },
                 },
                 {"", RPCArg::Type::OBJ, RPCArg::Optional::OMITTED, "",

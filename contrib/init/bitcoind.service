@@ -1,37 +1,37 @@
 # It is not recommended to modify this file in-place, because it will
 # be overwritten during package upgrades. If you want to add further
 # options or overwrite existing ones then use
-# $ systemctl edit bitnetd.service
+# $ systemctl edit waifud.service
 # See "man systemd.service" for details.
 
 # Note that almost all daemon options could be specified in
-# /etc/bitnet/bitnet.conf, but keep in mind those explicitly
+# /etc/waifu/waifu.conf, but keep in mind those explicitly
 # specified as arguments in ExecStart= will override those in the
 # config file.
 
 [Unit]
 Description=Waifu daemon
-Documentation=https://github.com/bitnet/bitnet/blob/master/doc/init.md
+Documentation=https://github.com/waifu/waifu/blob/master/doc/init.md
 
 # https://www.freedesktop.org/wiki/Software/systemd/NetworkTarget/
 After=network-online.target
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/bitnetd -daemonwait \
-                            -pid=/run/bitnetd/bitnetd.pid \
-                            -conf=/etc/bitnet/bitnet.conf \
-                            -datadir=/var/lib/bitnetd
+ExecStart=/usr/bin/waifud -daemonwait \
+                            -pid=/run/waifud/waifud.pid \
+                            -conf=/etc/waifu/waifu.conf \
+                            -datadir=/var/lib/waifud
 
 # Make sure the config directory is readable by the service user
 PermissionsStartOnly=true
-ExecStartPre=/bin/chgrp bitnet /etc/bitnet
+ExecStartPre=/bin/chgrp waifu /etc/waifu
 
 # Process management
 ####################
 
 Type=forking
-PIDFile=/run/bitnetd/bitnetd.pid
+PIDFile=/run/waifud/waifud.pid
 Restart=on-failure
 TimeoutStartSec=infinity
 TimeoutStopSec=600
@@ -39,20 +39,20 @@ TimeoutStopSec=600
 # Directory creation and permissions
 ####################################
 
-# Run as bitnet:bitnet
-User=bitnet
-Group=bitnet
+# Run as waifu:waifu
+User=waifu
+Group=waifu
 
-# /run/bitnetd
-RuntimeDirectory=bitnetd
+# /run/waifud
+RuntimeDirectory=waifud
 RuntimeDirectoryMode=0710
 
-# /etc/bitnet
-ConfigurationDirectory=bitnet
+# /etc/waifu
+ConfigurationDirectory=waifu
 ConfigurationDirectoryMode=0710
 
-# /var/lib/bitnetd
-StateDirectory=bitnetd
+# /var/lib/waifud
+StateDirectory=waifud
 StateDirectoryMode=0710
 
 # Hardening measures

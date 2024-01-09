@@ -5,7 +5,7 @@
 #ifndef BITCOIN_QT_TRANSACTIONDESC_H
 #define BITCOIN_QT_TRANSACTIONDESC_H
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 
 #include <QObject>
 #include <QString>

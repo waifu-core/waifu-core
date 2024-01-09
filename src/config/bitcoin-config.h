@@ -1,5 +1,5 @@
-/* src/config/bitnet-config.h.  Generated from bitnet-config.h.in by configure.  */
-/* src/config/bitnet-config.h.in.  Generated from configure.ac by autoheader.  */
+/* src/config/waifu-config.h.  Generated from waifu-config.h.in by configure.  */
+/* src/config/waifu-config.h.in.  Generated from configure.ac by autoheader.  */
 
 #ifndef BITCOIN_CONFIG_H
 
@@ -347,7 +347,7 @@
 #define LT_OBJDIR ".libs/"
 
 /* Define to the address where bug reports for this package should be sent. */
-#define PACKAGE_BUGREPORT "https://github.com/bitnet/bitnet/issues"
+#define PACKAGE_BUGREPORT "https://github.com/waifu/waifu/issues"
 
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "Waifu Core"
@@ -356,10 +356,10 @@
 #define PACKAGE_STRING "Waifu Core 25.00.0"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "bitnet"
+#define PACKAGE_TARNAME "waifu"
 
 /* Define to the home page for this package. */
-#define PACKAGE_URL "https://bitnet-io.org/"
+#define PACKAGE_URL "https://waifu-io.org/"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "25.00.0"

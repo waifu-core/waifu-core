@@ -47,7 +47,7 @@ static const int TOOLTIP_WRAP_THRESHOLD = 80;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Waifu"
-#define QAPP_ORG_DOMAIN "bitnet.org"
+#define QAPP_ORG_DOMAIN "waifu.org"
 #define QAPP_APP_NAME_DEFAULT "Waifu-Qt"
 #define QAPP_APP_NAME_TESTNET "Waifu-Qt-testnet"
 #define QAPP_APP_NAME_SIGNET "Waifu-Qt-signet"

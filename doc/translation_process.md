@@ -8,15 +8,15 @@ Transifex is setup to monitor the GitHub repo for updates, and when code contain
 
 Multiple language support is critical in assisting Waifu’s global adoption, and growth. One of Waifu’s greatest strengths is cross-border money transfers, any help making that easier is greatly appreciated.
 
-See the [Transifex Waifu project](https://www.transifex.com/bitnet/bitnet/) to assist in translations. You should also join the translation mailing list for announcements - see details below.
+See the [Transifex Waifu project](https://www.transifex.com/waifu/waifu/) to assist in translations. You should also join the translation mailing list for announcements - see details below.
 
 ### Writing code with translations
 We use automated scripts to help extract translations in both Qt, and non-Qt source files. It is rarely necessary to manually edit the files in `src/qt/locale/`. The translation source files must adhere to the following format:
-`bitnet_xx_YY.ts or bitnet_xx.ts`
+`waifu_xx_YY.ts or waifu_xx.ts`
 
-`src/qt/locale/bitnet_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `bitnet_en.ts`.
+`src/qt/locale/waifu_en.ts` is treated in a special way. It is used as the source for all other translations. Whenever a string in the source code is changed, this file must be updated to reflect those changes. A custom script is used to extract strings from the non-Qt parts. This script makes use of `gettext`, so make sure that utility is installed (ie, `apt-get install gettext` on Ubuntu/Debian). Once this has been updated, `lupdate` (included in the Qt SDK) is used to update `waifu_en.ts`.
 
-To automatically regenerate the `bitnet_en.ts` file, run the following commands:
+To automatically regenerate the `waifu_en.ts` file, run the following commands:
 ```sh
 cd src/
 make translate
@@ -34,14 +34,14 @@ When an updated source file is merged into the GitHub repo, Transifex will autom
 
 To create the pull-request, use the following commands:
 ```
-git add src/qt/bitnetstrings.cpp src/qt/locale/bitnet_en.ts
+git add src/qt/waifustrings.cpp src/qt/locale/waifu_en.ts
 git commit
 ```
 
 ### Creating a Transifex account
 Visit the [Transifex Signup](https://www.transifex.com/signup/) page to create an account. Take note of your username and password, as they will be required to configure the command-line tool.
 
-You can find the Waifu translation project at [https://www.transifex.com/bitnet/bitnet/](https://www.transifex.com/bitnet/bitnet/).
+You can find the Waifu translation project at [https://www.transifex.com/waifu/waifu/](https://www.transifex.com/waifu/waifu/).
 
 ### Installing the Transifex client command-line tool
 The client is used to fetch updated translations. If you are having problems, or need more details, see [https://docs.transifex.com/client/installing-the-client](https://docs.transifex.com/client/installing-the-client)
@@ -64,10 +64,10 @@ The Transifex Waifu project config file is included as part of the repo. It can 
 
 ### Synchronising translations
 
-To assist in updating translations, a helper script is available in the [maintainer-tools repo](https://github.com/bitnet-core/bitnet-maintainer-tools). To use it and commit the result, simply do:
+To assist in updating translations, a helper script is available in the [maintainer-tools repo](https://github.com/waifu-core/waifu-maintainer-tools). To use it and commit the result, simply do:
 
 ```
-python3 ../bitnet-maintainer-tools/update-translations.py
+python3 ../waifu-maintainer-tools/update-translations.py
 git commit -a
 ```
 
@@ -76,7 +76,7 @@ git commit -a
 ### Handling Plurals (in source files)
 When new plurals are added to the source file, it's important to do the following steps:
 
-1. Open `bitnet_en.ts` in Qt Linguist (included in the Qt SDK)
+1. Open `waifu_en.ts` in Qt Linguist (included in the Qt SDK)
 2. Search for `%n`, which will take you to the parts in the translation that use plurals
 3. Look for empty `English Translation (Singular)` and `English Translation (Plural)` fields
 4. Add the appropriate strings for the singular and plural form of the base string
@@ -85,11 +85,11 @@ When new plurals are added to the source file, it's important to do the followin
 7. Save the source file
 
 ### Translating a new language
-To create a new language template, you will need to edit the languages manifest file `src/qt/bitnet_locale.qrc` and add a new entry. Below is an example of the English language entry.
+To create a new language template, you will need to edit the languages manifest file `src/qt/waifu_locale.qrc` and add a new entry. Below is an example of the English language entry.
 
 ```xml
 <qresource prefix="/translations">
-    <file alias="en">locale/bitnet_en.qm</file>
+    <file alias="en">locale/waifu_en.qm</file>
     ...
 </qresource>
 ```
@@ -98,4 +98,4 @@ To create a new language template, you will need to edit the languages manifest 
 
 ### Questions and general assistance
 
-If you are a translator, you should also subscribe to the mailing list, https://groups.google.com/forum/#!forum/bitnet-translators. Announcements will be posted during application pre-releases to notify translators to check for updates.
+If you are a translator, you should also subscribe to the mailing list, https://groups.google.com/forum/#!forum/waifu-translators. Announcements will be posted during application pre-releases to notify translators to check for updates.

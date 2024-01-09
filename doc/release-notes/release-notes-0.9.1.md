@@ -1,19 +1,19 @@
 Waifu Core version 0.9.1 is now available from:
 
-  https://bitnet.org/bin/0.9.1/
+  https://waifu.org/bin/0.9.1/
 
 This is a security update. It is recommended to upgrade to this release
 as soon as possible.
 
 It is especially important to upgrade if you currently have version
 0.9.0 installed and are using the graphical interface OR you are using
-bitnetd from any pre-0.9.1 version, and have enabled SSL for RPC and
+waifud from any pre-0.9.1 version, and have enabled SSL for RPC and
 have configured allowip to allow rpc connections from potentially
 hostile hosts.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/bitnet/bitnet/issues
+  https://github.com/waifu/waifu/issues
 
 How to Upgrade
 --------------
@@ -21,7 +21,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Waifu-Qt (on Mac) or
-bitnetd/bitnet-qt (on Linux).
+waifud/waifu-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you run
 0.9.1 your blockchain files will be re-indexed, which will take anywhere from 

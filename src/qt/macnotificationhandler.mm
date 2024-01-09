@@ -13,7 +13,7 @@
 - (NSString *)__bundleIdentifier
 {
     if (self == [NSBundle mainBundle]) {
-        return @"org.bitnetfoundation.Waifu-Qt";
+        return @"org.waifufoundation.Waifu-Qt";
     } else {
         return [self __bundleIdentifier];
     }

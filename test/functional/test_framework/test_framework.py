@@ -46,7 +46,7 @@ TEST_EXIT_PASSED = 0
 TEST_EXIT_FAILED = 1
 TEST_EXIT_SKIPPED = 77
 
-TMPDIR_PREFIX = "bitnet_func_test_"
+TMPDIR_PREFIX = "waifu_func_test_"
 
 
 class SkipTest(Exception):
@@ -77,9 +77,9 @@ class WaifuTestMetaClass(type):
 
 
 class WaifuTestFramework(metaclass=WaifuTestMetaClass):
-    """Base class for a bitnet test script.
+    """Base class for a waifu test script.
 
-    Individual bitnet test scripts should subclass this class and override the set_test_params() and run_test() methods.
+    Individual waifu test scripts should subclass this class and override the set_test_params() and run_test() methods.
 
     Individual tests can also override the following methods to customize the test setup:
 
@@ -161,11 +161,11 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         previous_releases_path = os.getenv("PREVIOUS_RELEASES_DIR") or os.getcwd() + "/releases"
         parser = argparse.ArgumentParser(usage="%(prog)s [options]")
         parser.add_argument("--nocleanup", dest="nocleanup", default=False, action="store_true",
-                            help="Leave bitnetds and test.* datadir on exit or error")
+                            help="Leave waifuds and test.* datadir on exit or error")
         parser.add_argument("--nosandbox", dest="nosandbox", default=False, action="store_true",
                             help="Don't use the syscall sandbox")
         parser.add_argument("--noshutdown", dest="noshutdown", default=False, action="store_true",
-                            help="Don't stop bitnetds after the test execution")
+                            help="Don't stop waifuds after the test execution")
         parser.add_argument("--cachedir", dest="cachedir", default=os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/../../cache"),
                             help="Directory for caching pregenerated datadirs (default: %(default)s)")
         parser.add_argument("--tmpdir", dest="tmpdir", help="Root directory for datadirs")
@@ -186,7 +186,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         parser.add_argument("--pdbonfailure", dest="pdbonfailure", default=False, action="store_true",
                             help="Attach a python debugger if test fails")
         parser.add_argument("--usecli", dest="usecli", default=False, action="store_true",
-                            help="use bitnet-cli instead of RPC for all commands")
+                            help="use waifu-cli instead of RPC for all commands")
         parser.add_argument("--perf", dest="perf", default=False, action="store_true",
                             help="profile running nodes with perf for the duration of the test")
         parser.add_argument("--valgrind", dest="valgrind", default=False, action="store_true",
@@ -236,24 +236,24 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
 
         config = self.config
 
-        fname_bitnetd = os.path.join(
+        fname_waifud = os.path.join(
             config["environment"]["BUILDDIR"],
             "src",
-            "bitnetd" + config["environment"]["EXEEXT"],
+            "waifud" + config["environment"]["EXEEXT"],
         )
-        fname_bitnetcli = os.path.join(
+        fname_waifucli = os.path.join(
             config["environment"]["BUILDDIR"],
             "src",
-            "bitnet-cli" + config["environment"]["EXEEXT"],
+            "waifu-cli" + config["environment"]["EXEEXT"],
         )
-        fname_bitnetutil = os.path.join(
+        fname_waifuutil = os.path.join(
             config["environment"]["BUILDDIR"],
             "src",
-            "bitnet-util" + config["environment"]["EXEEXT"],
+            "waifu-util" + config["environment"]["EXEEXT"],
         )
-        self.options.bitnetd = os.getenv("BITCOIND", default=fname_bitnetd)
-        self.options.bitnetcli = os.getenv("BITCOINCLI", default=fname_bitnetcli)
-        self.options.bitnetutil = os.getenv("BITCOINUTIL", default=fname_bitnetutil)
+        self.options.waifud = os.getenv("BITCOIND", default=fname_waifud)
+        self.options.waifucli = os.getenv("BITCOINCLI", default=fname_waifucli)
+        self.options.waifuutil = os.getenv("BITCOINUTIL", default=fname_waifuutil)
 
         os.environ['PATH'] = os.pathsep.join([
             os.path.join(config['environment']['BUILDDIR'], 'src'),
@@ -314,7 +314,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         else:
             for node in self.nodes:
                 node.cleanup_on_exit = False
-            self.log.info("Note: bitnetds were not stopped and may still be running")
+            self.log.info("Note: waifuds were not stopped and may still be running")
 
         should_clean_up = (
             not self.options.nocleanup and
@@ -502,9 +502,9 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
                 if versions[i] is None or versions[i] >= 229900:
                     extra_args[i] = extra_args[i] + ["-sandbox=log-and-abort"]
         if binary is None:
-            binary = [get_bin_from_version(v, 'bitnetd', self.options.bitnetd) for v in versions]
+            binary = [get_bin_from_version(v, 'waifud', self.options.waifud) for v in versions]
         if binary_cli is None:
-            binary_cli = [get_bin_from_version(v, 'bitnet-cli', self.options.bitnetcli) for v in versions]
+            binary_cli = [get_bin_from_version(v, 'waifu-cli', self.options.waifucli) for v in versions]
         assert_equal(len(extra_confs), num_nodes)
         assert_equal(len(extra_args), num_nodes)
         assert_equal(len(versions), num_nodes)
@@ -518,8 +518,8 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
                 rpchost=rpchost,
                 timewait=self.rpc_timeout,
                 timeout_factor=self.options.timeout_factor,
-                bitnetd=binary[i],
-                bitnet_cli=binary_cli[i],
+                waifud=binary[i],
+                waifu_cli=binary_cli[i],
                 version=versions[i],
                 coverage_dir=self.options.coveragedir,
                 cwd=self.options.tmpdir,
@@ -536,7 +536,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
                 test_node_i.replace_in_config([('[regtest]', '')])
 
     def start_node(self, i, *args, **kwargs):
-        """Start a bitnetd"""
+        """Start a waifud"""
 
         node = self.nodes[i]
 
@@ -547,7 +547,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
             coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
     def start_nodes(self, extra_args=None, *args, **kwargs):
-        """Start multiple bitnetds"""
+        """Start multiple waifuds"""
 
         if extra_args is None:
             extra_args = [None] * self.num_nodes
@@ -567,11 +567,11 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
                 coverage.write_all_rpc_commands(self.options.coveragedir, node.rpc)
 
     def stop_node(self, i, expected_stderr='', wait=0):
-        """Stop a bitnetd test node"""
+        """Stop a waifud test node"""
         self.nodes[i].stop_node(expected_stderr, wait=wait)
 
     def stop_nodes(self, wait=0):
-        """Stop multiple bitnetd test nodes"""
+        """Stop multiple waifud test nodes"""
         for node in self.nodes:
             # Issue RPC to stop nodes
             node.stop_node(wait=wait, wait_until_stopped=False)
@@ -745,7 +745,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         # User can provide log level as a number or string (eg DEBUG). loglevel was caught as a string, so try to convert it to an int
         ll = int(self.options.loglevel) if self.options.loglevel.isdigit() else self.options.loglevel.upper()
         ch.setLevel(ll)
-        # Format logs the same as bitnetd's debug.log with microprecision (so log files can be concatenated and sorted)
+        # Format logs the same as waifud's debug.log with microprecision (so log files can be concatenated and sorted)
         formatter = logging.Formatter(fmt='%(asctime)s.%(msecs)03d000Z %(name)s (%(levelname)s): %(message)s', datefmt='%Y-%m-%dT%H:%M:%S')
         formatter.converter = time.gmtime
         fh.setFormatter(formatter)
@@ -785,8 +785,8 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
                     rpchost=None,
                     timewait=self.rpc_timeout,
                     timeout_factor=self.options.timeout_factor,
-                    bitnetd=self.options.bitnetd,
-                    bitnet_cli=self.options.bitnetcli,
+                    waifud=self.options.waifud,
+                    waifu_cli=self.options.waifucli,
                     coverage_dir=None,
                     cwd=self.options.tmpdir,
                     descriptors=self.options.descriptors,
@@ -833,7 +833,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
             self.log.debug("Copy cache directory {} to node {}".format(cache_node_dir, i))
             to_dir = get_datadir_path(self.options.tmpdir, i)
             shutil.copytree(cache_node_dir, to_dir)
-            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in bitnet.conf
+            initialize_datadir(self.options.tmpdir, i, self.chain, self.disable_autoconnect)  # Overwrite port/rpcport in waifu.conf
 
     def _initialize_chain_clean(self):
         """Initialize empty blockchain for use by the test.
@@ -864,10 +864,10 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         except ImportError:
             raise SkipTest("bcc python module not available")
 
-    def skip_if_no_bitnetd_tracepoints(self):
-        """Skip the running test if bitnetd has not been compiled with USDT tracepoint support."""
+    def skip_if_no_waifud_tracepoints(self):
+        """Skip the running test if waifud has not been compiled with USDT tracepoint support."""
         if not self.is_usdt_compiled():
-            raise SkipTest("bitnetd has not been built with USDT tracepoints enabled.")
+            raise SkipTest("waifud has not been built with USDT tracepoints enabled.")
 
     def skip_if_no_bpf_permissions(self):
         """Skip the running test if we don't have permissions to do BPF syscalls and load BPF maps."""
@@ -885,10 +885,10 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
         if os.name != 'posix':
             raise SkipTest("not on a POSIX system")
 
-    def skip_if_no_bitnetd_zmq(self):
-        """Skip the running test if bitnetd has not been compiled with zmq support."""
+    def skip_if_no_waifud_zmq(self):
+        """Skip the running test if waifud has not been compiled with zmq support."""
         if not self.is_zmq_compiled():
-            raise SkipTest("bitnetd has not been built with zmq enabled.")
+            raise SkipTest("waifud has not been built with zmq enabled.")
 
     def skip_if_no_wallet(self):
         """Skip the running test if wallet has not been compiled."""
@@ -911,19 +911,19 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
             raise SkipTest("BDB has not been compiled.")
 
     def skip_if_no_wallet_tool(self):
-        """Skip the running test if bitnet-wallet has not been compiled."""
+        """Skip the running test if waifu-wallet has not been compiled."""
         if not self.is_wallet_tool_compiled():
-            raise SkipTest("bitnet-wallet has not been compiled")
+            raise SkipTest("waifu-wallet has not been compiled")
 
-    def skip_if_no_bitnet_util(self):
-        """Skip the running test if bitnet-util has not been compiled."""
-        if not self.is_bitnet_util_compiled():
-            raise SkipTest("bitnet-util has not been compiled")
+    def skip_if_no_waifu_util(self):
+        """Skip the running test if waifu-util has not been compiled."""
+        if not self.is_waifu_util_compiled():
+            raise SkipTest("waifu-util has not been compiled")
 
     def skip_if_no_cli(self):
-        """Skip the running test if bitnet-cli has not been compiled."""
+        """Skip the running test if waifu-cli has not been compiled."""
         if not self.is_cli_compiled():
-            raise SkipTest("bitnet-cli has not been compiled.")
+            raise SkipTest("waifu-cli has not been compiled.")
 
     def skip_if_no_previous_releases(self):
         """Skip the running test if previous releases are not available."""
@@ -944,7 +944,7 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
             raise SkipTest("external signer support has not been compiled.")
 
     def is_cli_compiled(self):
-        """Checks whether bitnet-cli was compiled."""
+        """Checks whether waifu-cli was compiled."""
         return self.config["components"].getboolean("ENABLE_CLI")
 
     def is_external_signer_compiled(self):
@@ -964,11 +964,11 @@ class WaifuTestFramework(metaclass=WaifuTestMetaClass):
             return self.is_bdb_compiled()
 
     def is_wallet_tool_compiled(self):
-        """Checks whether bitnet-wallet was compiled."""
+        """Checks whether waifu-wallet was compiled."""
         return self.config["components"].getboolean("ENABLE_WALLET_TOOL")
 
-    def is_bitnet_util_compiled(self):
-        """Checks whether bitnet-util was compiled."""
+    def is_waifu_util_compiled(self):
+        """Checks whether waifu-util was compiled."""
         return self.config["components"].getboolean("ENABLE_BITCOIN_UTIL")
 
     def is_zmq_compiled(self):

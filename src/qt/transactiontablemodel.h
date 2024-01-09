@@ -5,7 +5,7 @@
 #ifndef BITCOIN_QT_TRANSACTIONTABLEMODEL_H
 #define BITCOIN_QT_TRANSACTIONTABLEMODEL_H
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 
 #include <QAbstractTableModel>
 #include <QStringList>

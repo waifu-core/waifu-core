@@ -11,7 +11,7 @@
 class ArgsManager;
 
 /**
- * CBaseChainParams defines the base parameters (shared between bitnet-cli and bitnetd)
+ * CBaseChainParams defines the base parameters (shared between waifu-cli and waifud)
  * of a given instance of the Waifu system.
  */
 class CBaseChainParams

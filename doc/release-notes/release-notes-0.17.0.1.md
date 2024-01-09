@@ -1,16 +1,16 @@
 Waifu Core version 0.17.0.1 is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-0.17.0.1/>
+  <https://waifucore.org/bin/waifu-core-0.17.0.1/>
 
 This release provides a minor bug fix for 0.17.0.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 Notable changes
 ===============

@@ -20,7 +20,7 @@ class CWallet;
 /**
  * IsMine() return codes, which depend on ScriptPubKeyMan implementation.
  * Not every ScriptPubKeyMan covers all types, please refer to
- * https://github.com/bitnet/bitnet/blob/master/doc/release-notes/release-notes-0.21.0.md#ismine-semantics
+ * https://github.com/waifu/waifu/blob/master/doc/release-notes/release-notes-0.21.0.md#ismine-semantics
  * for better understanding.
  *
  * For LegacyScriptPubKeyMan,

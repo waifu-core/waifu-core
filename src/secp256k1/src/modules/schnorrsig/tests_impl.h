@@ -240,7 +240,7 @@ void test_schnorrsig_bip_vectors_check_verify(const unsigned char *pk_serialized
 }
 
 /* Test vectors according to BIP-340 ("Schnorr Signatures for secp256k1"). See
- * https://github.com/bitnet/bips/blob/master/bip-0340/test-vectors.csv. */
+ * https://github.com/waifu/bips/blob/master/bip-0340/test-vectors.csv. */
 void test_schnorrsig_bip_vectors(void) {
     {
         /* Test vector 0 */

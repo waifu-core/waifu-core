@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 """  Tests the net:* tracepoint API interface.
-     See https://github.com/bitnet/bitnet/blob/master/doc/tracing.md#context-net
+     See https://github.com/waifu/waifu/blob/master/doc/tracing.md#context-net
 """
 
 import ctypes
@@ -86,13 +86,13 @@ class NetTracepointTest(WaifuTestFramework):
 
     def skip_test_if_missing_module(self):
         self.skip_if_platform_not_linux()
-        self.skip_if_no_bitnetd_tracepoints()
+        self.skip_if_no_waifud_tracepoints()
         self.skip_if_no_python_bcc()
         self.skip_if_no_bpf_permissions()
 
     def run_test(self):
         # Tests the net:inbound_message and net:outbound_message tracepoints
-        # See https://github.com/bitnet/bitnet/blob/master/doc/tracing.md#context-net
+        # See https://github.com/waifu/waifu/blob/master/doc/tracing.md#context-net
 
         class P2PMessage(ctypes.Structure):
             _fields_ = [
@@ -152,7 +152,7 @@ class NetTracepointTest(WaifuTestFramework):
         bpf["inbound_messages"].open_perf_buffer(handle_inbound)
         bpf["outbound_messages"].open_perf_buffer(handle_outbound)
 
-        self.log.info("connect a P2P test node to our bitnetd node")
+        self.log.info("connect a P2P test node to our waifud node")
         test_node = P2PInterface()
         self.nodes[0].add_p2p_connection(test_node)
         bpf.perf_buffer_poll(timeout=200)

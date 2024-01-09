@@ -454,7 +454,7 @@ BOOST_AUTO_TEST_CASE(cnetaddr_unserialize_v2)
     s << Span{ParseHex(
         "02"                                  // network type (IPv6)
         "10"                                  // address length
-        "fd6b88c08724ca978112ca1bbdcafac2")}; // address: 0xfd + sha256("bitnet")[0:5] +
+        "fd6b88c08724ca978112ca1bbdcafac2")}; // address: 0xfd + sha256("waifu")[0:5] +
                                               // sha256(name)[0:10]
     s >> addr;
     BOOST_CHECK(addr.IsInternal());

@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
-// The bitnet-chainstate executable serves to surface the dependencies required
+// The waifu-chainstate executable serves to surface the dependencies required
 // by a program wishing to use Waifu Core's consensus engine as it is right
 // now.
 //
 // DEVELOPER NOTE: Since this is a "demo-only", experimental, etc. executable,
 //                 it may diverge from Waifu Core's coding style.
 //
-// It is part of the libbitnetkernel project.
+// It is part of the libwaifukernel project.
 
 #include <kernel/checks.h>
 #include <kernel/context.h>

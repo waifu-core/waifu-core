@@ -3,13 +3,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <qt/optionsdialog.h>
 #include <qt/forms/ui_optionsdialog.h>
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/clientmodel.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
@@ -77,8 +77,8 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet)
     /* remove Window tab on Mac */
     ui->tabWidget->removeTab(ui->tabWidget->indexOf(ui->tabWindow));
     /* hide launch at startup option on macOS */
-    ui->bitnetAtStartup->setVisible(false);
-    ui->verticalLayout_Main->removeWidget(ui->bitnetAtStartup);
+    ui->waifuAtStartup->setVisible(false);
+    ui->verticalLayout_Main->removeWidget(ui->waifuAtStartup);
     ui->verticalLayout_Main->removeItem(ui->horizontalSpacer_0_Main);
 #endif
 
@@ -99,8 +99,8 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet)
     /* Display elements init */
     QDir translations(":translations");
 
-    ui->bitnetAtStartup->setToolTip(ui->bitnetAtStartup->toolTip().arg(PACKAGE_NAME));
-    ui->bitnetAtStartup->setText(ui->bitnetAtStartup->text().arg(PACKAGE_NAME));
+    ui->waifuAtStartup->setToolTip(ui->waifuAtStartup->toolTip().arg(PACKAGE_NAME));
+    ui->waifuAtStartup->setText(ui->waifuAtStartup->text().arg(PACKAGE_NAME));
 
     ui->openWaifuConfButton->setToolTip(ui->openWaifuConfButton->toolTip().arg(PACKAGE_NAME));
 
@@ -235,7 +235,7 @@ void OptionsDialog::setCurrentTab(OptionsDialog::Tab tab)
 void OptionsDialog::setMapper()
 {
     /* Main */
-    mapper->addMapping(ui->bitnetAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->waifuAtStartup, OptionsModel::StartAtStartup);
     mapper->addMapping(ui->threadsScriptVerif, OptionsModel::ThreadsScriptVerif);
     mapper->addMapping(ui->databaseCache, OptionsModel::DatabaseCache);
     mapper->addMapping(ui->prune, OptionsModel::Prune);

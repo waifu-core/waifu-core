@@ -143,7 +143,7 @@ chain for " target " development."))
     "--enable-default-ssp" "yes")
     "--enable-default-pie" "yes"))
 
-(define* (make-bitnet-cross-toolchain target
+(define* (make-waifu-cross-toolchain target
                                        #:key
                                        (base-gcc-for-libc base-gcc)
                                        (base-kernel-headers base-linux-kernel-headers)
@@ -609,7 +609,7 @@ inspecting signatures in Mach-O binaries.")
                  (make-nsis-for-gcc-10 nsis-x86_64)
                  osslsigncode))
           ((string-contains target "-linux-")
-           (list (make-bitnet-cross-toolchain target)))
+           (list (make-waifu-cross-toolchain target)))
           ((string-contains target "darwin")
            (list clang-toolchain-10 binutils cmake-minimal xorriso python-signapple))
           (else '())))))

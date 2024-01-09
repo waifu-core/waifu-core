@@ -2,18 +2,18 @@
 
 *.exe
 *.pdb
-src/bitnet
-src/bitnetd
-src/bitnet-cli
-src/bitnet-gui
-src/bitnet-node
-src/bitnet-tx
-src/bitnet-util
-src/bitnet-chainstate
-src/bitnet-wallet
+src/waifu
+src/waifud
+src/waifu-cli
+src/waifu-gui
+src/waifu-node
+src/waifu-tx
+src/waifu-util
+src/waifu-chainstate
+src/waifu-wallet
 src/test/fuzz/fuzz
-src/test/test_bitnet
-src/qt/test/test_bitnet-qt
+src/test/test_waifu
+src/qt/test/test_waifu-qt
 
 # autoreconf
 Makefile.in
@@ -37,8 +37,8 @@ config.log
 config.status
 configure
 libtool
-src/config/bitnet-config.h
-src/config/bitnet-config.h.in
+src/config/waifu-config.h
+src/config/waifu-config.h.in
 src/config/stamp-h1
 src/obj
 share/setup.nsi
@@ -50,11 +50,11 @@ src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
 
-src/qt/bitnet-qt.config
-src/qt/bitnet-qt.creator
-src/qt/bitnet-qt.creator.user
-src/qt/bitnet-qt.files
-src/qt/bitnet-qt.includes
+src/qt/waifu-qt.config
+src/qt/waifu-qt.creator
+src/qt/waifu-qt.creator.user
+src/qt/waifu-qt.files
+src/qt/waifu-qt.includes
 
 .deps
 .dirstamp
@@ -92,7 +92,7 @@ src/qt/bitnet-qt.includes
 *.qm
 Makefile
 !depends/Makefile
-src/qt/bitnet-qt
+src/qt/waifu-qt
 Waifu-Qt.app
 
 # Qt Creator
@@ -100,7 +100,7 @@ Makefile.am.user
 
 # Unit-tests
 Makefile.test
-bitnet-qt_test
+waifu-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -116,7 +116,7 @@ releases
 *.gcno
 *.gcda
 /*.info
-test_bitnet.coverage/
+test_waifu.coverage/
 total.coverage/
 fuzz.coverage/
 coverage_percent.txt
@@ -135,7 +135,7 @@ test/.mypy_cache/
 
 /doc/doxygen/
 
-libbitnetconsensus.pc
+libwaifuconsensus.pc
 contrib/devtools/split-debug.sh
 
 # Output from running db4 installation

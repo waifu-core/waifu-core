@@ -25,5 +25,5 @@ RUN /install.sh && \
   rm -rf /var/lib/apt/lists/*
 
 
-WORKDIR /bitnet
+WORKDIR /waifu
 ENTRYPOINT ["/entrypoint.sh"]

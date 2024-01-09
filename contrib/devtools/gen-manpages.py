@@ -8,12 +8,12 @@ import sys
 import tempfile
 
 BINARIES = [
-'src/bitnetd',
-'src/bitnet-cli',
-'src/bitnet-tx',
-'src/bitnet-wallet',
-'src/bitnet-util',
-'src/qt/bitnet-qt',
+'src/waifud',
+'src/waifu-cli',
+'src/waifu-tx',
+'src/waifu-wallet',
+'src/waifu-util',
+'src/qt/waifu-qt',
 ]
 
 # Paths to external utilities.

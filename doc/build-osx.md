@@ -28,14 +28,14 @@ NOTE: Building with Qt4 is still supported, however, could result in a broken UI
 Build Waifu Core
 ------------------------
 
-1. Clone the bitnet source code and cd into `bitnet`
+1. Clone the waifu source code and cd into `waifu`
 
-        git clone https://github.com/bitnet/bitnet
-        cd bitnet
+        git clone https://github.com/waifu/waifu
+        cd waifu
 
-2.  Build bitnet:
+2.  Build waifu:
 
-    Configure and build the headless bitnet binaries as well as the GUI (if Qt is found).
+    Configure and build the headless waifu binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
 
@@ -54,15 +54,15 @@ Build Waifu Core
 Running
 -------
 
-Waifu Core is now available at `./src/bitnetd`
+Waifu Core is now available at `./src/waifud`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=bitnetrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Waifu/bitnet.conf"
+    echo -e "rpcuser=waifurpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/Waifu/waifu.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/Waifu/bitnet.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/Waifu/waifu.conf"
 
-The first time you run bitnetd, it will start downloading the blockchain. This process could take several hours.
+The first time you run waifud, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
@@ -71,20 +71,20 @@ You can monitor the download process by looking at the debug.log file:
 Other commands:
 -------
 
-    ./src/bitnetd -daemon # Starts the bitnet daemon.
-    ./src/bitnet-cli --help # Outputs a list of command-line options.
-    ./src/bitnet-cli help # Outputs a list of RPC commands when the daemon is running.
+    ./src/waifud -daemon # Starts the waifu daemon.
+    ./src/waifu-cli --help # Outputs a list of command-line options.
+    ./src/waifu-cli help # Outputs a list of RPC commands when the daemon is running.
 
 Using Qt Creator as IDE
 ------------------------
-You can use Qt Creator as an IDE, for bitnet development.
+You can use Qt Creator as an IDE, for waifu development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.
 
 1. Make sure you installed everything through Homebrew mentioned above
 2. Do a proper ./configure --enable-debug
 3. In Qt Creator do "New Project" -> Import Project -> Import Existing Project
-4. Enter "bitnet-qt" as project name, enter src/qt as location
+4. Enter "waifu-qt" as project name, enter src/qt as location
 5. Leave the file selection as it is
 6. Confirm the "summary page"
 7. In the "Projects" tab select "Manage Kits..."
@@ -97,4 +97,4 @@ Notes
 
 * Tested on OS X 10.8 through 10.12 on 64-bit Intel processors only.
 
-* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/bitnet/bitnet/issues/7714)
+* Building with downloaded Qt binaries is not officially supported. See the notes in [#7714](https://github.com/waifu/waifu/issues/7714)

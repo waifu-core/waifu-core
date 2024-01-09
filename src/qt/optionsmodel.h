@@ -6,7 +6,7 @@
 #define BITCOIN_QT_OPTIONSMODEL_H
 
 #include <cstdint>
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/guiconstants.h>
 
 #include <QAbstractListModel>
@@ -91,7 +91,7 @@ public:
     bool getShowTrayIcon() const { return m_show_tray_icon; }
     bool getMinimizeToTray() const { return fMinimizeToTray; }
     bool getMinimizeOnClose() const { return fMinimizeOnClose; }
-    WaifuUnit getDisplayUnit() const { return m_display_bitnet_unit; }
+    WaifuUnit getDisplayUnit() const { return m_display_waifu_unit; }
     QString getThirdPartyTxUrls() const { return strThirdPartyTxUrls; }
     bool getUseEmbeddedMonospacedFont() const { return m_use_embedded_monospaced_font; }
     bool getCoinControlFeatures() const { return fCoinControlFeatures; }
@@ -118,7 +118,7 @@ private:
     bool fMinimizeToTray;
     bool fMinimizeOnClose;
     QString language;
-    WaifuUnit m_display_bitnet_unit;
+    WaifuUnit m_display_waifu_unit;
     QString strThirdPartyTxUrls;
     bool m_use_embedded_monospaced_font;
     bool fCoinControlFeatures;

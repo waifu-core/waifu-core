@@ -4,7 +4,7 @@
 
 #include <qt/recentrequeststablemodel.h>
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
 #include <qt/walletmodel.h>

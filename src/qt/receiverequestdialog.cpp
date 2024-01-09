@@ -5,7 +5,7 @@
 #include <qt/receiverequestdialog.h>
 #include <qt/forms/ui_receiverequestdialog.h>
 
-#include <qt/bitnetunits.h>
+#include <qt/waifuunits.h>
 #include <qt/guiutil.h>
 #include <qt/optionsmodel.h>
 #include <qt/qrimagewidget.h>
@@ -15,7 +15,7 @@
 #include <QString>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h> /* for USE_QRCODE */
+#include <config/waifu-config.h> /* for USE_QRCODE */
 #endif
 
 ReceiveRequestDialog::ReceiveRequestDialog(QWidget* parent)

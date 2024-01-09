@@ -3,18 +3,18 @@
 
 Waifu Core version 0.19.1 is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-0.19.1/>
+  <https://waifucore.org/bin/waifu-core-0.19.1/>
 
 This minor release includes various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -22,7 +22,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over `/Applications/Waifu-Qt` (on Mac)
-or `bitnetd`/`bitnet-qt` (on Linux).
+or `waifud`/`waifu-qt` (on Linux).
 
 Upgrading directly from a version of Waifu Core that has reached its EOL is
 possible, but it might take some time if the datadir needs to be migrated. Old
@@ -72,7 +72,7 @@ distribution provides binaries for the RISC-V platform.
 
 ### Tests and QA
 - #17416 Appveyor improvement - text file for vcpkg package list (sipsorcery)
-- #17488 fix "bitnetd already running" warnings on macOS (fanquake)
+- #17488 fix "waifud already running" warnings on macOS (fanquake)
 - #17980 add missing #include to fix compiler errors (kallewoof)
 
 ### Platform support
@@ -112,4 +112,4 @@ Thanks to everyone who directly contributed to this release:
 - Wladimir J. van der Laan
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitnet/bitnet/).
+[Transifex](https://www.transifex.com/waifu/waifu/).

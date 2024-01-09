@@ -1,15 +1,15 @@
-bitnetd version 0.4.3 is now available for download at:
-http://luke.dashjr.org/programs/bitnet/files/bitnetd-0.4.3/ (until Gavin uploads to SourceForge)
+waifud version 0.4.3 is now available for download at:
+http://luke.dashjr.org/programs/waifu/files/waifud-0.4.3/ (until Gavin uploads to SourceForge)
 
 This is a bugfix-only release based on 0.4.0.
 
 Please note that the wxWaifu GUI client is no longer maintained nor supported. If someone would like to step up to maintain this, they should contact Luke-Jr.
 
 Please report bugs for the daemon only using the issue tracker at github:
-https://github.com/bitnet/bitnet/issues
+https://github.com/waifu/waifu/issues
 
 Stable source code is hosted at Gitorious:
-http://gitorious.org/bitnet/bitnetd-stable/archive-tarball/v0.4.3#.tar.gz
+http://gitorious.org/waifu/waifud-stable/archive-tarball/v0.4.3#.tar.gz
 
 BUG FIXES
 

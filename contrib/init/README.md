@@ -1,11 +1,11 @@
 Sample configuration files for:
 ```
-systemd: bitnetd.service
-Upstart: bitnetd.conf
-OpenRC:  bitnetd.openrc
-         bitnetd.openrcconf
-CentOS:  bitnetd.init
-macOS:   org.bitnet.bitnetd.plist
+systemd: waifud.service
+Upstart: waifud.conf
+OpenRC:  waifud.openrc
+         waifud.openrcconf
+CentOS:  waifud.init
+macOS:   org.waifu.waifud.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

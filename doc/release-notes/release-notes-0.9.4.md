@@ -1,13 +1,13 @@
 Waifu Core version 0.9.4 is now available from:
 
-  https://bitnet.org/bin/0.9.4/
+  https://waifu.org/bin/0.9.4/
 
 This is a new minor version release, bringing only bug fixes and updated
 translations. Upgrading to this release is recommended.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/bitnet/bitnet/issues
+  https://github.com/waifu/waifu/issues
 
 How to Upgrade
 ===============
@@ -15,7 +15,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over /Applications/Waifu-Qt (on Mac) or
-bitnetd/bitnet-qt (on Linux).
+waifud/waifu-qt (on Linux).
 
 OpenSSL Warning
 ================
@@ -25,12 +25,12 @@ various operating system maintainers. Review by Gregory Maxwell determined that
 this update is incompatible with the Waifu system and could lead to consensus
 forks.
 
-Waifu Core released binaries from https://bitnet.org are unaffected,
+Waifu Core released binaries from https://waifu.org are unaffected,
 as are any built with the gitian deterministic build system.
 
 However, if you are running either
 
-- The Ubuntu PPA from https://launchpad.net/~bitnet/+archive/ubuntu/bitnet
+- The Ubuntu PPA from https://launchpad.net/~waifu/+archive/ubuntu/waifu
 - A third-party or self-compiled Waifu Core
 
 upgrade to Waifu Core 0.9.4, which includes a workaround, **before** updating
@@ -92,4 +92,4 @@ Thanks to who contributed to this release, at least:
 - Sergio Demian Lerner
 - Wladimir J. van der Laan
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitnet/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/waifu/).

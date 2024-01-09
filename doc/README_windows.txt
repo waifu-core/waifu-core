@@ -11,13 +11,13 @@ with each other, with the help of a P2P network to check for double-spending.
 
 Setup
 -----
-Unpack the files into a directory and run bitnet-qt.exe.
+Unpack the files into a directory and run waifu-qt.exe.
 
 Waifu Core is the original Waifu client and it builds the backbone of the network.
 However, it downloads and stores the entire history of Waifu transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.
 
-See the bitnet wiki at:
-  https://en.bitnet.it/wiki/Main_Page
+See the waifu wiki at:
+  https://en.waifu.it/wiki/Main_Page
 for more help and information.

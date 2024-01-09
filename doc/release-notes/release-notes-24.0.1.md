@@ -6,18 +6,18 @@ announced or released.
 
 Waifu Core version 24.0.1 is now available from:
 
-  <https://bitnetcore.org/bin/bitnet-core-24.0.1/>
+  <https://waifucore.org/bin/waifu-core-24.0.1/>
 
 This release includes new features, various bug fixes and performance
 improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at GitHub:
 
-  <https://github.com/bitnet/bitnet/issues>
+  <https://github.com/waifu/waifu/issues>
 
 To receive security and update notifications, please subscribe to:
 
-  <https://bitnetcore.org/en/list/announcements/join/>
+  <https://waifucore.org/en/list/announcements/join/>
 
 How to Upgrade
 ==============
@@ -25,7 +25,7 @@ How to Upgrade
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes in some cases), then run the
 installer (on Windows) or just copy over `/Applications/Waifu-Qt` (on macOS)
-or `bitnetd`/`bitnet-qt` (on Linux).
+or `waifud`/`waifu-qt` (on Linux).
 
 Upgrading directly from a version of Waifu Core that has reached its EOL is
 possible, but it might take some time if the data directory needs to be migrated. Old
@@ -91,8 +91,8 @@ not accept unconfirmed transactions as final, and if they insist on doing so,
 to take the appropriate steps to ensure they have some recourse or plan for
 when their assumptions do not hold.
 
-[Waifu Core 0.12.0]: https://bitnetcore.org/en/releases/0.12.0/#opt-in-replace-by-fee-transactions
-[bip125]: https://github.com/bitnet/bips/blob/master/bip-0125.mediawiki
+[Waifu Core 0.12.0]: https://waifucore.org/en/releases/0.12.0/#opt-in-replace-by-fee-transactions
+[bip125]: https://github.com/waifu/bips/blob/master/bip-0125.mediawiki
 
 Notable changes
 ===============
@@ -212,7 +212,7 @@ Wallet
 - The `wsh()` output descriptor was extended with Miniscript support. You can import Miniscript
   descriptors for P2WSH in a watchonly wallet to track coins, but you can't spend from them using
   the Waifu Core wallet yet.
-  You can find more about Miniscript on the [reference website](https://bitnet.sipa.be/miniscript/). (#24148)
+  You can find more about Miniscript on the [reference website](https://waifu.sipa.be/miniscript/). (#24148)
 
 - The `tr()` output descriptor now supports multisig scripts through the `multi_a()` and
   `sortedmulti_a()` functions. (#24043)
@@ -237,25 +237,25 @@ Migrating Legacy Wallets to Descriptor Wallets
 
 An experimental RPC `migratewallet` has been added to migrate Legacy (non-descriptor) wallets to
 Descriptor wallets. More information about the migration process is available in the
-[documentation](https://github.com/bitnet/bitnet/blob/master/doc/managing-wallets.md#migrating-legacy-wallets-to-descriptor-wallets).
+[documentation](https://github.com/waifu/waifu/blob/master/doc/managing-wallets.md#migrating-legacy-wallets-to-descriptor-wallets).
 
 GUI changes
 -----------
 
 - A new menu item to restore a wallet from a backup file has been added (gui#471).
 
-- Configuration changes made in the bitnet GUI (such as the pruning setting,
+- Configuration changes made in the waifu GUI (such as the pruning setting,
 proxy settings, UPNP preferences) are now saved to `<datadir>/settings.json`
 file rather than to the Qt settings backend (windows registry or unix desktop
-config files), so these settings will now apply to bitnetd, instead of being
+config files), so these settings will now apply to waifud, instead of being
 ignored. (#15936, gui#602)
 
-- Also, the interaction between GUI settings and `bitnet.conf` settings is
-simplified. Settings from `bitnet.conf` are now displayed normally in the GUI
+- Also, the interaction between GUI settings and `waifu.conf` settings is
+simplified. Settings from `waifu.conf` are now displayed normally in the GUI
 settings dialog, instead of in a separate warning message ("Options set in this
 dialog are overridden by the configuration file: -setting=value"). And these
 settings can now be edited because `settings.json` values take precedence over
-`bitnet.conf` values. (#15936)
+`waifu.conf` values. (#15936)
 
 Low-level changes
 =================
@@ -388,4 +388,4 @@ Thanks to everyone who directly contributed to this release:
 - Yancy Ribbens
 
 As well as to everyone that helped with translations on
-[Transifex](https://www.transifex.com/bitnet/bitnet/).
+[Transifex](https://www.transifex.com/waifu/waifu/).

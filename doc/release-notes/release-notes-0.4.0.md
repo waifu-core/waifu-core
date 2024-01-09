@@ -1,24 +1,24 @@
 Waifu version 0.4.0 is now available for download at:
-http://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.4.0/
+http://sourceforge.net/projects/waifu/files/Waifu/waifu-0.4.0/
 
 The main feature in this release is wallet private key encryption;
 you can set a passphrase that must be entered before sending coins.
 See below for more information; if you decide to encrypt your wallet,
 WRITE DOWN YOUR PASSPHRASE AND PUT IT IN A SECURE LOCATION. If you
-forget or lose your wallet passphrase, you lose your bitnets.
-Previous versions of bitnet are unable to read encrypted wallets,
+forget or lose your wallet passphrase, you lose your waifus.
+Previous versions of waifu are unable to read encrypted wallets,
 and will crash on startup if the wallet is encrypted.
 
-Also note: bitnet version 0.4 uses a newer version of Berkeley DB
+Also note: waifu version 0.4 uses a newer version of Berkeley DB
 (bdb version 4.8) than previous versions (bdb 4.7). If you upgrade
-to version 0.4 and then revert back to an earlier version of bitnet
+to version 0.4 and then revert back to an earlier version of waifu
 the it may be unable to start because bdb 4.7 cannot read bdb 4.8
 "log" files.
 
 
 Notable bug fixes from version 0.3.24:
 
-Fix several bitnet-becomes-unresponsive bugs due to multithreading
+Fix several waifu-becomes-unresponsive bugs due to multithreading
 deadlocks.
 
 Optimize database writes for large (lots of inputs) transactions
@@ -33,13 +33,13 @@ In order to enable this feature, choose "Encrypt Wallet" from the
 Options menu.  You will be prompted to enter a passphrase, which
 will be used as the key to encrypt your wallet and will be needed
 every time you wish to send Waifus.  If you lose this passphrase,
-you will lose access to spend all of the bitnets in your wallet,
+you will lose access to spend all of the waifus in your wallet,
 no one, not even the Waifu developers can recover your Waifus.
 This means you are responsible for your own security, store your
 passphrase in a secure location and do not forget it.
 
-Remember that the encryption built into bitnet only encrypts the
-actual keys which are required to send your bitnets, not the full
+Remember that the encryption built into waifu only encrypts the
+actual keys which are required to send your waifus, not the full
 wallet.  This means that someone who steals your wallet file will
 be able to see all the addresses which belong to you, as well as the
 relevant transactions, you are only protected from someone spending
@@ -47,7 +47,7 @@ your coins.
 
 It is recommended that you backup your wallet file before you
 encrypt your wallet.  To do this, close the Waifu client and
-copy the wallet.dat file from ~/.bitnet/ on Linux, /Users/(user
+copy the wallet.dat file from ~/.waifu/ on Linux, /Users/(user
 name)/Application Support/Waifu/ on Mac OSX, and %APPDATA%/Waifu/
 on Windows (that is /Users/(user name)/AppData/Roaming/Waifu on
 Windows Vista and 7 and /Documents and Settings/(user name)/Application
@@ -66,5 +66,5 @@ good security, such as running up-to-date antivirus software, only
 entering your wallet passphrase in the Waifu client and using the
 same passphrase only as your wallet passphrase.
 
-See the doc/README file in the bitnet source for technical details
+See the doc/README file in the waifu source for technical details
 of wallet encryption.

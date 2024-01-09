@@ -34,7 +34,7 @@ void InitLogging(const ArgsManager& args);
 //!Parameter interaction: change current parameters depending on various rules
 void InitParameterInteraction(ArgsManager& args);
 
-/** Initialize bitnet core: Basic context setup.
+/** Initialize waifu core: Basic context setup.
  *  @note This can be done before daemonization. Do not call Shutdown() if this function fails.
  *  @pre Parameters should be parsed and config file should be read.
  */
@@ -52,7 +52,7 @@ bool AppInitParameterInteraction(const ArgsManager& args, bool use_syscall_sandb
  */
 bool AppInitSanityChecks(const kernel::Context& kernel);
 /**
- * Lock bitnet core data directory.
+ * Lock waifu core data directory.
  * @note This should only be done after daemonization. Do not call Shutdown() if this function fails.
  * @pre Parameters should be parsed and config file should be read, AppInitSanityChecks should have been called.
  */

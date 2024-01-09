@@ -4,26 +4,26 @@ Waifu Core can be launched with `-signer=<cmd>` where `<cmd>` is an external too
 
 ## Example usage
 
-The following example is based on the [HWI](https://github.com/bitnet-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the Waifu Core GitHub organization and maintained by Waifu Core developers, it should be used with caution. It is considered experimental and has far less review than Waifu Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
+The following example is based on the [HWI](https://github.com/waifu-core/HWI) tool. Version 2.0 or newer is required. Although this tool is hosted under the Waifu Core GitHub organization and maintained by Waifu Core developers, it should be used with caution. It is considered experimental and has far less review than Waifu Core itself. Be particularly careful when running tools such as these on a computer with private keys on it.
 
 When using a hardware wallet, consult the manufacturer website for (alternative) software they recommend. As long as their software conforms to the standard below, it should be able to work with Waifu Core.
 
 Start Waifu Core:
 
 ```sh
-$ bitnetd -signer=../HWI/hwi.py
+$ waifud -signer=../HWI/hwi.py
 ```
 
 ### Device setup
 
-Follow the hardware manufacturers instructions for the initial device setup, as well as their instructions for creating a backup. Alternatively, for some devices, you can use the `setup`, `restore` and `backup` commands provided by [HWI](https://github.com/bitnet-core/HWI).
+Follow the hardware manufacturers instructions for the initial device setup, as well as their instructions for creating a backup. Alternatively, for some devices, you can use the `setup`, `restore` and `backup` commands provided by [HWI](https://github.com/waifu-core/HWI).
 
 ### Create wallet and import keys
 
 Get a list of signing devices / services:
 
 ```
-$ bitnet-cli enumeratesigners
+$ waifu-cli enumeratesigners
 {
   "signers": [
     {
@@ -37,7 +37,7 @@ The master key fingerprint is used to identify a device.
 Create a wallet, this automatically imports the public keys:
 
 ```sh
-$ bitnet-cli createwallet "hww" true true "" true true true
+$ waifu-cli createwallet "hww" true true "" true true true
 ```
 
 ### Verify an address
@@ -45,8 +45,8 @@ $ bitnet-cli createwallet "hww" true true "" true true true
 Display an address on the device:
 
 ```sh
-$ bitnet-cli -rpcwallet=<wallet> getnewaddress
-$ bitnet-cli -rpcwallet=<wallet> walletdisplayaddress <address>
+$ waifu-cli -rpcwallet=<wallet> getnewaddress
+$ waifu-cli -rpcwallet=<wallet> walletdisplayaddress <address>
 ```
 
 Replace `<address>` with the result of `getnewaddress`.
@@ -56,7 +56,7 @@ Replace `<address>` with the result of `getnewaddress`.
 Under the hood this uses a [Partially Signed Waifu Transaction](psbt.md).
 
 ```sh
-$ bitnet-cli -rpcwallet=<wallet> sendtoaddress <address> <amount>
+$ waifu-cli -rpcwallet=<wallet> sendtoaddress <address> <amount>
 ```
 
 This prompts your hardware wallet to sign, and fail if it's not connected. If successful

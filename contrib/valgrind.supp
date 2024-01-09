@@ -2,14 +2,14 @@
 # dependencies that cannot be fixed in-tree.
 #
 # Example use:
-# $ valgrind --suppressions=contrib/valgrind.supp src/test/test_bitnet
+# $ valgrind --suppressions=contrib/valgrind.supp src/test/test_waifu
 # $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
-#       --show-leak-kinds=all src/test/test_bitnet
+#       --show-leak-kinds=all src/test/test_waifu
 #
 # To create suppressions for found issues, use the --gen-suppressions=all option:
 # $ valgrind --suppressions=contrib/valgrind.supp --leak-check=full \
 #       --show-leak-kinds=all --gen-suppressions=all --show-reachable=yes \
-#       --error-limit=no src/test/test_bitnet
+#       --error-limit=no src/test/test_waifu
 #
 # Note that suppressions may depend on OS and/or library versions.
 # Tested on:

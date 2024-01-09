@@ -38,7 +38,7 @@ class SignetMinerTest(WaifuTestFramework):
     def skip_test_if_missing_module(self):
         self.skip_if_no_cli()
         self.skip_if_no_wallet()
-        self.skip_if_no_bitnet_util()
+        self.skip_if_no_waifu_util()
 
     def run_test(self):
         node = self.nodes[0]
@@ -54,7 +54,7 @@ class SignetMinerTest(WaifuTestFramework):
                 f'--cli={node.cli.binary} -datadir={node.cli.datadir}',
                 'generate',
                 f'--address={node.getnewaddress()}',
-                f'--grind-cmd={self.options.bitnetutil} grind',
+                f'--grind-cmd={self.options.waifuutil} grind',
                 '--nbits=1d00ffff',
                 f'--set-block-time={int(time.time())}',
             ], check=True, stderr=subprocess.STDOUT)

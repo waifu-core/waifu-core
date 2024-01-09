@@ -1,12 +1,12 @@
 Waifu-Qt version 0.8.6 final is now available from:
 
-  http://sourceforge.net/projects/bitnet/files/Waifu/bitnet-0.8.6/
+  http://sourceforge.net/projects/waifu/files/Waifu/waifu-0.8.6/
 
 This is a maintenance release to fix a critical bug; we urge all users to upgrade.
 
 Please report bugs using the issue tracker at github:
 
-  https://github.com/bitnet/bitnet/issues
+  https://github.com/waifu/waifu/issues
 
 How to Upgrade
 --------------
@@ -16,7 +16,7 @@ If you already downloaded 0.8.6rc1 you do not need to re-download. This release 
 If you are running an older version, shut it down. Wait
 until it has completely shut down (which might take a few minutes for older
 versions), then run the installer (on Windows) or just copy over
-/Applications/Waifu-Qt (on Mac) or bitnetd/bitnet-qt (on Linux).
+/Applications/Waifu-Qt (on Mac) or waifud/waifu-qt (on Linux).
 
 If you are upgrading from version 0.7.2 or earlier, the first time you
 run 0.8.6 your blockchain files will be re-indexed, which will take
@@ -63,4 +63,4 @@ Warning
   Hence it is recommended to use a 64-bit executable if possible.
   A 64-bit executable for Windows is planned for 0.9.
 
-Note: Gavin Andresen's GPG signing key for SHA256SUMS.asc has been changed from  key id 1FC730C1 to sub key 7BF6E212 (see https://github.com/bitnet/bitnet.org/pull/279).
+Note: Gavin Andresen's GPG signing key for SHA256SUMS.asc has been changed from  key id 1FC730C1 to sub key 7BF6E212 (see https://github.com/waifu/waifu.org/pull/279).

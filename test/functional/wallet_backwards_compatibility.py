@@ -216,7 +216,7 @@ class BackwardsCompatibilityTest(WaifuTestFramework):
                     for wallet_name in ["w1", "w2", "w3"]:
                         assert_raises_rpc_error(-4, "Wallet file verification failed: wallet.dat corrupt, salvage failed", node.loadwallet, wallet_name)
 
-        # RPC loadwallet failure causes bitnetd to exit, in addition to the RPC
+        # RPC loadwallet failure causes waifud to exit, in addition to the RPC
         # call failure, so the following test won't work:
         # assert_raises_rpc_error(-4, "Wallet loading failed.", node_v17.loadwallet, 'w3')
 
@@ -264,7 +264,7 @@ class BackwardsCompatibilityTest(WaifuTestFramework):
                 os.path.join(node_master_wallets_dir, "u1_v16")
             )
             load_res = node_master.loadwallet("u1_v16")
-            # Make sure this wallet opens without warnings. See https://github.com/bitnet/bitnet/pull/19054
+            # Make sure this wallet opens without warnings. See https://github.com/waifu/waifu/pull/19054
             assert_equal(load_res['warning'], '')
             wallet = node_master.get_wallet_rpc("u1_v16")
             info = wallet.getaddressinfo(v16_addr)

@@ -132,15 +132,15 @@ def print_message(event, inbound):
           )
 
 
-def main(bitnetd_path):
-    bitnetd_with_usdts = USDT(path=str(bitnetd_path))
+def main(waifud_path):
+    waifud_with_usdts = USDT(path=str(waifud_path))
 
     # attaching the trace functions defined in the BPF program to the tracepoints
-    bitnetd_with_usdts.enable_probe(
+    waifud_with_usdts.enable_probe(
         probe="inbound_message", fn_name="trace_inbound_message")
-    bitnetd_with_usdts.enable_probe(
+    waifud_with_usdts.enable_probe(
         probe="outbound_message", fn_name="trace_outbound_message")
-    bpf = BPF(text=program, usdt_contexts=[bitnetd_with_usdts])
+    bpf = BPF(text=program, usdt_contexts=[waifud_with_usdts])
 
     # BCC: perf buffer handle function for inbound_messages
     def handle_inbound(_, data, size):
@@ -177,7 +177,7 @@ def main(bitnetd_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("USAGE:", sys.argv[0], "path/to/bitnetd")
+        print("USAGE:", sys.argv[0], "path/to/waifud")
         exit()
     path = sys.argv[1]
     main(path)

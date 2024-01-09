@@ -6,8 +6,8 @@
 
 #include <chainparams.h>
 #include <key.h>
-#include <qt/bitnet.h>
-#include <qt/bitnetgui.h>
+#include <qt/waifu.h>
+#include <qt/waifugui.h>
 #include <qt/networkstyle.h>
 #include <qt/rpcconsole.h>
 #include <shutdown.h>
@@ -15,7 +15,7 @@
 #include <validation.h>
 
 #if defined(HAVE_CONFIG_H)
-#include <config/bitnet-config.h>
+#include <config/waifu-config.h>
 #endif
 
 #include <QAction>
@@ -65,7 +65,7 @@ void AppTests::appTests()
         // and fails to handle returned nulls
         // (https://bugreports.qt.io/browse/QTBUG-49686).
         QWARN("Skipping AppTests on mac build with 'minimal' platform set due to Qt bugs. To run AppTests, invoke "
-              "with 'QT_QPA_PLATFORM=cocoa test_bitnet-qt' on mac, or else use a linux or windows build.");
+              "with 'QT_QPA_PLATFORM=cocoa test_waifu-qt' on mac, or else use a linux or windows build.");
         return;
     }
 #endif

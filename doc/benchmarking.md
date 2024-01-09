@@ -8,16 +8,16 @@ thread queue, wallet balance.
 Running
 ---------------------
 
-For benchmarking, you only need to compile `bitnet_bench`.  The bench runner
+For benchmarking, you only need to compile `waifu_bench`.  The bench runner
 warns if you configure with `--enable-debug`, but consider if building without
 it will impact the benchmark(s) you are interested in by unlatching log printers
 and lock analysis.
 
-    make -C src bitnet_bench
+    make -C src waifu_bench
 
-After compiling bitnet-core, the benchmarks can be run with:
+After compiling waifu-core, the benchmarks can be run with:
 
-    src/bench/bench_bitnet
+    src/bench/bench_waifu
 
 The output will look similar to:
 ```
@@ -39,7 +39,7 @@ The output will look similar to:
 Help
 ---------------------
 
-    src/bench/bench_bitnet -?
+    src/bench/bench_waifu -?
 
 To print the various options, like listing the benchmarks without running them
 or using a regex filter to only run certain benchmarks.
@@ -56,6 +56,6 @@ More benchmarks are needed for, in no particular order:
 Going Further
 --------------------
 
-To monitor Waifu Core performance more in depth (like reindex or IBD): https://github.com/chaincodelabs/bitnetperf
+To monitor Waifu Core performance more in depth (like reindex or IBD): https://github.com/chaincodelabs/waifuperf
 
-To generate Flame Graphs for Waifu Core: https://github.com/eklitzke/bitnet/blob/flamegraphs/doc/flamegraphs.md
+To generate Flame Graphs for Waifu Core: https://github.com/eklitzke/waifu/blob/flamegraphs/doc/flamegraphs.md

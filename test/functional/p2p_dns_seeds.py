@@ -50,7 +50,7 @@ class P2PDNSSeeds(WaifuTestFramework):
             extra_args=["-forcednsseed=1", f"-connect={fakeaddr}"],
         )
 
-        # Restore default bitnetd settings
+        # Restore default waifud settings
         self.restart_node(0)
 
     def existing_outbound_connections_test(self):
@@ -86,7 +86,7 @@ class P2PDNSSeeds(WaifuTestFramework):
         self.log.info("Check that we query DNS seeds if -forcednsseed param is set")
 
         with self.nodes[0].assert_debug_log(expected_msgs=["Loading addresses from DNS seed"], timeout=12):
-            # -dnsseed defaults to 1 in bitnetd, but 0 in the test framework,
+            # -dnsseed defaults to 1 in waifud, but 0 in the test framework,
             # so pass it explicitly here
             self.restart_node(0, ["-forcednsseed", "-dnsseed=1"])
 

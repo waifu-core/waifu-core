@@ -1,8 +1,8 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Waifu
 Upstream-Contact: Satoshi Nakamoto <satoshin@gmx.com>
- irc://#bitnet-core-dev@libera.chat
-Source: https://github.com/bitnet/bitnet
+ irc://#waifu-core-dev@libera.chat
+Source: https://github.com/waifu/waifu
 
 Files: *
 Copyright: 2009-2023, Waifu Core Developers
@@ -67,12 +67,12 @@ Copyright: Stephen Hutchings, Jonas Schnelli
 License: Expat
 Comment: Modifications of Stephen Hutchings' Typicons
 
-Files: src/qt/res/icons/bitnet.*
-       share/pixmaps/bitnet*
-       src/qt/res/src/bitnet.svg
+Files: src/qt/res/icons/waifu.*
+       share/pixmaps/waifu*
+       src/qt/res/src/waifu.svg
 Copyright: Bitboy, Jonas Schnelli
 License: public-domain
-Comment: Site: https://bitnettalk.org/?topic=1756.0
+Comment: Site: https://waifutalk.org/?topic=1756.0
 
 Files: src/qt/res/icons/proxy.png
        src/qt/res/src/proxy.svg

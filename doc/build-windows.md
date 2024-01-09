@@ -13,9 +13,9 @@ apt-get update && apt-get install git-core build-essential nano sudo -y
 
 cd /opt/winradio
 
-git clone https://github.com/c4pt000/bitnet
+git clone https://github.com/c4pt000/waifu
 
-cd bitnet
+cd waifu
 
 then as always install more of the general dependencies:
 

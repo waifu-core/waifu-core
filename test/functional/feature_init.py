@@ -109,7 +109,7 @@ class InitStressTest(WaifuTestFramework):
             # tweaked_contents[50:250] = b'1' * 200
             # target_file.write_bytes(bytes(tweaked_contents))
             #
-            # At the moment I can't get this to work (bitnetd loads successfully?) so
+            # At the moment I can't get this to work (waifud loads successfully?) so
             # investigate doing this later.
 
             node.assert_start_raises_init_error(

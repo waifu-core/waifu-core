@@ -67,7 +67,7 @@ class P2PBlocksOnly(WaifuTestFramework):
             # and Waifu Core respects that choice and will not send transactions.
             # But if, for some reason, first_peer decides to relay transactions to us anyway, we should relay them to
             # second_peer since we gave relay permission to first_peer.
-            # See https://github.com/bitnet/bitnet/issues/19943 for details.
+            # See https://github.com/waifu/waifu/issues/19943 for details.
             first_peer.send_message(msg_tx(tx))
             self.log.info('Check that the peer with relay-permission is still connected after sending the transaction')
             assert_equal(first_peer.is_connected, True)

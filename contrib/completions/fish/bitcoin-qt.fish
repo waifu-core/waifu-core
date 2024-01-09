@@ -1,8 +1,8 @@
 # Disable files from being included in completions by default
-complete --command bitnet-qt --no-files
+complete --command waifu-qt --no-files
 
 # Extract options
-function __fish_bitnetqt_get_options
+function __fish_waifuqt_get_options
     argparse 'nofiles' -- $argv
     set --local cmd (commandline -opc)[1]
     set --local options
@@ -21,15 +21,15 @@ end
 
 # Add options with file completion
 complete \
-    --command bitnet-qt \
-    --arguments "(__fish_bitnetqt_get_options)"
+    --command waifu-qt \
+    --arguments "(__fish_waifuqt_get_options)"
 # Enable file completions only if the commandline now contains a `*.=` style option
-complete -c bitnet-qt \
+complete -c waifu-qt \
     --condition 'string match --regex -- ".*=" (commandline -pt)' \
     --force-files
 
 # Add options without file completion
 complete \
-    --command bitnet-qt \
-    --arguments "(__fish_bitnetqt_get_options --nofiles)"
+    --command waifu-qt \
+    --arguments "(__fish_waifuqt_get_options --nofiles)"
 

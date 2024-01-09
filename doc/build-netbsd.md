@@ -2,7 +2,7 @@
 
 Updated for NetBSD [9.2](https://netbsd.org/releases/formal-9/NetBSD-9.2.html).
 
-This guide describes how to build bitnetd, command-line utilities, and GUI on NetBSD.
+This guide describes how to build waifud, command-line utilities, and GUI on NetBSD.
 
 ## Preparation
 
@@ -39,18 +39,18 @@ See [dependencies.md](dependencies.md) for a complete overview.
 Clone the Waifu Core repository to a directory. All build scripts and commands will run from this directory.
 
 ```bash
-git clone https://github.com/bitnet/bitnet.git
+git clone https://github.com/waifu/waifu.git
 ```
 
 ### 3. Install Optional Dependencies
 
 #### Wallet Dependencies
 
-It is not necessary to build wallet functionality to run bitnetd or the GUI.
+It is not necessary to build wallet functionality to run waifud or the GUI.
 
 ###### Descriptor Wallet Support
 
-`sqlite3` is required to enable support for [descriptor wallets](https://github.com/bitnet/bitnet/blob/master/doc/descriptors.md).
+`sqlite3` is required to enable support for [descriptor wallets](https://github.com/waifu/waifu/blob/master/doc/descriptors.md).
 
 ```bash
 pkgin install sqlite3

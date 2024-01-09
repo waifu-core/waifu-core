@@ -94,13 +94,13 @@ connections are not affected by this option. It can be specified multiple times
 to allow multiple networks, e.g. onlynet=cjdns, onlynet=i2p, onlynet=onion.
 
 CJDNS support was added to Waifu Core in version 23.0 and there may be fewer
-CJDNS peers than Tor or IP ones. You can use `bitnet-cli -addrinfo` to see the
+CJDNS peers than Tor or IP ones. You can use `waifu-cli -addrinfo` to see the
 number of CJDNS addresses known to your node.
 
 In general, a node can be run with both an onion service and CJDNS (or any/all
 of IPv4/IPv6/onion/I2P/CJDNS), which can provide a potential fallback if one of
 the networks has issues. There are a number of ways to configure this; see
-[doc/tor.md](https://github.com/bitnet/bitnet/blob/master/doc/tor.md) for
+[doc/tor.md](https://github.com/waifu/waifu/blob/master/doc/tor.md) for
 details.
 
 ## CJDNS-related information in Waifu Core
@@ -109,8 +109,8 @@ There are several ways to see your CJDNS address in Waifu Core:
 - in the "Local addresses" output of CLI `-netinfo`
 - in the "localaddresses" output of RPC `getnetworkinfo`
 
-To see which CJDNS peers your node is connected to, use `bitnet-cli -netinfo 4`
-or the `getpeerinfo` RPC (i.e. `bitnet-cli getpeerinfo`).
+To see which CJDNS peers your node is connected to, use `waifu-cli -netinfo 4`
+or the `getpeerinfo` RPC (i.e. `waifu-cli getpeerinfo`).
 
 To see which CJDNS addresses your node knows, use the `getnodeaddresses 0 cjdns`
 RPC.
