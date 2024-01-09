@@ -36,12 +36,7 @@ The most troublefree and reproducable method of building the repository is via t
     make -j12 install   		# -j12 for 12 cores adjust here
     make -j12 deploy			# for setup.exe adjust 12 cores to your core count requires nsis see doc/build-windows.md for deps
 
-# windows users and problems with bitnet-qt.exe and anchors.dat
 
-# ATTENTION WINDOWS USERS IF YOU HAVE THIS PROBLEM ON A FRESH START WITH BITNET-QT.exe
-![s1](https://github.com/bitnet-io/bitnet-core/releases/download/linux-windows-wallet/photo_2024-01-02_10-56-33.jpg)
-# you need to fix anchors.dat by making an empty file called ```anchors.dat``` and placing it into AppData/Roaming/Waifu
-# then restart bitnet-qt.exe
 
 License
 -------
