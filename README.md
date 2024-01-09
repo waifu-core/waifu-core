@@ -34,7 +34,7 @@ The most troublefree and reproducable method of building the repository is via t
     make -j12 install   		# -j12 for 12 cores adjust here
     make -j12 deploy			# for setup.exe adjust 12 cores to your core count requires nsis see doc/build-windows.md for deps
 
-
+![s1](https://github.com/c4pt000/Waifu-Core/releases/download/picture/first-attempt.png)
 
 License
 -------
