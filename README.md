@@ -10,8 +10,8 @@ The most troublefree and reproducable method of building the repository is via t
 
     LINUX
 
-    git clone https://github.com/waifu-io/waifu-core
-    cd waifu-core
+    git clone https://github.com/c4pt000/waifu-Core
+    cd Waifu-Core
     cd depends
     make -j12 HOST=x86_64-pc-linux-gnu  # -j12 for 12 cores adjust here
     cd ..
@@ -21,10 +21,10 @@ The most troublefree and reproducable method of building the repository is via t
     make -j12 install 		        # -j12 for 12 cores adjust here
     files will be placed into waifu-shared-linux folder
 
-    WINDOWS 64-bit
+    WINDOWS 64-bit (ubuntu 22.04 build only see bitcoin/doc/build-windows.md)
 
-    git clone https://github.com/waifu-io/waifu-core
-    cd waifu-core
+    git clone https://github.com/waifu-io/Waifu-Core
+    cd Waifu-Core
     cd depends
     make -j12 HOST=x86_64-w64-mingw32	# -j12 for 12 cores adjust here
     cd ..
@@ -34,12 +34,7 @@ The most troublefree and reproducable method of building the repository is via t
     make -j12 install   		# -j12 for 12 cores adjust here
     make -j12 deploy			# for setup.exe adjust 12 cores to your core count requires nsis see doc/build-windows.md for deps
 
-# windows users and problems with waifu-qt.exe and anchors.dat
 
-# ATTENTION WINDOWS USERS IF YOU HAVE THIS PROBLEM ON A FRESH START WITH WAIFU-QT.exe
-![s1](https://github.com/waifu-io/waifu-core/releases/download/linux-windows-wallet/photo_2024-01-02_10-56-33.jpg)
-# you need to fix anchors.dat by making an empty file called ```anchors.dat``` and placing it into AppData/Roaming/Waifu
-# then restart waifu-qt.exe
 
 License
 -------
