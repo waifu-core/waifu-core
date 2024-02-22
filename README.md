@@ -11,7 +11,7 @@ The most troublefree and reproducable method of building the repository is via t
     LINUX
 
     git clone https://github.com/waifu-core/waifu-Core
-    cd Waifu-Core
+    cd waifu-core
     cd depends
     make -j12 HOST=x86_64-pc-linux-gnu  # -j12 for 12 cores adjust here
     cd ..
@@ -24,7 +24,7 @@ The most troublefree and reproducable method of building the repository is via t
     WINDOWS 64-bit (ubuntu 22.04 build only see bitcoin/doc/build-windows.md)
 
     git clone https://github.com/waifu-io/waifu-core
-    cd Waifu-Core
+    cd waifu-core
     cd depends
     make -j12 HOST=x86_64-w64-mingw32	# -j12 for 12 cores adjust here
     cd ..
