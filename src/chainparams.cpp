@@ -78,7 +78,7 @@ public:
         consensus.script_flag_exceptions.emplace( // Taproot exception
             uint256S("0x0000000000000000000f14c35b2d841e986ab5441de8c585d5ffe55ea1e395ad"), SCRIPT_VERIFY_P2SH | SCRIPT_VERIFY_WITNESS);
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000f55c8ea3462fe2c25e133f4ea51303f717ff93fbb06f079f5579c4ac3f4");
+        consensus.BIP34Hash = uint256S("0x00000feab58d10f94336563d8ac6071e6afd4acaf994fef50e6d4f552aa15099");
         consensus.BIP65Height = 0; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
         consensus.BIP66Height = 0; // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
         consensus.CSVHeight = 10; // 000000000000000004a1b34462cb8aeebd5799177f7a29cf28f2d1961716b5b5
@@ -105,7 +105,8 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].min_activation_height = 0; // No activation delay
 
        // consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000003404ba0801921119f903495e");
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000001c098a087afb5f07823");
+//        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000001c098a087afb5f07823");
+        consensus.nMinimumChainWork = uint256S  ("0x0000000000000000000000000000000000000000000000000000000000000000");
         consensus.defaultAssumeValid = uint256S("0x000000000000002d05e938bb1360c7dea3f15628eacb260fd5657d839c4e58c6"); // 92345 current 10-24-2023
 
         /**
@@ -122,7 +123,8 @@ public:
         m_assumed_blockchain_size = 496;
         m_assumed_chain_state_size = 6;
 
-        genesis = CreateGenesisBlock(1231006505, 157300, 0x1e0ffff0, 1, 50 * COIN);
+//        genesis = CreateGenesisBlock(1231006505, 157300, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1708567724, 1101329, 0x1e0ffff0, 1, 50 * COIN);
 
 /*
 consensus.hashGenesisBlock = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
@@ -155,6 +157,17 @@ consensus.hashGenesisBlock = uint256S("0xfffffffffffffffffffffffffffffffffffffff
         }
 */
 /*
+
+Mainnet ---
+ main_nonce: 1101329
+ main_time: 1708567724
+ main_hash: 00000feab58d10f94336563d8ac6071e6afd4acaf994fef50e6d4f552aa15099
+ main_merklehash: 2f9e5e74139bdeaa8cd6ed1fff06d794b845f49e6af70356500d1e408c9a3711
+min Main nBit:  00000000
+
+
+
+
 Mainnet ---
  main_nonce: 1196422
  main_time: 1677414786
@@ -164,7 +177,7 @@ min Main nBit:  1b172947
 */
 
  consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x00000f55c8ea3462fe2c25e133f4ea51303f717ff93fbb06f079f5579c4ac3f4"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000feab58d10f94336563d8ac6071e6afd4acaf994fef50e6d4f552aa15099"));
         assert(genesis.hashMerkleRoot == uint256S("0x2f9e5e74139bdeaa8cd6ed1fff06d794b845f49e6af70356500d1e408c9a3711"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
