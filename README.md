@@ -1,3 +1,9 @@
+# building from git clone is currently broken with Makefile.in missing
+
+# to build directly from source use this .tar.gz for the source in releases
+
+# https://github.com/waifu-core/waifu-core/releases/download/02-22-2024/Waifu-Core-SOURCE-CODE-02-22-2024.tar
+
 Waifu-Core staging tree 24.x
 ===========================
 
